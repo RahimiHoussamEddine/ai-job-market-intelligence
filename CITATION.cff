@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or its derived release assets, please cite the repository and the upstream O*NET/BLS sources in NOTICE.md."
+title: "AI Job Market Intelligence"
+type: software
+authors:
+  - family-names: "Rahimi"
+    given-names: "Houssam Eddine"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/RahimiHoussamEddine/ai-job-market-intelligence"
+keywords:
+  - information retrieval
+  - occupation intelligence
+  - O*NET
+  - BLS
+  - career mobility
+
