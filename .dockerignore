@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+.pytest_cache
+.ruff_cache
+.coverage
+htmlcov
+data/raw
+data/processed
+reports/.staging
+artifacts/.staging
+__pycache__
+*.pyc
+

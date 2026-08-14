@@ -1,0 +1,58 @@
+# AI Job Market Intelligence
+
+> Evaluated U.S. occupation search and transparent career-transition frontiers
+> using O*NET® 30.3 and BLS 2024–34 national projections.
+
+**Status: experiment contract locked; release results are not generated yet.**
+No sample, synthetic, or development metric will be presented as a final result.
+
+Most career tools collapse similarity, opportunity, and pay into one unexplained
+score. This project keeps them separate: reproducible information-retrieval
+experiments identify related work, O*NET ratings explain occupation-level
+development differences, BLS projections add national context, and Pareto
+frontiers expose trade-offs without pretending to predict an individual's
+career outcome.
+
+## What this is—and is not
+
+This is an aggregate occupation-intelligence demonstrator for career services,
+workforce planning, and personal exploration. It supports:
+
+- free-text occupation discovery;
+- evidence-backed adjacent-occupation retrieval;
+- occupation-level transferable-skill comparisons;
+- national wage, projected growth, annual openings, and entry-requirement views;
+- transparent multi-objective filtering and Pareto frontiers.
+
+It does **not** rank people, screen applicants, estimate employability or hiring
+probability, ingest CVs, report live vacancies, or establish that a person is
+qualified for a regulated occupation. Similarity is not a match percentage.
+
+## Evaluation contract
+
+The preregistered protocol is in
+[`docs/EXPERIMENT_PROTOCOL.md`](docs/EXPERIMENT_PROTOCOL.md). Two tasks are kept
+separate:
+
+1. held-out alternate-title discovery, evaluated with top-1 accuracy, Recall@5,
+   and reciprocal rank;
+2. adjacent-occupation retrieval, evaluated by agreement with O*NET's
+   expert-reviewed Related Occupations lists using macro nDCG@10 and supporting
+   retrieval metrics.
+
+Related-occupation links are evaluation judgments only and are prohibited from
+all searchable features. BLS outcomes are decision context, never model labels
+or retrieval features. The locked test is inspected once after the candidate
+grid, split manifest, metrics, and reporting code are committed.
+
+## Reproducibility boundary
+
+Raw official downloads and build intermediates stay out of Git. The public v1
+release will contain a validated, checksum-addressed serving bundle, locked
+rankings and metrics, model/data cards, and a real dashboard capture. The app,
+API, and CLI will share the same immutable service artifact and will not fit or
+download models at request time.
+
+Source data attribution and modification disclosures are in
+[`NOTICE.md`](NOTICE.md). Software is MIT licensed.
+

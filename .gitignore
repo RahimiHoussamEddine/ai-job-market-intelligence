@@ -1,0 +1,28 @@
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.mypy_cache/
+.DS_Store
+.idea/
+.vscode/
+.codex-runtime/
+
+# Official source snapshots and deterministic build intermediates are acquired locally.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Local experiment scratch files are not release evidence.
+artifacts/.staging/
+reports/.staging/
+*.tmp
+

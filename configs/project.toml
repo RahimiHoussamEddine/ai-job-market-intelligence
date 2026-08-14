@@ -1,0 +1,88 @@
+[project]
+name = "ai-job-market-intelligence"
+artifact_version = "v1"
+snapshot_date = "2026-08-14"
+random_seed = 20260814
+
+[sources.onet]
+publisher = "O*NET Resource Center, USDOL/ETA"
+release = "30.3"
+release_date = "2026-05"
+license = "CC BY 4.0"
+license_url = "https://creativecommons.org/licenses/by/4.0/"
+base_url = "https://www.onetcenter.org/dl_files/database/db_30_3_csv"
+tables = [
+  "occupation_data",
+  "job_titles",
+  "task_statements",
+  "transferable_skills",
+  "knowledge",
+  "job_zones",
+  "related_occupations",
+]
+
+[sources.bls]
+publisher = "U.S. Bureau of Labor Statistics"
+projection_vintage = "2024-34"
+projection_release_date = "2025-08-28"
+occupation_url = "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx"
+crosswalk_url = "https://www.bls.gov/emp/classifications-crosswalks/nem-onet-to-soc-crosswalk.xlsx"
+reuse = "U.S. federal public domain"
+
+[splits]
+method = "stratified_group_kfold"
+n_splits = 5
+group = "base_soc_code"
+stratum = "soc_major_group"
+discovery_folds = [3, 4]
+selection_fold = 2
+confirmation_fold = 1
+test_fold = 0
+
+[profiles]
+core_task_type = "Core"
+preserve_tokens = ["C++", "C#", ".NET", "R", "Go"]
+minimum_structured_overlap = 5
+
+[title_benchmark]
+primary_metric = "top1_accuracy"
+secondary_metrics = ["recall_at_5", "mrr"]
+maximum_queries_per_occupation = 25
+normalized_duplicate_policy = "deduplicate_within_and_across_occupation_then_drop_ambiguous"
+
+[transition_benchmark]
+primary_metric = "ndcg_at_10"
+secondary_metrics = ["primary_short_recall_at_5", "primary_recall_at_10", "ndcg_at_20", "mrr_at_10"]
+relevance_primary_short = 3
+relevance_primary_long = 2
+relevance_supplemental = 1
+self_match = "excluded"
+unlisted = "unjudged_treated_as_zero_for_bounded_catalog_metrics"
+
+[candidates]
+lsa_dimensions = [64, 128, 256]
+hybrid_weights = [0.0, 0.25, 0.5, 0.75, 1.0]
+title_word_ngrams = [1, 2]
+title_character_ngrams = [3, 5]
+work_word_ngrams = [1, 2]
+minimum_document_frequency = 2
+
+[selection]
+rule = "highest_selection_primary_metric_then_simpler_within_one_query_bootstrap_standard_error"
+confirmation_gate = "champion_must_not_underperform_title_lexical_baseline"
+bootstrap_replicates = 2000
+bootstrap_stratum = "soc_major_group"
+
+[clustering]
+k_values = [12, 18, 24]
+seeds = [20260814, 20260815, 20260816, 20260817, 20260818]
+bootstrap_fraction = 0.8
+primary_metric = "pairwise_adjusted_rand_stability"
+tie_break = "higher_silhouette_then_smaller_k"
+
+[serving]
+search_default_k = 10
+search_max_k = 25
+frontier_max_candidates = 250
+query_logging = false
+
