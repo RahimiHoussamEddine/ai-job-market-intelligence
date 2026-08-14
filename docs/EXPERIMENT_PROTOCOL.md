@@ -34,6 +34,10 @@ in locked mode, path traversal, unexpected content types, schema drift, and
 duplicate business keys. An explicit new snapshot must use a new version rather
 than overwrite v1.
 
+Release 30.3 uses O*NET's current four-level Job Zone framework. Validation and
+application filters therefore accept levels 1–4, not the legacy five-level
+scheme.
+
 ## Leakage controls and split
 
 The query unit is an O*NET occupation. Specialty occupations are grouped by
@@ -162,4 +166,3 @@ selection rule, environment lock, and report schemas. The locked command must:
 Any change to data, features, candidates, judgments, thresholds, or metric code
 requires a new experiment version. Reporting-only repairs may resume from the
 immutable ranking hash and must record both the original and repair commits.
-

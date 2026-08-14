@@ -43,6 +43,7 @@ test_fold = 0
 core_task_type = "Core"
 preserve_tokens = ["C++", "C#", ".NET", "R", "Go"]
 minimum_structured_overlap = 5
+job_zone_levels = 4
 
 [title_benchmark]
 primary_metric = "top1_accuracy"
@@ -85,4 +86,3 @@ search_default_k = 10
 search_max_k = 25
 frontier_max_candidates = 250
 query_logging = false
-
