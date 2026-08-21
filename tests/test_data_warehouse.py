@@ -106,6 +106,18 @@ def test_audit_rejects_tier_grade_disagreement() -> None:
     assert "related_qrels.tier_grade_mapping" in {issue.check for issue in report.issues}
 
 
+def test_audit_allows_null_task_type_but_rejects_unknown_labels() -> None:
+    frames = canonical_frames()
+    frames["tasks"] = frames["tasks"].copy()
+    frames["tasks"].loc[0, "task_type"] = None
+
+    assert audit_frames(frames).ok
+
+    frames["tasks"].loc[0, "task_type"] = "Inferred"
+    report = audit_frames(frames)
+    assert {issue.check for issue in report.issues} == {"tasks.task_type"}
+
+
 def test_processed_snapshot_carries_exact_schemas_hashes_and_rejects_unknown_files(
     tmp_path: Path,
 ) -> None:

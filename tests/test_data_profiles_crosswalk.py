@@ -19,6 +19,7 @@ from job_market_intelligence.profiles import (
     build_occupations,
     build_structured_matrix,
     build_structured_ratings,
+    build_tasks,
     missing_aware_cosine,
 )
 
@@ -46,6 +47,28 @@ def test_raw_singular_source_is_preserved_as_processed_sources() -> None:
 
     assert "source" not in aliases.columns
     assert aliases.loc[0, "sources"] == "Employer"
+
+
+def test_official_blank_task_type_is_preserved_as_null() -> None:
+    tasks = build_tasks(
+        pd.DataFrame(
+            [
+                {
+                    "onet_soc_code": "11-1031.00",
+                    "task_id": "15267",
+                    "task": "Analyze proposed legislation.",
+                    "task_type": None,
+                    "incumbents_responding": None,
+                    "date": "06/2006",
+                    "domain_source": "Analyst",
+                }
+            ]
+        )
+    )
+
+    assert pd.isna(tasks.loc[0, "task_type"])
+    assert pd.isna(tasks.loc[0, "incumbents_responding"])
+    assert tasks.loc[0, "domain_source"] == "Analyst"
 
 
 def test_bls_market_keeps_only_line_items_and_never_aggregates_specialties() -> None:
@@ -148,7 +171,7 @@ def test_current_job_zone_contract_retains_date_and_domain_provenance() -> None:
         [
             {
                 "onet_soc_code": "11-1011.00",
-                "job_zone": "4",
+                "job_zone": "5",
                 "date": "07/2026",
                 "domain_source": "Analyst",
             }
@@ -157,11 +180,11 @@ def test_current_job_zone_contract_retains_date_and_domain_provenance() -> None:
 
     result = build_occupations(occupation_data, zones)
 
-    assert result.loc[0, "job_zone"] == 4
+    assert result.loc[0, "job_zone"] == 5
     assert result.loc[0, "job_zone_date"].isoformat() == "2026-07-01"
     assert result.loc[0, "job_zone_domain_source"] == "Analyst"
-    zones.loc[0, "job_zone"] = "5"
-    with pytest.raises(ProfileError, match="outside 1..4"):
+    zones.loc[0, "job_zone"] = "1"
+    with pytest.raises(ProfileError, match=r"outside publisher labels \{2, 3, 4, 5\}"):
         build_occupations(occupation_data, zones)
 
 

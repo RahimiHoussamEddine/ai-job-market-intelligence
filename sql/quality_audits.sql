@@ -28,14 +28,19 @@ UNION ALL
 SELECT 'occupations.duplicate_key', count(*) - count(DISTINCT onet_soc_code),
        'Occupation code must be unique' FROM occupations
 UNION ALL
-SELECT 'occupations.job_zone_range', count(*), 'Job Zone must be null or in current range 1-4'
-FROM occupations WHERE job_zone NOT BETWEEN 1 AND 4
+SELECT 'occupations.job_zone_range', count(*),
+       'Job Zone must retain stored publisher label 2, 3, 4, or 5'
+FROM occupations WHERE job_zone NOT BETWEEN 2 AND 5
 UNION ALL
 SELECT 'aliases.duplicate_key', count(*) - count(DISTINCT alias_id),
        'Deterministic alias ID must be unique' FROM aliases
 UNION ALL
 SELECT 'tasks.duplicate_key', count(*) - count(DISTINCT onet_soc_code || chr(31) || task_id),
        'Task business key must be unique' FROM tasks
+UNION ALL
+SELECT 'tasks.task_type', count(*),
+       'Task type must be Core, Supplemental, or publisher-null'
+FROM tasks WHERE task_type IS NOT NULL AND task_type NOT IN ('Core', 'Supplemental')
 UNION ALL
 SELECT 'skill_ratings.duplicate_key', count(*) - count(DISTINCT
        onet_soc_code || chr(31) || feature_family || chr(31) || element_id || chr(31) || scale_id),

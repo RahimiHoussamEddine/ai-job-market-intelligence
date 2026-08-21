@@ -14,6 +14,7 @@ from datetime import date, datetime
 import numpy as np
 import pandas as pd
 
+from .config import ONET_30_3_STORED_JOB_ZONE_VALUES
 from .crosswalk import (
     CrosswalkError,
     base_soc_code,
@@ -171,9 +172,9 @@ def build_tasks(task_statements: pd.DataFrame) -> pd.DataFrame:
         code = _canonical_codes([row["onet_soc_code"]], "task_statements")[0]
         task_id = normalize_text(row["task_id"])
         task = normalize_text(row["task"])
-        task_type = normalize_text(row["task_type"])
-        if not task_id or not task or not task_type:
-            raise ProfileError("task_statements: task ID, text, and type are required")
+        task_type = normalize_text(row["task_type"]) or None
+        if not task_id or not task:
+            raise ProfileError("task_statements: task ID and text are required")
         incumbents_text = normalize_text(row.get("incumbents_responding"))
         incumbents: int | None
         if incumbents_text:
@@ -204,6 +205,7 @@ def build_tasks(task_statements: pd.DataFrame) -> pd.DataFrame:
         raise ProfileError("task_statements: no task rows")
     if result.duplicated(["onet_soc_code", "task_id"]).any():
         raise ProfileError("task_statements: duplicate (occupation, task_id) keys")
+    result["task_type"] = pd.array(result["task_type"], dtype="string")
     result["incumbents_responding"] = pd.array(result["incumbents_responding"], dtype="Int64")
     result["_task_order"] = result["task_id"].map(_natural_key)
     result = result.sort_values(["onet_soc_code", "_task_order"], kind="stable").drop(
@@ -216,7 +218,7 @@ def build_occupations(
     occupation_data: pd.DataFrame,
     job_zones: pd.DataFrame | None = None,
     *,
-    job_zone_levels: int = 4,
+    job_zone_values: Sequence[int] = ONET_30_3_STORED_JOB_ZONE_VALUES,
 ) -> pd.DataFrame:
     _require_columns(occupation_data, ["onet_soc_code", "title", "description"], "occupation_data")
     rows: list[dict[str, object]] = []
@@ -244,6 +246,11 @@ def build_occupations(
         result["job_zone_date"] = [None] * len(result)
         result["job_zone_domain_source"] = pd.array([None] * len(result), dtype="string")
     else:
+        allowed_job_zones = frozenset(job_zone_values)
+        if not allowed_job_zones or any(
+            not isinstance(value, int) or isinstance(value, bool) for value in allowed_job_zones
+        ):
+            raise ProfileError("job_zone_values must contain integer publisher labels")
         _require_columns(
             job_zones,
             ["onet_soc_code", "job_zone", "date", "domain_source"],
@@ -257,8 +264,11 @@ def build_occupations(
                 zone = int(zone_text)
             except ValueError as exc:
                 raise ProfileError(f"job_zones: invalid job zone {row['job_zone']!r}") from exc
-            if zone not in range(1, job_zone_levels + 1):
-                raise ProfileError(f"job_zones: job zone outside 1..{job_zone_levels} for {code}")
+            if zone not in allowed_job_zones:
+                labels = ", ".join(str(value) for value in sorted(allowed_job_zones))
+                raise ProfileError(
+                    f"job_zones: job zone outside publisher labels {{{labels}}} for {code}"
+                )
             zones.append(
                 {
                     "onet_soc_code": code,

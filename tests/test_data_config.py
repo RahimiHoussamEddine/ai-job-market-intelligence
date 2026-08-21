@@ -6,7 +6,12 @@ from pathlib import Path
 
 import pytest
 
-from job_market_intelligence.config import ONET_TABLES, ConfigError, load_config
+from job_market_intelligence.config import (
+    ONET_30_3_STORED_JOB_ZONE_VALUES,
+    ONET_TABLES,
+    ConfigError,
+    load_config,
+)
 from job_market_intelligence.sources import build_source_specs
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +33,7 @@ def test_locked_config_uses_actual_snapshot_date_and_four_job_zones() -> None:
     assert config.onet.release == "30.3"
     assert config.onet.tables == ONET_TABLES
     assert config.profiles.job_zone_levels == 4
+    assert ONET_30_3_STORED_JOB_ZONE_VALUES == (2, 3, 4, 5)
     assert config.fingerprint == hashlib.sha256(CONFIG_PATH.read_bytes()).hexdigest()
     assert config.fingerprint != config.semantic_fingerprint
 
@@ -49,7 +55,7 @@ def test_config_rejects_legacy_five_level_job_zone_contract(tmp_path: Path) -> N
         tmp_path, lambda text: text.replace("job_zone_levels = 4", "job_zone_levels = 5")
     )
 
-    with pytest.raises(ConfigError, match="four-level"):
+    with pytest.raises(ConfigError, match="four Job Zone categories"):
         load_config(path)
 
 

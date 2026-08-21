@@ -34,9 +34,12 @@ in locked mode, path traversal, unexpected content types, schema drift, and
 duplicate business keys. An explicit new snapshot must use a new version rather
 than overwrite v1.
 
-Release 30.3 uses O*NET's current four-level Job Zone framework. Validation and
-application filters therefore accept levels 1–4, not the legacy five-level
-scheme.
+Release 30.3 uses O*NET's current four-level Job Zone framework: the combined
+Job Zone 1–2 category (encoded as `2` in the database), followed by Job Zones 3,
+4, and 5. Validation and application filters therefore accept stored values
+`2–5`; they do not recode the official values or treat them as the legacy
+five-level scheme. See O*NET's official
+[Job Zone transition paper](https://www.onetcenter.org/dl_files/Job_Zone_Transition.pdf).
 
 ## Leakage controls and split
 

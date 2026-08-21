@@ -44,7 +44,7 @@ def test_sql_transformation_mirror_compiles_and_retains_lineage() -> None:
                 [
                     {
                         "onet_soc_code": "11-1011.00",
-                        "job_zone": "4",
+                        "job_zone": "5",
                         "date": "07/2026",
                         "domain_source": "Analyst   survey",
                     }
@@ -78,7 +78,16 @@ def test_sql_transformation_mirror_compiles_and_retains_lineage() -> None:
                         "incumbents_responding": "10",
                         "date": "07/2026",
                         "domain_source": "Analyst",
-                    }
+                    },
+                    {
+                        "onet_soc_code": "11-1011.00",
+                        "task_id": "2",
+                        "task": "Review   proposals.",
+                        "task_type": None,
+                        "incumbents_responding": None,
+                        "date": "06/2006",
+                        "domain_source": "Analyst",
+                    },
                 ]
             ),
         )
@@ -161,9 +170,16 @@ def test_sql_transformation_mirror_compiles_and_retains_lineage() -> None:
             "SELECT nem_title, employment_2024, annual_openings_2024_34 FROM bls_market"
         ).fetchone()
 
-        assert occupation == ("Lead organizations.", 4, "Analyst survey")
+        assert occupation == ("Lead organizations.", 5, "Analyst survey")
+        assert connection.execute("SELECT task_type FROM tasks WHERE task_id='2'").fetchone() == (
+            None,
+        )
         assert rating == (120, 0.1, "Analyst")
         assert market == ("Chief executives", 1_200, 200)
+        assert connection.execute(
+            "SELECT failure_count FROM quality_audit_results "
+            "WHERE check_name='occupations.job_zone_range'"
+        ).fetchone() == (0,)
         assert connection.execute("SELECT count(*) FROM quality_audit_results").fetchone()[0] > 0
     finally:
         connection.close()

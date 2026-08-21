@@ -43,7 +43,7 @@ SELECT
     trim(t.task_id)::VARCHAR AS task_id,
     regexp_replace(trim(t.task), '\s+', ' ', 'g')::VARCHAR AS task,
     lower(regexp_replace(trim(t.task), '\s+', ' ', 'g'))::VARCHAR AS normalized_task,
-    trim(t.task_type)::VARCHAR AS task_type,
+    nullif(trim(t.task_type), '')::VARCHAR AS task_type,
     try_cast(replace(t.incumbents_responding, ',', '') AS BIGINT) AS incumbents_responding,
     coalesce(
         try_cast(t.date AS DATE),

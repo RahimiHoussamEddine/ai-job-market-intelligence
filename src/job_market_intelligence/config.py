@@ -30,6 +30,10 @@ ONET_TABLES: tuple[str, ...] = (
     "related_occupations",
 )
 
+# Release 30.3 has four categories (1-2, 3, 4, and 5) stored in the official
+# CSV as the numeric labels 2, 3, 4, and 5. Preserve those publisher values.
+ONET_30_3_STORED_JOB_ZONE_VALUES = (2, 3, 4, 5)
+
 ONET_FILENAMES: Mapping[str, str] = MappingProxyType(
     {table: f"{table}.csv" for table in ONET_TABLES}
 )
@@ -316,8 +320,10 @@ def load_config(path: str | Path | None = None) -> ProjectConfig:
     )
     if profiles.minimum_structured_overlap < 1:
         raise ConfigError("profiles.minimum_structured_overlap must be positive")
-    if release == "30.3" and profiles.job_zone_levels != 4:
-        raise ConfigError("O*NET 30.3 requires the current four-level Job Zone framework")
+    if release == "30.3" and profiles.job_zone_levels != len(ONET_30_3_STORED_JOB_ZONE_VALUES):
+        raise ConfigError(
+            "O*NET 30.3 requires four Job Zone categories stored as labels 2, 3, 4, and 5"
+        )
 
     immutable_raw = _immutable(raw_mutable)
     return ProjectConfig(
@@ -337,6 +343,7 @@ __all__ = [
     "BlsSourceConfig",
     "ConfigError",
     "ONET_FILENAMES",
+    "ONET_30_3_STORED_JOB_ZONE_VALUES",
     "ONET_TABLES",
     "OnetSourceConfig",
     "ProfileConfig",

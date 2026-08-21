@@ -21,7 +21,7 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from .config import ProjectConfig
+from .config import ONET_30_3_STORED_JOB_ZONE_VALUES, ProjectConfig
 from .crosswalk import (
     CrosswalkError,
     base_soc_code,
@@ -412,6 +412,7 @@ def audit_onet_release(
         raise WarehouseError("O*NET 30.3 release audit failed: " + "; ".join(failures))
 
     occupations = raw["occupation_data"]
+    task_statements = raw["task_statements"]
     transferable = raw["transferable_skills"]
     knowledge = raw["knowledge"]
     job_zones = raw["job_zones"]
@@ -470,6 +471,19 @@ def audit_onet_release(
     if related_title_mismatches:
         failures.append(f"related_occupations: {related_title_mismatches} related-title mismatches")
 
+    task_types = task_statements["task_type"].astype("string").str.strip()
+    blank_task_type = task_types.isna() | task_types.eq("").fillna(False)
+    observed_task_type_counts = {
+        str(label): int(count)
+        for label, count in task_types.loc[~blank_task_type].value_counts().items()
+    }
+    expected_task_type_counts = {"Core": 13_643, "Supplemental": 4_308}
+    if observed_task_type_counts != expected_task_type_counts or int(blank_task_type.sum()) != 845:
+        failures.append(
+            "task_statements task types: expected Core=13,643, Supplemental=4,308, blank=845; "
+            f"got observed={observed_task_type_counts}, blank={int(blank_task_type.sum()):,}"
+        )
+
     expected_dimensions = (
         ("transferable_skills", transferable, 894, 25, 2),
         ("knowledge", knowledge, 894, 33, 2),
@@ -501,10 +515,11 @@ def audit_onet_release(
     try:
         zones = pd.to_numeric(job_zones["job_zone"], errors="raise").astype(int)
     except (TypeError, ValueError):
-        failures.append("job_zones: values must be integers in the current 1-4 framework")
+        failures.append("job_zones: values must be integer publisher labels")
     else:
-        if set(zones.unique()) != {1, 2, 3, 4} or not bool(zones.between(1, 4).all()):
-            failures.append("job_zones: expected only and all current levels 1, 2, 3, and 4")
+        expected_zones = set(ONET_30_3_STORED_JOB_ZONE_VALUES)
+        if set(zones.unique()) != expected_zones or not bool(zones.isin(expected_zones).all()):
+            failures.append("job_zones: expected only and all stored labels 2, 3, 4, and 5")
 
     query_sizes = related.groupby("onet_soc_code", dropna=False).size()
     if len(query_sizes) != 923 or not bool(query_sizes.eq(20).all()):
@@ -558,7 +573,7 @@ def load_source_frames(
     occupations = build_occupations(
         raw["occupation_data"],
         raw["job_zones"],
-        job_zone_levels=config.profiles.job_zone_levels,
+        job_zone_values=ONET_30_3_STORED_JOB_ZONE_VALUES,
     )
     aliases = build_aliases(raw["job_titles"])
     tasks = build_tasks(raw["task_statements"])
@@ -654,14 +669,30 @@ def audit_frames(frames: Mapping[str, pd.DataFrame]) -> AuditReport:
         issues, "occupations.soc_major_group", invalid_major, "must derive exactly from O*NET code"
     )
     if "job_zone" in occupations:
-        invalid_zone = int((~occupations["job_zone"].dropna().isin(range(1, 5))).sum())
+        invalid_zone = int(
+            (~occupations["job_zone"].dropna().isin(ONET_30_3_STORED_JOB_ZONE_VALUES)).sum()
+        )
         _issue(
-            issues, "occupations.job_zone", invalid_zone, "O*NET 30.3 job zone must be 1..4 or null"
+            issues,
+            "occupations.job_zone",
+            invalid_zone,
+            "O*NET 30.3 job zone must retain stored publisher label 2, 3, 4, or 5",
         )
 
     for table in ("aliases", "tasks", "skill_ratings", "occupation_profiles"):
         orphan = set(frames[table]["onet_soc_code"]) - occupation_codes
         _issue(issues, f"{table}.occupation_fk", len(orphan), f"unknown codes={sorted(orphan)[:5]}")
+
+    tasks = frames["tasks"]
+    invalid_task_type = tasks["task_type"].notna() & ~tasks["task_type"].isin(
+        ("Core", "Supplemental")
+    )
+    _issue(
+        issues,
+        "tasks.task_type",
+        int(invalid_task_type.sum()),
+        "task type must be Core, Supplemental, or publisher-null",
+    )
 
     ratings = frames["skill_ratings"]
     invalid_normalized = ratings["observed"] & (
