@@ -32,7 +32,7 @@ ONET_ROWS = {
         "11-1011.00,Chief Executives,Determine organizational direction.\n"
     ),
     "job_titles": (
-        "O*NET-SOC Code,Title,Job Title,Short Title,Sources\n"
+        "O*NET-SOC Code,Title,Job Title,Short Title,Source\n"
         "11-1011.00,Chief Executives,Chief Executive Officer,,Employer\n"
     ),
     "task_statements": (

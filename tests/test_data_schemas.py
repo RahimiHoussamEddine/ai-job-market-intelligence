@@ -32,12 +32,12 @@ OCCUPATION_HEADERS = [
 ]
 
 
-def test_onet_schema_is_exact_but_optional_job_title_source_may_be_blank(
+def test_onet_job_title_schema_uses_singular_optional_source(
     tmp_path: Path,
 ) -> None:
     path = tmp_path / "job_titles.csv"
     path.write_text(
-        "O*NET-SOC Code,Title,Job Title,Short Title,Sources\n"
+        "O*NET-SOC Code,Title,Job Title,Short Title,Source\n"
         "11-1011.00,Chief Executives,Chief Executive Officer,,\n",
         encoding="utf-8",
     )
@@ -49,9 +49,21 @@ def test_onet_schema_is_exact_but_optional_job_title_source_may_be_blank(
         "title",
         "job_title",
         "short_title",
-        "sources",
+        "source",
     )
-    assert pd.isna(frame.loc[0, "sources"])
+    assert pd.isna(frame.loc[0, "source"])
+
+
+def test_onet_job_title_schema_rejects_plural_sources_header(tmp_path: Path) -> None:
+    path = tmp_path / "job_titles.csv"
+    path.write_text(
+        "O*NET-SOC Code,Title,Job Title,Short Title,Sources\n"
+        "11-1011.00,Chief Executives,Chief Executive Officer,,Employer\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(SchemaError, match="source schema drift"):
+        read_onet_csv(path, "job_titles")
 
 
 def test_onet_schema_rejects_column_reordering(tmp_path: Path) -> None:

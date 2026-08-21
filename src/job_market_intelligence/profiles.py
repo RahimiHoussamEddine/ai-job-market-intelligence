@@ -102,7 +102,7 @@ def _parse_date(value: object, field: str) -> date | None:
 def build_aliases(job_titles: pd.DataFrame) -> pd.DataFrame:
     _require_columns(
         job_titles,
-        ["onet_soc_code", "job_title", "short_title", "sources"],
+        ["onet_soc_code", "job_title", "short_title", "source"],
         "job_titles",
     )
     rows: list[dict[str, object]] = []
@@ -113,7 +113,7 @@ def build_aliases(job_titles: pd.DataFrame) -> pd.DataFrame:
             raise ProfileError("job_titles: blank job title")
         normalized = normalize_text(title, casefold=True)
         short_title = normalize_text(row.get("short_title")) or None
-        sources = normalize_text(row.get("sources")) or None
+        sources = normalize_text(row.get("source")) or None
         rows.append(
             {
                 "alias_id": stable_text_id(code, normalized, sources or ""),

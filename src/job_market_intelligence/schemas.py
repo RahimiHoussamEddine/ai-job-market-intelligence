@@ -56,7 +56,7 @@ ONET_CONTRACTS: Mapping[str, TableContract] = {
     ),
     "job_titles": TableContract(
         "job_titles",
-        ("onet_soc_code", "title", "job_title", "short_title", "sources"),
+        ("onet_soc_code", "title", "job_title", "short_title", "source"),
         ("onet_soc_code", "job_title"),
     ),
     "task_statements": TableContract(
@@ -134,7 +134,6 @@ def normalize_column_name(value: object) -> str:
     text = re.sub(r"_+", "_", text).strip("_")
     aliases = {
         "o_net_soc_code": "onet_soc_code",
-        "source_s": "sources",
         "recommend_suppress": "recommend_suppress",
         "lower_ci_bound": "lower_ci_bound",
         "upper_ci_bound": "upper_ci_bound",

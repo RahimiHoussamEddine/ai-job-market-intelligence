@@ -27,13 +27,13 @@ SELECT
     sha256(
         j.onet_soc_code || chr(31) ||
         lower(regexp_replace(trim(j.job_title), '\s+', ' ', 'g')) || chr(31) ||
-        coalesce(regexp_replace(trim(j.sources), '\s+', ' ', 'g'), '')
+        coalesce(regexp_replace(trim(j.source), '\s+', ' ', 'g'), '')
     )::VARCHAR AS alias_id,
     j.onet_soc_code::VARCHAR AS onet_soc_code,
     regexp_replace(trim(j.job_title), '\s+', ' ', 'g')::VARCHAR AS job_title,
     lower(regexp_replace(trim(j.job_title), '\s+', ' ', 'g'))::VARCHAR AS normalized_job_title,
     nullif(regexp_replace(trim(j.short_title), '\s+', ' ', 'g'), '')::VARCHAR AS short_title,
-    nullif(regexp_replace(trim(j.sources), '\s+', ' ', 'g'), '')::VARCHAR AS sources
+    nullif(regexp_replace(trim(j.source), '\s+', ' ', 'g'), '')::VARCHAR AS sources
 FROM stg_job_titles AS j
 ORDER BY onet_soc_code, normalized_job_title, job_title, sources;
 

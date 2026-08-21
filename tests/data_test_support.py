@@ -87,13 +87,13 @@ def canonical_frames() -> dict[str, pd.DataFrame]:
                     "onet_soc_code": "11-1011.00",
                     "job_title": "CEO",
                     "short_title": "",
-                    "sources": "Employer",
+                    "source": "Employer",
                 },
                 {
                     "onet_soc_code": "13-2011.00",
                     "job_title": "CPA",
                     "short_title": "",
-                    "sources": "Employer",
+                    "source": "Employer",
                 },
             ]
         )
