@@ -1,7 +1,7 @@
 [project]
 name = "ai-job-market-intelligence"
 artifact_version = "v1"
-snapshot_date = "2026-08-14"
+snapshot_date = "2026-08-21"
 random_seed = 20260814
 
 [sources.onet]

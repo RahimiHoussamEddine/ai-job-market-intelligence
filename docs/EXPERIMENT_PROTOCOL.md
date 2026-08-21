@@ -26,7 +26,7 @@ truth. Unlisted occupations are unjudged rather than proven irrelevant.
 - BLS Employment Projections 2024–2034 occupational table, released
   2025-08-28.
 - Official BLS NEM/O*NET-SOC crosswalk.
-- Acquisition date: 2026-08-14. Each response, archive member, and deterministic
+- Acquisition date: 2026-08-21. Each response, archive member, and deterministic
   derived table receives a byte size and SHA-256 digest in the source manifest.
 
 Raw files are immutable and ignored by Git. Acquisition rejects changed bytes
