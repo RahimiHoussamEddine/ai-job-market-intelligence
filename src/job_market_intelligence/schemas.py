@@ -1,8 +1,8 @@
 """Strict source schemas and deterministic tabular parsers.
 
 Source headers are normalized only after they have been checked against a
-versioned contract.  O*NET contracts are exact.  BLS workbooks are allowed to
-move their header row and retain footnote suffixes, but every required semantic
+versioned contract. O*NET contracts and BLS worksheet layouts are exact. BLS
+headers may retain publisher footnote suffixes, but every required semantic
 column must resolve exactly once.
 """
 
@@ -120,6 +120,11 @@ BLS_CROSSWALK_COLUMNS = (
     "nem_code",
     "nem_title",
 )
+
+_BLS_WORKBOOK_LAYOUTS: Mapping[str, tuple[str, int]] = {
+    "occupation": ("Table 1.2", 1),
+    "crosswalk": ("ONET to SOC crosswalk", 4),
+}
 
 
 def normalize_column_name(value: object) -> str:
@@ -411,30 +416,51 @@ def _header_score(row: pd.Series, aliases: Mapping[str, tuple[str, ...]]) -> int
 
 
 def read_bls_workbook(path: str | Path, kind: str) -> pd.DataFrame:
-    """Read a BLS workbook with title/note rows before the semantic header."""
+    """Read an official BLS worksheet at its version-locked header row."""
 
-    if kind not in {"occupation", "crosswalk"}:
+    if kind not in _BLS_WORKBOOK_LAYOUTS:
         raise SchemaError("BLS workbook kind must be 'occupation' or 'crosswalk'")
+    sheet_name, header_index = _BLS_WORKBOOK_LAYOUTS[kind]
     aliases = _BLS_OCCUPATION_ALIASES if kind == "occupation" else _BLS_CROSSWALK_ALIASES
     try:
-        preview = pd.read_excel(path, header=None, dtype=object, engine="openpyxl", nrows=40)
+        with pd.ExcelFile(path, engine="openpyxl") as workbook:
+            sheet_names = workbook.sheet_names
+            if sheet_name not in sheet_names:
+                raise SchemaError(
+                    f"bls_{kind}: worksheet drift; required {sheet_name!r}, found {sheet_names!r}"
+                )
+            if kind == "crosswalk" and sheet_names[0] != sheet_name:
+                raise SchemaError(
+                    "bls_crosswalk: worksheet drift; expected "
+                    f"{sheet_name!r} as the first worksheet, found {sheet_names[0]!r}"
+                )
+            preview = pd.read_excel(
+                workbook,
+                sheet_name=sheet_name,
+                header=None,
+                dtype=object,
+                nrows=header_index + 1,
+            )
+            if len(preview) <= header_index:
+                raise SchemaError(
+                    f"bls_{kind}: schema drift; required header row {header_index} is missing"
+                )
+            score = _header_score(preview.iloc[header_index], aliases)
+            if score != len(aliases):
+                raise SchemaError(
+                    f"bls_{kind}: schema drift; row {header_index} contained {score} of "
+                    f"{len(aliases)} required headers"
+                )
+            frame = pd.read_excel(
+                workbook,
+                sheet_name=sheet_name,
+                header=header_index,
+                dtype=object,
+            )
+    except SchemaError:
+        raise
     except Exception as exc:
         raise SchemaError(f"bls_{kind}: could not parse workbook {path}: {exc}") from exc
-    scores = [_header_score(row, aliases) for _, row in preview.iterrows()]
-    if not scores or max(scores) != len(aliases):
-        raise SchemaError(
-            f"bls_{kind}: schema drift; no row uniquely contained all {len(aliases)} required headers"
-        )
-    header_candidates = [index for index, score in enumerate(scores) if score == len(aliases)]
-    if len(header_candidates) != 1:
-        raise SchemaError(
-            f"bls_{kind}: schema drift; expected one semantic header row, found {header_candidates}"
-        )
-    header_index = header_candidates[0]
-    try:
-        frame = pd.read_excel(path, header=header_index, dtype=object, engine="openpyxl")
-    except Exception as exc:
-        raise SchemaError(f"bls_{kind}: could not read data rows: {exc}") from exc
     if kind == "occupation":
         return canonicalize_bls_occupation(frame)
     return canonicalize_bls_crosswalk(frame)

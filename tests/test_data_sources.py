@@ -64,10 +64,18 @@ ONET_ROWS = {
 }
 
 
-def _xlsx_bytes(headers: list[str], row: list[object]) -> bytes:
+def _xlsx_bytes(
+    headers: list[str],
+    row: list[object],
+    *,
+    sheet_name: str,
+    header_index: int,
+) -> bytes:
     workbook = Workbook()
     sheet = workbook.active
-    sheet.append(["Publisher title"])
+    sheet.title = sheet_name
+    for _ in range(header_index):
+        sheet.append(["Publisher title"])
     sheet.append(headers)
     sheet.append(row)
     payload = BytesIO()
@@ -111,6 +119,8 @@ def _source_payloads() -> dict[str, bytes]:
             "5 years or more",
             "None",
         ],
+        sheet_name="Table 1.2",
+        header_index=1,
     )
     payloads[config.bls.crosswalk_url] = _xlsx_bytes(
         [
@@ -120,6 +130,8 @@ def _source_payloads() -> dict[str, bytes]:
             "2024 National Employment Matrix title",
         ],
         ["11-1011.00", "Chief Executives", "11-1011", "Chief executives"],
+        sheet_name="ONET to SOC crosswalk",
+        header_index=4,
     )
     return payloads
 

@@ -133,16 +133,118 @@ def test_bls_crosswalk_rejects_partial_mapping_rows() -> None:
         canonicalize_bls_crosswalk(frame)
 
 
-def test_bls_workbook_requires_one_unambiguous_semantic_header(tmp_path: Path) -> None:
+def test_bls_occupation_reader_selects_table_1_2_in_multisheet_workbook(
+    tmp_path: Path,
+) -> None:
     path = tmp_path / "occupation.xlsx"
     workbook = Workbook()
-    sheet = workbook.active
+    index = workbook.active
+    index.title = "Index"
+    index.append(OCCUPATION_HEADERS)
+    index.append(["This is not a data row"])
+    sheet = workbook.create_sheet("Table 1.2")
+    sheet.append(["Employment by occupation"])
     sheet.append(OCCUPATION_HEADERS)
+    sheet.append(
+        [
+            "Chief executives",
+            "11-1011",
+            "Line item",
+            313.2,
+            329.1,
+            15.9,
+            5.1,
+            19.8,
+            206680,
+            "Bachelor's degree",
+            "5 years or more",
+            "None",
+        ]
+    )
+    workbook.save(path)
+
+    result = read_bls_workbook(path, "occupation")
+
+    assert len(result) == 1
+    assert result.loc[0, "nem_code"] == "11-1011"
+
+
+@pytest.mark.parametrize("data_sheet_name", [None, "Table 1.1"])
+def test_bls_occupation_reader_rejects_missing_or_wrong_sheet(
+    tmp_path: Path, data_sheet_name: str | None
+) -> None:
+    path = tmp_path / "occupation.xlsx"
+    workbook = Workbook()
+    workbook.active.title = "Index"
+    if data_sheet_name is not None:
+        sheet = workbook.create_sheet(data_sheet_name)
+        sheet.append(["Employment by occupation"])
+        sheet.append(OCCUPATION_HEADERS)
+    workbook.save(path)
+
+    with pytest.raises(SchemaError, match="required 'Table 1.2'"):
+        read_bls_workbook(path, "occupation")
+
+
+def test_bls_occupation_reader_rejects_header_row_drift(tmp_path: Path) -> None:
+    path = tmp_path / "occupation.xlsx"
+    workbook = Workbook()
+    workbook.active.title = "Index"
+    sheet = workbook.create_sheet("Table 1.2")
+    sheet.append(["Employment by occupation"])
+    sheet.append(["Unexpected publisher note"])
     sheet.append(OCCUPATION_HEADERS)
     workbook.save(path)
 
-    with pytest.raises(SchemaError, match="expected one semantic header row"):
+    with pytest.raises(SchemaError, match="row 1 contained 0 of 12 required headers"):
         read_bls_workbook(path, "occupation")
+
+
+def test_bls_crosswalk_reader_requires_official_first_sheet_and_header_row(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "crosswalk.xlsx"
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "ONET to SOC crosswalk"
+    for _ in range(4):
+        sheet.append(["Publisher title"])
+    sheet.append(
+        [
+            "O*NET-SOC 2019 code",
+            "O*NET-SOC 2019 title",
+            "2024 National Employment Matrix code",
+            "2024 National Employment Matrix title",
+        ]
+    )
+    sheet.append(["11-1011.00", "Chief Executives", "11-1011", "Chief executives"])
+    workbook.save(path)
+
+    result = read_bls_workbook(path, "crosswalk")
+
+    assert len(result) == 1
+    assert result.loc[0, "onet_soc_code"] == "11-1011.00"
+
+
+def test_bls_crosswalk_reader_rejects_nonofficial_first_sheet(tmp_path: Path) -> None:
+    path = tmp_path / "crosswalk.xlsx"
+    workbook = Workbook()
+    workbook.active.title = "Index"
+    sheet = workbook.create_sheet("ONET to SOC crosswalk")
+    for _ in range(4):
+        sheet.append(["Publisher title"])
+    sheet.append(
+        [
+            "O*NET-SOC 2019 code",
+            "O*NET-SOC 2019 title",
+            "2024 National Employment Matrix code",
+            "2024 National Employment Matrix title",
+        ]
+    )
+    workbook.save(path)
+
+    with pytest.raises(SchemaError, match="as the first worksheet"):
+        read_bls_workbook(path, "crosswalk")
 
 
 def test_crosswalk_columns_resolve_official_2019_and_2024_labels() -> None:
