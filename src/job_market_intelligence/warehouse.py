@@ -278,6 +278,36 @@ def _source_manifest_sha256(path: str | Path) -> str:
     return sha256_file(_manifest_path(path))
 
 
+def _verified_source_manifest(path: str | Path, config: ProjectConfig | None) -> SourceManifest:
+    """Verify a raw snapshot or the tracked byte-identical public manifest."""
+
+    supplied = Path(path).expanduser()
+    if supplied.is_symlink():
+        raise WarehouseError("Source manifest path cannot be a symbolic link")
+    if config is not None:
+        public_manifest = (config.root / "reports" / "source_manifest.json").resolve()
+        if supplied.resolve() == public_manifest:
+            if not supplied.is_file():
+                raise WarehouseError(f"Public source manifest is missing: {supplied}")
+            source_snapshot = config.root / "data" / "raw" / "snapshots" / config.snapshot_id
+            verified = verify_snapshot(source_snapshot, config=config)
+            raw_manifest = source_snapshot / "manifest.json"
+            if supplied.read_bytes() != raw_manifest.read_bytes():
+                raise WarehouseError(
+                    "Public source manifest differs from the verified raw snapshot"
+                )
+            checksum_path = supplied.with_suffix(".sha256")
+            expected_checksum = f"{sha256_file(supplied)}  {supplied.name}\n".encode("ascii")
+            if (
+                checksum_path.is_symlink()
+                or not checksum_path.is_file()
+                or checksum_path.read_bytes() != expected_checksum
+            ):
+                raise WarehouseError("Public source manifest checksum sidecar is invalid")
+            return verified
+    return verify_snapshot(supplied, config=config)
+
+
 def _atomic_bytes(path: Path, payload: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary_name = tempfile.mkstemp(
@@ -1230,7 +1260,7 @@ def verify_processed_snapshot(
             raise WarehouseError("Processed provenance differs from the locked configuration")
 
     if source_manifest_path is not None:
-        source_manifest = verify_snapshot(source_manifest_path, config=config)
+        source_manifest = _verified_source_manifest(source_manifest_path, config)
         source_manifest_sha = _source_manifest_sha256(source_manifest_path)
         if manifest["source_manifest_sha256"] != source_manifest_sha:
             raise WarehouseError("Processed source-manifest checksum mismatch")

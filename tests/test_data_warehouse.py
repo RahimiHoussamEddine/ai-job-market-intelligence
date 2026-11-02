@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
+from types import SimpleNamespace
 
 import pandas as pd
 import pytest
 from data_test_support import canonical_frames
 
+import job_market_intelligence.warehouse as warehouse_module
 from job_market_intelligence.config import ProjectConfig, load_config
 from job_market_intelligence.sources import (
     EXPECTED_SOURCE_LAYOUT,
@@ -16,12 +19,43 @@ from job_market_intelligence.warehouse import (
     TABLE_COLUMNS,
     WarehouseError,
     _build_stage,
+    _verified_source_manifest,
     audit_frames,
     audit_onet_release,
     verify_processed_snapshot,
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_public_source_manifest_is_checked_against_verified_raw_snapshot(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    config = SimpleNamespace(root=tmp_path, snapshot_id="v1")
+    source_snapshot = tmp_path / "data" / "raw" / "snapshots" / "v1"
+    source_snapshot.mkdir(parents=True)
+    raw_manifest = source_snapshot / "manifest.json"
+    raw_manifest.write_bytes(b'{"snapshot_id":"v1"}\n')
+    public_manifest = tmp_path / "reports" / "source_manifest.json"
+    public_manifest.parent.mkdir(parents=True)
+    public_manifest.write_bytes(raw_manifest.read_bytes())
+    digest = hashlib.sha256(public_manifest.read_bytes()).hexdigest()
+    public_manifest.with_suffix(".sha256").write_text(
+        f"{digest}  {public_manifest.name}\n", encoding="ascii"
+    )
+    verified = object()
+
+    def verify_snapshot(path: Path, *, config: object) -> object:
+        assert path == source_snapshot
+        assert config is not None
+        return verified
+
+    monkeypatch.setattr(warehouse_module, "verify_snapshot", verify_snapshot)
+    assert _verified_source_manifest(public_manifest, config) is verified
+
+    public_manifest.write_bytes(b'{"snapshot_id":"tampered"}\n')
+    with pytest.raises(WarehouseError, match="differs from the verified raw snapshot"):
+        _verified_source_manifest(public_manifest, config)
 
 
 def _source_manifest(config: ProjectConfig) -> SourceManifest:
