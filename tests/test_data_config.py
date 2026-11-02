@@ -29,7 +29,7 @@ def test_locked_config_uses_actual_snapshot_date_and_four_job_zones() -> None:
     config = load_config(CONFIG_PATH)
 
     assert config.project.snapshot_date.isoformat() == "2026-08-21"
-    assert config.project.artifact_version == "v2"
+    assert config.project.artifact_version == "v3"
     assert config.onet.release == "30.3"
     assert config.onet.tables == ONET_TABLES
     assert config.profiles.job_zone_levels == 4

@@ -1,6 +1,6 @@
 # Offline serving and deployment
 
-The API, CLI, and dashboard read the same immutable `artifacts/v2` bundle. They
+The API, CLI, and dashboard read the same immutable `artifacts/v3` bundle. They
 never acquire data, fit a representation, or write query logs. Startup validates
 every declared byte and contract before the bundle becomes available.
 
@@ -41,7 +41,7 @@ docker compose up --wait
 
 To mount a release bundle elsewhere, set `JOB_INTELLIGENCE_ARTIFACT_DIR` to the
 host directory before `docker compose up`. The in-container path remains
-`/opt/artifacts/v2`. Stop the deployment with `docker compose down`.
+`/opt/artifacts/v3`. Stop the deployment with `docker compose down`.
 
 Runtime serving is offline by construction: the artifact contains the fitted
 free-text transformer, normalized sparse catalog matrix, precomputed top-250

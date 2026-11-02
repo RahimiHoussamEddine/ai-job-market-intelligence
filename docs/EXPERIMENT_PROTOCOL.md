@@ -1,7 +1,7 @@
 # Preregistered experiment protocol
 
-Protocol version: 2.0
-Locked on: 2026-11-02, before v2 selection and locked evaluation
+Protocol version: 3.0
+Locked on: 2026-11-02, before v3 selection and locked evaluation
 
 ## Decision and claim boundary
 
@@ -191,3 +191,12 @@ Any change to data, features, candidates, judgments, thresholds, or metric code
 requires a new experiment version. Reporting does not run from a descendant
 commit: a reporting defect requires a new experiment version and a fresh locked
 evaluation under its own committed protocol.
+
+## Version history
+
+The v2 selection, confirmation, and locked-test outputs are retained, but its
+serving bundle failed validation because the artifact schema rejected zero
+weights for disabled components in the predeclared candidate grid. Protocol v3
+accepts finite non-negative component weights that sum to one and reruns all
+metric stages under the corrected artifact contract. The v2 results remain
+historical evidence and do not substitute for v3 results.

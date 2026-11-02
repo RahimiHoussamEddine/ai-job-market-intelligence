@@ -3,7 +3,8 @@
 > Evaluated U.S. occupation search and transparent career-transition frontiers
 > using O*NET® 30.3 and BLS 2024–34 national projections.
 
-**Status: v2 experiment contract locked; release results are not generated yet.**
+**Active artifact version: v3.** The versioned evidence and release bundle keep
+selection, confirmation, and locked test results separate.
 No sample, synthetic, or development metric will be presented as a final result.
 
 Most career tools collapse similarity, opportunity, and pay into one unexplained
@@ -47,8 +48,8 @@ grid, split manifest, metrics, and reporting code are committed.
 
 ## Reproducibility boundary
 
-Raw official downloads and build intermediates stay out of Git. The public v2
-release will contain a validated, checksum-addressed serving bundle, locked
+Raw official downloads and build intermediates stay out of Git. The v3 release
+bundle carries a validated, checksum-addressed serving bundle, locked
 rankings and metrics, model/data cards, and a real dashboard capture. The app,
 API, and CLI will share the same immutable service artifact and will not fit or
 download models at request time.
@@ -81,7 +82,7 @@ make app      # Streamlit on 127.0.0.1:8501
 ```
 
 These stateful release stages use the tracked, public
-`reports/source_manifest.v2.json` as their canonical source-provenance input and
+`reports/source_manifest.v3.json` as their canonical source-provenance input and
 must be run in the displayed order. The v1 source manifest remains unchanged at
 `reports/source_manifest.json`. CI validates code and committed release artifacts
 but never starts an experiment or locked run.

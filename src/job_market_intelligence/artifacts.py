@@ -512,8 +512,8 @@ def _validate_candidate_spec_payload(value: Any, context: str) -> Mapping[str, A
         if isinstance(weight, bool) or not isinstance(weight, (int, float)):
             raise ManifestValidationError(f"{context}.weights[{index}][1] must be numeric")
         numeric = float(weight)
-        if not math.isfinite(numeric) or numeric <= 0:
-            raise ManifestValidationError(f"{context}.weights must be finite and positive")
+        if not math.isfinite(numeric) or numeric < 0:
+            raise ManifestValidationError(f"{context}.weights must be finite and non-negative")
         total += numeric
     if not math.isclose(total, 1.0, rel_tol=0.0, abs_tol=1e-12):
         raise ManifestValidationError(f"{context}.weights must sum to one")

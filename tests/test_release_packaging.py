@@ -4,8 +4,14 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
-from job_market_intelligence.artifacts import load_artifact_bundle, write_artifact_bundle
+from job_market_intelligence.artifacts import (
+    ManifestValidationError,
+    _validate_candidate_spec_payload,
+    load_artifact_bundle,
+    write_artifact_bundle,
+)
 from job_market_intelligence.clustering import fit_exploratory_clusters
 from job_market_intelligence.config import load_config
 from job_market_intelligence.frontier import materialize_pareto_frontiers
@@ -15,6 +21,23 @@ from job_market_intelligence.modeling import (
     fit_production_transition_components,
 )
 from job_market_intelligence.transitions import build_transition_candidates
+
+
+def test_candidate_spec_accepts_zero_weight_disabled_components() -> None:
+    payload = {
+        "candidate_id": "transition_hybrid",
+        "task": "transition",
+        "representation": "transition_hybrid",
+        "analyzer": None,
+        "lsa_dimensions": 64,
+        "weights": [["lexical", 0.25], ["lsa", 0.0], ["structured", 0.75]],
+    }
+
+    assert _validate_candidate_spec_payload(payload, "test_candidate") == payload
+
+    invalid = {**payload, "weights": [["lexical", -0.25], ["structured", 1.25]]}
+    with pytest.raises(ManifestValidationError, match="finite and non-negative"):
+        _validate_candidate_spec_payload(invalid, "test_candidate")
 
 
 def _synthetic_release_frames() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:

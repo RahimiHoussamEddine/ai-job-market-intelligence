@@ -15,7 +15,7 @@ fit/select/freeze ───────► locked rankings + reports
     │
     │ target-free derived assets
     ▼
-validated v2 bundle ─────► shared service ─────► CLI / API / dashboard
+validated v3 bundle ─────► shared service ─────► CLI / API / dashboard
 ```
 
 ## 1. Official-source boundary

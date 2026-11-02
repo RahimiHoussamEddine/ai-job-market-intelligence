@@ -703,7 +703,7 @@ def default_artifact_path() -> Path:
     project_root = os.environ.get("JOB_MARKET_PROJECT_ROOT")
     root = Path(project_root) if project_root else Path(__file__).resolve().parents[2]
     config_path = root / "configs" / "project.toml"
-    version = load_config(config_path).project.artifact_version if config_path.is_file() else "v2"
+    version = load_config(config_path).project.artifact_version if config_path.is_file() else "v3"
     return root / "artifacts" / version
 
 

@@ -1,12 +1,13 @@
-# Model card — v2
+# Model card — v3
 
-Status: awaiting the preregistered development and locked evaluation runs.
+The release bundle's `reports/title_benchmark.json` and
+`reports/transition_benchmark.json` contain locked estimates, uncertainty
+intervals, paired baseline deltas, and descriptive slices. The committed source
+reports are versioned under `reports/locked/v3/`.
 
-This file must be generated from validated release metrics. Placeholder or
-synthetic values are intentionally absent. The final card will document intended
-use, data lineage, split counts, selected candidates, locked results with paired
-uncertainty, slice diagnostics, cluster stability, latency/artifact size, BLS
-coverage, ethical limits, and known failure modes.
+The machine-readable reports are the authoritative numerical evidence. This
+card documents their claim boundaries and methodology; it does not duplicate
+metric values that could drift from the checksum-bound release report.
 
 Locked benchmark evidence will bind descriptive primary-metric slices for SOC
 major group, Job Zone, profile completeness, and rating recency. Any slice with
