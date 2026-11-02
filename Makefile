@@ -2,9 +2,9 @@ PYTHON ?= python3.12
 VENV := .venv
 RUN := $(VENV)/bin/python
 RUFF := $(VENV)/bin/ruff
-ARTIFACT_VERSION ?= v1
+ARTIFACT_VERSION ?= v2
 PROCESSED_SNAPSHOT ?= data/processed/snapshots/$(ARTIFACT_VERSION)
-SOURCE_MANIFEST ?= reports/source_manifest.json
+SOURCE_MANIFEST ?= reports/source_manifest.$(ARTIFACT_VERSION).json
 DEVELOPMENT_REPORTS ?= reports/experiments/$(ARTIFACT_VERSION)
 LOCKED_REPORTS ?= reports/locked/$(ARTIFACT_VERSION)
 ARTIFACT_OUTPUT ?= artifacts/$(ARTIFACT_VERSION)
@@ -77,21 +77,21 @@ package-release:
 		--output $(ARTIFACT_OUTPUT)
 
 verify-artifact:
-	$(RUN) -m job_market_intelligence.cli --artifact-dir artifacts/v1 verify-artifact
+	$(RUN) -m job_market_intelligence.cli --artifact-dir $(ARTIFACT_OUTPUT) verify-artifact
 
 artifact-gate:
-	@if test -f artifacts/v1/manifest.json; then \
+	@if test -f $(ARTIFACT_OUTPUT)/manifest.json; then \
 		$(MAKE) verify-artifact; \
 	else \
-		$(RUN) -m job_market_intelligence.cli --artifact-dir artifacts/v1 verify-artifact >/dev/null 2>&1; \
+		$(RUN) -m job_market_intelligence.cli --artifact-dir $(ARTIFACT_OUTPUT) verify-artifact >/dev/null 2>&1; \
 		test $$? -eq 3; \
 	fi
 
 api:
-	JOB_INTELLIGENCE_ARTIFACT_DIR=artifacts/v1 $(VENV)/bin/uvicorn api.main:app --host 127.0.0.1 --port 8000
+	JOB_INTELLIGENCE_ARTIFACT_DIR=$(ARTIFACT_OUTPUT) $(VENV)/bin/uvicorn api.main:app --host 127.0.0.1 --port 8000
 
 app:
-	JOB_INTELLIGENCE_ARTIFACT_DIR=artifacts/v1 $(VENV)/bin/streamlit run app/main.py --server.headless=true
+	JOB_INTELLIGENCE_ARTIFACT_DIR=$(ARTIFACT_OUTPUT) $(VENV)/bin/streamlit run app/main.py --server.headless=true
 
 docker-build:
 	docker build --target runtime --tag ai-job-market-intelligence:local .

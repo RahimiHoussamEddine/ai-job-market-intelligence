@@ -5,9 +5,9 @@ services:
       target: runtime
     image: ai-job-market-intelligence:local
     environment:
-      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v1
+      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v2
     volumes:
-      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v1}:/opt/artifacts/v1:ro
+      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v2}:/opt/artifacts/v2:ro
     ports:
       - "127.0.0.1:8000:8000"
     read_only: true
@@ -46,9 +46,9 @@ services:
       - --server.headless=true
       - --browser.gatherUsageStats=false
     environment:
-      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v1
+      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v2
     volumes:
-      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v1}:/opt/artifacts/v1:ro
+      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v2}:/opt/artifacts/v2:ro
     ports:
       - "127.0.0.1:8501:8501"
     read_only: true

@@ -187,7 +187,7 @@ def test_acquisition_is_atomic_content_addressed_and_reusable_offline(tmp_path: 
     )
     assert all(source.row_count == 1 for source in manifest.sources)
     assert all(source.archive_members for source in manifest.sources if source.media_type == "xlsx")
-    snapshot = tmp_path / "snapshots" / "v1"
+    snapshot = tmp_path / "snapshots" / config.snapshot_id
     assert verify_snapshot(snapshot, config=config) == manifest
 
     offline = _Session({})
@@ -198,7 +198,7 @@ def test_acquisition_is_atomic_content_addressed_and_reusable_offline(tmp_path: 
 def test_snapshot_rejects_unknown_files_and_manifest_row_count_tampering(tmp_path: Path) -> None:
     config = load_config(PROJECT_ROOT / "configs" / "project.toml")
     acquire_sources(config, tmp_path, session=_Session(_source_payloads()), clock=snapshot_clock)
-    snapshot = tmp_path / "snapshots" / "v1"
+    snapshot = tmp_path / "snapshots" / config.snapshot_id
     extra = snapshot / "unexpected.txt"
     extra.write_text("not declared", encoding="utf-8")
 
@@ -222,7 +222,7 @@ def test_snapshot_rejects_same_size_source_object_tampering(tmp_path: Path) -> N
         session=_Session(_source_payloads()),
         clock=snapshot_clock,
     )
-    snapshot = tmp_path / "snapshots" / "v1"
+    snapshot = tmp_path / "snapshots" / config.snapshot_id
     occupation_source = manifest.sources[0]
     object_path = snapshot / occupation_source.object_path
     payload = bytearray(object_path.read_bytes())
@@ -255,7 +255,7 @@ def test_refresh_rejects_changed_publisher_bytes_without_overwriting_pin(tmp_pat
             clock=snapshot_clock,
         )
 
-    assert verify_snapshot(tmp_path / "snapshots" / "v1", config=config) == original
+    assert verify_snapshot(tmp_path / "snapshots" / config.snapshot_id, config=config) == original
 
 
 def test_new_snapshot_requires_reviewed_config_version(tmp_path: Path) -> None:
@@ -265,7 +265,7 @@ def test_new_snapshot_requires_reviewed_config_version(tmp_path: Path) -> None:
         acquire_sources(
             config,
             tmp_path,
-            snapshot_id="v2",
+            snapshot_id="v3",
             new_snapshot=True,
             session=_Session(_source_payloads()),
             clock=snapshot_clock,

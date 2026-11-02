@@ -354,7 +354,7 @@ def test_test_only_aliases_and_qrels_cannot_change_any_development_decision() ->
 def test_verified_snapshot_evaluation_universe_ids_are_frozen_without_metrics() -> None:
     root = Path(__file__).parents[1]
     config = load_config(root / "configs" / "project.toml")
-    tables = root / "data" / "processed" / "snapshots" / "v1" / "tables"
+    tables = root / "data" / "processed" / "snapshots" / config.project.artifact_version / "tables"
     profiles = pd.read_parquet(tables / "occupation_profiles.parquet")
     aliases = pd.read_parquet(tables / "aliases.parquet")
     qrels = pd.read_parquet(tables / "related_qrels.parquet")

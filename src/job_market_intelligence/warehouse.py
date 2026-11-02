@@ -285,7 +285,9 @@ def _verified_source_manifest(path: str | Path, config: ProjectConfig | None) ->
     if supplied.is_symlink():
         raise WarehouseError("Source manifest path cannot be a symbolic link")
     if config is not None:
-        public_manifest = (config.root / "reports" / "source_manifest.json").resolve()
+        public_manifest = (
+            config.root / "reports" / f"source_manifest.{config.snapshot_id}.json"
+        ).resolve()
         if supplied.resolve() == public_manifest:
             if not supplied.is_file():
                 raise WarehouseError(f"Public source manifest is missing: {supplied}")
@@ -1538,7 +1540,9 @@ def build_snapshot(
         raise WarehouseError("Processed snapshot ID must equal its immutable source snapshot ID")
     root = Path(processed_root or config.root / "data" / "processed").resolve()
     target = root / "snapshots" / chosen_id
-    public_path = publish_manifest_path or config.root / "reports" / "source_manifest.json"
+    public_path = publish_manifest_path or (
+        config.root / "reports" / f"source_manifest.{config.snapshot_id}.json"
+    )
     return build_warehouse(
         source_snapshot,
         target,

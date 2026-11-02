@@ -28,7 +28,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--publish-source-manifest",
         type=Path,
-        help="Public manifest path (default: reports/source_manifest.json)",
+        help="Public manifest path (default: reports/source_manifest.<version>.json)",
     )
     return parser
 

@@ -5,11 +5,15 @@ import json
 import subprocess
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import pytest
 
 from job_market_intelligence.evaluation import (
     EvaluationIntegrityError,
+    _CandidateRuntime,
+    _transition_ranking_rows,
+    _transition_selection_frame,
     begin_locked_run,
     evaluate_title_rankings,
     require_clean_git_commit,
@@ -17,6 +21,8 @@ from job_market_intelligence.evaluation import (
     sha256_file,
     validate_locked_rankings,
 )
+from job_market_intelligence.modeling import CandidateSpec
+from job_market_intelligence.ranking_metrics import QREL_COLUMNS
 
 
 def _git(repository: Path, *arguments: str) -> None:
@@ -91,6 +97,64 @@ def test_locked_ranking_schema_rejects_noncanonical_order() -> None:
     )
     with pytest.raises(EvaluationIntegrityError, match="contiguous/sorted"):
         validate_locked_rankings(invalid)
+
+
+def test_transition_candidate_with_no_finite_pair_gets_zero_for_empty_query() -> None:
+    candidate = CandidateSpec(
+        "transition_structured",
+        "transition",
+        "structured",
+        None,
+        0,
+        (("structured", 1.0),),
+    )
+    runtime = _CandidateRuntime(
+        scores=np.full((3, 3), np.nan),
+        artifact_bytes=100,
+        operational_cost_units=200,
+        latency_ms=0.1,
+        deployment_eligible=False,
+        ineligibility_reason="structured-only-ablation",
+    )
+    fold_manifest = pd.DataFrame(
+        [
+            {"onet_soc_code": "Q", "soc_major_group": "11", "role": "selection"},
+            {"onet_soc_code": "A", "soc_major_group": "11", "role": "discovery"},
+            {"onet_soc_code": "B", "soc_major_group": "11", "role": "discovery"},
+        ]
+    )
+    rankings = _transition_ranking_rows(
+        fold_manifest,
+        ("Q", "A", "B"),
+        {candidate.candidate_id: runtime},
+        role="selection",
+    )
+    assert rankings.empty
+
+    qrels = pd.DataFrame(
+        [
+            {
+                "query_onet_soc_code": "Q",
+                "candidate_onet_soc_code": "A",
+                "relatedness_tier": "Primary-Short",
+                "relatedness_index": 1,
+                "relevance_grade": 3,
+            }
+        ],
+        columns=list(QREL_COLUMNS),
+    )
+    results = _transition_selection_frame(
+        rankings,
+        qrels,
+        fold_manifest,
+        (candidate,),
+        role="selection",
+        expected_query_codes=("Q",),
+        runtimes={candidate.candidate_id: runtime},
+    )
+    assert len(results) == 1
+    assert results.iloc[0]["candidate_id"] == candidate.candidate_id
+    assert results.iloc[0]["primary_value"] == 0.0
 
 
 def test_one_shot_locked_run_and_reporting_only_resume(tmp_path: Path) -> None:

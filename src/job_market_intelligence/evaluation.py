@@ -1130,13 +1130,19 @@ def _transition_selection_frame(
     *,
     role: str,
     expected_query_codes: Sequence[str],
+    runtimes: Mapping[str, _CandidateRuntime],
 ) -> pd.DataFrame:
     specs = {candidate.candidate_id: candidate for candidate in candidates}
+    if set(runtimes) != set(specs):
+        raise EvaluationIntegrityError(
+            "transition candidate runtimes differ from the candidate grid"
+        )
     major_by_code = fold_manifest.set_index("onet_soc_code")["soc_major_group"].astype(str)
     rows: list[dict[str, Any]] = []
     selected = rankings.loc[rankings["phase"].eq(role)]
     expected_queries = tuple(sorted(str(code) for code in expected_query_codes))
-    for candidate_id, group in selected.groupby("candidate_id", sort=True):
+    for candidate_id in sorted(specs):
+        group = selected.loc[selected["candidate_id"].eq(candidate_id)]
         metric_rows = group.loc[
             group["query_code"].astype(str).isin(expected_queries),
             ["query_code", "candidate_code", "rank"],
@@ -1149,6 +1155,7 @@ def _transition_selection_frame(
             )
         except RankingMetricError as exc:
             raise EvaluationIntegrityError(str(exc)) from exc
+        runtime = runtimes[candidate_id]
         for metric in metrics.itertuples(index=False):
             rows.append(
                 {
@@ -1157,11 +1164,11 @@ def _transition_selection_frame(
                     "primary_value": float(metric.ndcg_at_10),
                     "soc_major_group": str(major_by_code.loc[metric.query_code]),
                     "latent_dimensions": specs[candidate_id].lsa_dimensions,
-                    "artifact_bytes": int(group["artifact_bytes"].iloc[0]),
-                    "operational_cost_units": int(group["operational_cost_units"].iloc[0]),
-                    "latency_ms": float(group["latency_ms"].iloc[0]),
-                    "deployment_eligible": bool(group["deployment_eligible"].iloc[0]),
-                    "ineligibility_reason": str(group["ineligibility_reason"].iloc[0]),
+                    "artifact_bytes": runtime.artifact_bytes,
+                    "operational_cost_units": runtime.operational_cost_units,
+                    "latency_ms": runtime.latency_ms,
+                    "deployment_eligible": runtime.deployment_eligible,
+                    "ineligibility_reason": runtime.ineligibility_reason,
                     "split_role": role,
                 }
             )
@@ -1299,6 +1306,7 @@ def run_development_selection(
         transition_specs,
         role="selection",
         expected_query_codes=query_codes,
+        runtimes=transition_runtimes,
     )
     transition_selection = select_candidate_one_se(
         transition_results,
@@ -1409,6 +1417,7 @@ def run_development_confirmation(
         transition_specs,
         role="confirmation",
         expected_query_codes=query_codes,
+        runtimes=transition_runtimes,
     )
     transition_confirmation = apply_confirmation_gate(
         transition_results,

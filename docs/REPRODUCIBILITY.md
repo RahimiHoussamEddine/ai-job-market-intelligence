@@ -3,8 +3,9 @@
 The release is intentionally staged so final evidence cannot influence model
 choice.
 
-1. Install the Python 3.12 lock, acquire the exact official snapshot, then build
-   and audit the deterministic processed tables.
+1. Install the Python 3.12 lock, verify that v2 reuses the byte-identical
+   official source objects acquired for v1, then build and audit the
+   deterministic processed tables.
 2. Finalize and **commit the implementation**: configuration, environment lock,
    schemas, feature code, candidate grids, metrics, selection protocol, and
    reporting code. `experiment-prepare` requires this clean commit.
@@ -30,7 +31,15 @@ choice.
 Raw inputs and processed build files are local and ignored. Public release
 assets are derived, attributed, compact, and independently integrity checked.
 An acquisition refresh or any change to features, judgments, candidates,
-selection, or metrics creates a new experiment version; it never overwrites v1.
+selection, or metrics creates a new experiment version; it never overwrites an
+earlier version.
+
+The v2 source snapshot is a version and configuration re-pin of the nine
+official objects acquired on 2026-08-21 for v1. Their bytes, hashes, publisher
+metadata, and retrieval timestamps are unchanged; no refreshed data is claimed.
+The v1 source manifest and checksum remain unchanged at
+`reports/source_manifest.json` and `reports/source_manifest.sha256`; the v2
+manifest uses `reports/source_manifest.v2.json` and its matching checksum.
 
 The serving and quality commands are now fixed:
 
@@ -48,15 +57,15 @@ make locked-rank          # create immutable target-free locked rankings
 make locked-report        # aggregate only the already-written locked rankings
 make package-release  # offline post-lock refit and immutable publication
 make artifact-gate
-make verify-artifact  # mandatory once artifacts/v1/manifest.json exists
+make verify-artifact  # mandatory once artifacts/v2/manifest.json exists
 ```
 
 `make artifact-gate` accepts absence only while the repository explicitly has no
-v1 manifest. Once present, the complete checksum/schema/relationship/model/report
+v2 manifest. Once present, the complete checksum/schema/relationship/model/report
 validation and target-free smoke suite must pass. `make package-release` consumes
-`data/processed/snapshots/v1`, `reports/experiments/v1`,
-`reports/locked/v1`, and the tracked public `reports/source_manifest.json`; it
-writes the no-overwrite `artifacts/v1` bundle. These evidence, source, and output
+`data/processed/snapshots/v2`, `reports/experiments/v2`,
+`reports/locked/v2`, and the tracked public `reports/source_manifest.v2.json`; it
+writes the no-overwrite `artifacts/v2` bundle. These evidence, source, and output
 paths are canonical and enforced by the commands. Acquisition, candidate
 selection, and the one-shot locked evaluation remain separate release commands.
 Run the five experiment/locked targets above in order at the stated commit

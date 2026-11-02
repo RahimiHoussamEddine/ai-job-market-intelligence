@@ -36,7 +36,7 @@ def test_public_source_manifest_is_checked_against_verified_raw_snapshot(
     source_snapshot.mkdir(parents=True)
     raw_manifest = source_snapshot / "manifest.json"
     raw_manifest.write_bytes(b'{"snapshot_id":"v1"}\n')
-    public_manifest = tmp_path / "reports" / "source_manifest.json"
+    public_manifest = tmp_path / "reports" / f"source_manifest.{config.snapshot_id}.json"
     public_manifest.parent.mkdir(parents=True)
     public_manifest.write_bytes(raw_manifest.read_bytes())
     digest = hashlib.sha256(public_manifest.read_bytes()).hexdigest()
@@ -94,10 +94,10 @@ def _source_manifest(config: ProjectConfig) -> SourceManifest:
         )
     return SourceManifest(
         manifest_version=1,
-        snapshot_id="v1",
+        snapshot_id=config.snapshot_id,
         created_at_utc="2026-08-21T12:00:00Z",
         project_name="ai-job-market-intelligence",
-        project_artifact_version="v1",
+        project_artifact_version=config.project.artifact_version,
         project_snapshot_date="2026-08-21",
         config_file_sha256=config.fingerprint,
         config_semantic_sha256=config.semantic_fingerprint,
@@ -170,7 +170,7 @@ def test_processed_snapshot_carries_exact_schemas_hashes_and_rejects_unknown_fil
 
     result = verify_processed_snapshot(processed)
 
-    assert result.snapshot_id == "v1"
+    assert result.snapshot_id == config.snapshot_id
     assert result.table_rows["occupations"] == 2
     extra = processed / "debug.csv"
     extra.write_text("not declared", encoding="utf-8")

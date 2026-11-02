@@ -25,6 +25,7 @@ from .artifacts import (
     ManifestValidationError,
     load_artifact_bundle,
 )
+from .config import load_config
 
 SEARCH_DEFAULT_K: Final = 10
 SEARCH_MAX_K: Final = 25
@@ -700,9 +701,10 @@ def default_artifact_path() -> Path:
     if configured:
         return Path(configured)
     project_root = os.environ.get("JOB_MARKET_PROJECT_ROOT")
-    if project_root:
-        return Path(project_root) / "artifacts" / "v1"
-    return Path(__file__).resolve().parents[2] / "artifacts" / "v1"
+    root = Path(project_root) if project_root else Path(__file__).resolve().parents[2]
+    config_path = root / "configs" / "project.toml"
+    version = load_config(config_path).project.artifact_version if config_path.is_file() else "v2"
+    return root / "artifacts" / version
 
 
 @lru_cache(maxsize=8)

@@ -278,7 +278,9 @@ def package_release(args: argparse.Namespace) -> None:
         / config.project.artifact_version,
         "development": repository / "reports" / "experiments" / config.project.artifact_version,
         "locked": repository / "reports" / "locked" / config.project.artifact_version,
-        "source_manifest": repository / "reports" / "source_manifest.json",
+        "source_manifest": repository
+        / "reports"
+        / f"source_manifest.{config.project.artifact_version}.json",
         "output": repository / "artifacts" / config.project.artifact_version,
     }
     actual = {
@@ -290,7 +292,7 @@ def package_release(args: argparse.Namespace) -> None:
     }
     if mismatched := [name for name in canonical if actual[name] != canonical[name].resolve()]:
         raise TrainCommandError(
-            "release paths differ from the canonical v1 contract: " + ", ".join(mismatched)
+            "release paths differ from the canonical versioned contract: " + ", ".join(mismatched)
         )
 
     session = resume_reporting_only(locked, repository=repository)

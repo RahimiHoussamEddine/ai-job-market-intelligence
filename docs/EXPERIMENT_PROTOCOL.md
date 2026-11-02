@@ -1,7 +1,7 @@
 # Preregistered experiment protocol
 
-Protocol version: 1.0  
-Locked on: 2026-08-14, before acquisition or model evaluation
+Protocol version: 2.0
+Locked on: 2026-11-02, before v2 selection and locked evaluation
 
 ## Decision and claim boundary
 
@@ -127,6 +127,10 @@ query_count`; measured latency is diagnostic only. The pure structured ablation
 is evaluated but ineligible for release because it cannot guarantee complete
 catalog coverage without imputing missing values. No test result can change
 these rules.
+
+A query with no finite candidate scores has an empty ranking. Its expected
+query remains in the evaluation universe and receives zero for each ranked
+relevance metric; no fallback score or candidate is invented.
 
 The frozen title champion is compared with `title_word_char` on confirmation;
 the transition champion is compared with `transition_title_word_char`. If a

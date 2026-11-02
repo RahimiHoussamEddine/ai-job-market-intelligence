@@ -1,4 +1,4 @@
-# Model card — v1
+# Model card — v2
 
 Status: awaiting the preregistered development and locked evaluation runs.
 

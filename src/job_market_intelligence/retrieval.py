@@ -370,6 +370,10 @@ def rank_score_matrix(
         finite_mask = np.isfinite(values[query_index]) & candidate_mask
         kept_codes = np.asarray(candidates, dtype=object)[finite_mask].tolist()
         kept_scores = values[query_index, finite_mask]
+        if not kept_codes:
+            # No finite score is a valid empty retrieval result. Metrics that
+            # receive an expected query universe score this query as zero.
+            continue
         excluded = (query_code,) if exclude_self else ()
         ranked = deterministic_rank(kept_codes, kept_scores, k=k, exclude_ids=excluded)
         for item in ranked:

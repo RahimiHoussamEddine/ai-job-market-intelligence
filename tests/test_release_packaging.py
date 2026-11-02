@@ -7,6 +7,7 @@ import pandas as pd
 
 from job_market_intelligence.artifacts import load_artifact_bundle, write_artifact_bundle
 from job_market_intelligence.clustering import fit_exploratory_clusters
+from job_market_intelligence.config import load_config
 from job_market_intelligence.frontier import materialize_pareto_frontiers
 from job_market_intelligence.modeling import (
     CandidateSpec,
@@ -146,15 +147,16 @@ def test_synthetic_production_fit_round_trips_through_release_writer(tmp_path: P
     )
     search_catalog = pd.DataFrame({"row_index": range(60), "onet_soc_code": title.occupation_codes})
     project_config = Path(__file__).parents[1] / "configs" / "project.toml"
+    config = load_config(project_config)
     profiles = profiles.sort_values("onet_soc_code", kind="stable").reset_index(drop=True)
     ratings = ratings.sort_values(
         ["onet_soc_code", "feature_family", "element_id", "scale_id"], kind="stable"
     ).reset_index(drop=True)
     market = market.sort_values(["onet_soc_code", "nem_code"], kind="stable").reset_index(drop=True)
     output = write_artifact_bundle(
-        tmp_path / "v1",
-        artifact_version="v1",
-        snapshot_date="2026-08-21",
+        tmp_path / config.project.artifact_version,
+        artifact_version=config.project.artifact_version,
+        snapshot_date=config.project.snapshot_date.isoformat(),
         occupations=profiles,
         occupation_market=market,
         skill_ratings=ratings,
