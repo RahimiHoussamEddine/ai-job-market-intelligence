@@ -1,0 +1,27 @@
+{
+  "experiment_version": "v2",
+  "implementation_manifest_sha256": "7f2b6341b4e89fcef562531f6dd7317dc95c6cf8f965897649fb61adb847183c",
+  "input_bindings_sha256": "b6435ea14c0a3122c9c0cd7fda8378e6c5af2677d7509496a7a5cf0712709b99",
+  "intent_sha256": "c677f5c765bd07ae5994369d6f31b2ad0693ca86fd4def6f74d30b919d079de1",
+  "preparation_sha256": "1b9e87651a955a12a52a35e57c92f3c2889ba7776bd149520df742bc7cde8d5a",
+  "query_binding": {
+    "role": "selection",
+    "title_query_count": 4506,
+    "title_query_ids_sha256": "d93b7b16c18e17c161d1a997b9641c2e267c2c880a371deb5125ffdb8fc453a4",
+    "transition_query_codes_sha256": "5affa9ef88e5986961ba02ce21a05a7261c817b5f04b56728e7b4f3249e83786",
+    "transition_query_count": 183
+  },
+  "repository_commit": "bf69bbd9ea91d4ee0995792b12e90874542afb36",
+  "result": {
+    "selection_alias_queries.parquet": "91a2e877d48496ad11d1e5027e28748a7406c1604022dbc0539df94775a9e5be",
+    "selection_decision.json": "49d6b9e7d8ec1669eefc7b5f363fc96ad45f17f78abb130e1cd2446fdedb98bf",
+    "selection_title_results.parquet": "8212fef2a49148acb163c4d15355c86f6d7f0442685f1018f4488cdbb1deb796",
+    "selection_title_target_ranks.parquet": "da2fe4cc0d4374da17be75212164dc8814948292cd12a760accf9498d82852c1",
+    "selection_transition_rankings.parquet": "6e00457a06aec50fa0e9dae4122b9bff1a617c491013b3a8bb8c01ac369f995a",
+    "selection_transition_results.parquet": "96caa280cca51444a8c56b6dcfedcc2567cbe98fe318c42c84ab5e69677ee9b2"
+  },
+  "schema_version": 1,
+  "stage": "selection",
+  "status": "complete",
+  "upstream": {}
+}
