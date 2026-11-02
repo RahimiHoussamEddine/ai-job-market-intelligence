@@ -1,0 +1,751 @@
+{
+  "benchmarks": {
+    "title_benchmark": {
+      "baseline_deltas": [
+        {
+          "baseline_candidate_id": "title_word_char",
+          "ci_lower": 0.08152900324177083,
+          "ci_upper": 0.125280138303478,
+          "delta": 0.1026141543286006,
+          "metric": "top1_accuracy"
+        },
+        {
+          "baseline_candidate_id": "title_word_char",
+          "ci_lower": 0.04545191703906126,
+          "ci_upper": 0.08188324445805553,
+          "delta": 0.06368397062563222,
+          "metric": "recall_at_5"
+        },
+        {
+          "baseline_candidate_id": "title_word_char",
+          "ci_lower": 0.06806133949262227,
+          "ci_upper": 0.10193732098177495,
+          "delta": 0.08554955718175093,
+          "metric": "mrr"
+        }
+      ],
+      "metrics": [
+        {
+          "ci_lower": 0.2862483682265716,
+          "ci_upper": 0.34660506034056654,
+          "estimate": 0.3155915113624732,
+          "n_queries": 4087,
+          "name": "top1_accuracy"
+        },
+        {
+          "ci_lower": 0.442734582063493,
+          "ci_upper": 0.5045982170917409,
+          "estimate": 0.47341109374254325,
+          "n_queries": 4087,
+          "name": "recall_at_5"
+        },
+        {
+          "ci_lower": 0.3648236588552075,
+          "ci_upper": 0.4248157312743591,
+          "estimate": 0.39380225174373823,
+          "n_queries": 4087,
+          "name": "mrr"
+        }
+      ],
+      "primary_metric": "top1_accuracy",
+      "selected_candidate_id": "title_hybrid_lsa64__lexical075-lsa025",
+      "slices": [
+        {
+          "ci_lower": 0.2547118741765481,
+          "ci_upper": 0.4826424571805004,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.36465222880983755,
+          "n_units": 12,
+          "value": "11"
+        },
+        {
+          "ci_lower": 0.23067352941176475,
+          "ci_upper": 0.44517647058823534,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.3361764705882353,
+          "n_units": 10,
+          "value": "13"
+        },
+        {
+          "ci_lower": 0.19671270903010038,
+          "ci_upper": 0.47095217391304345,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.3315367892976589,
+          "n_units": 10,
+          "value": "15"
+        },
+        {
+          "ci_lower": 0.17843201754385965,
+          "ci_upper": 0.4279622841826789,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.29704330270119744,
+          "n_units": 12,
+          "value": "17"
+        },
+        {
+          "ci_lower": 0.19223482277526407,
+          "ci_upper": 0.5480298831070888,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.3601194067370539,
+          "n_units": 13,
+          "value": "19"
+        },
+        {
+          "ci_lower": 0.010416666666666666,
+          "ci_upper": 0.31636363636363635,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.16859848484848483,
+          "n_units": 4,
+          "value": "21"
+        },
+        {
+          "ci_lower": 0.19047619047619047,
+          "ci_upper": 0.19047619047619047,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.19047619047619047,
+          "n_units": 1,
+          "value": "23"
+        },
+        {
+          "ci_lower": 0.14228818936481477,
+          "ci_upper": 0.41077911333517736,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.26779505817465166,
+          "n_units": 13,
+          "value": "25"
+        },
+        {
+          "ci_lower": 0.19487698412698412,
+          "ci_upper": 0.48621263227513206,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.334863315696649,
+          "n_units": 9,
+          "value": "27"
+        },
+        {
+          "ci_lower": 0.3663448723747873,
+          "ci_upper": 0.5788863646866548,
+          "descriptive_small_slice": false,
+          "dimension": "soc_major_group",
+          "estimate": 0.46991969915189735,
+          "n_units": 20,
+          "value": "29"
+        },
+        {
+          "ci_lower": 0.2708333333333333,
+          "ci_upper": 0.5702614379084967,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.42054738562091504,
+          "n_units": 4,
+          "value": "31"
+        },
+        {
+          "ci_lower": 0.16730769230769232,
+          "ci_upper": 0.7517857142857143,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.44409340659340657,
+          "n_units": 5,
+          "value": "33"
+        },
+        {
+          "ci_lower": 0.1875,
+          "ci_upper": 0.56,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.3232407407407408,
+          "n_units": 3,
+          "value": "35"
+        },
+        {
+          "ci_lower": 0.0,
+          "ci_upper": 0.24,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.12,
+          "n_units": 2,
+          "value": "37"
+        },
+        {
+          "ci_lower": 0.048999999999999995,
+          "ci_upper": 0.5243636363636364,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.2286969696969697,
+          "n_units": 5,
+          "value": "39"
+        },
+        {
+          "ci_lower": 0.12072727272727272,
+          "ci_upper": 0.5767272727272726,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.3243636363636364,
+          "n_units": 5,
+          "value": "41"
+        },
+        {
+          "ci_lower": 0.16262626262626265,
+          "ci_upper": 0.36874064171122994,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.2683303624480095,
+          "n_units": 11,
+          "value": "43"
+        },
+        {
+          "ci_lower": 0.0625,
+          "ci_upper": 0.52,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.28750000000000003,
+          "n_units": 3,
+          "value": "45"
+        },
+        {
+          "ci_lower": 0.2927771265392749,
+          "ci_upper": 0.5765706876243958,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.433505829209154,
+          "n_units": 13,
+          "value": "47"
+        },
+        {
+          "ci_lower": 0.27339501784764947,
+          "ci_upper": 0.454888926862611,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.36094083694083695,
+          "n_units": 10,
+          "value": "49"
+        },
+        {
+          "ci_lower": 0.10925206611570248,
+          "ci_upper": 0.23050344352617078,
+          "descriptive_small_slice": false,
+          "dimension": "soc_major_group",
+          "estimate": 0.16713498622589532,
+          "n_units": 22,
+          "value": "51"
+        },
+        {
+          "ci_lower": 0.15448358585858588,
+          "ci_upper": 0.3603647504456326,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.25231431966726087,
+          "n_units": 11,
+          "value": "53"
+        },
+        {
+          "ci_lower": 0.0,
+          "ci_upper": 0.1514285714285714,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.0757142857142857,
+          "n_units": 4,
+          "value": "55"
+        },
+        {
+          "ci_lower": 0.24855037905933608,
+          "ci_upper": 0.33661062941376396,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.28983860560919217,
+          "n_units": 72,
+          "value": "2"
+        },
+        {
+          "ci_lower": 0.30608599349250315,
+          "ci_upper": 0.41305957352512057,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.35713202963549223,
+          "n_units": 38,
+          "value": "3"
+        },
+        {
+          "ci_lower": 0.2874812603369694,
+          "ci_upper": 0.40023997294977154,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.34362911220933845,
+          "n_units": 47,
+          "value": "4"
+        },
+        {
+          "ci_lower": 0.3349494265139301,
+          "ci_upper": 0.4824741766439559,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.40737199468973156,
+          "n_units": 31,
+          "value": "5"
+        },
+        {
+          "ci_lower": 0.016295093795093796,
+          "ci_upper": 0.05956039991754277,
+          "descriptive_small_slice": true,
+          "dimension": "job_zone",
+          "estimate": 0.03792774685631828,
+          "n_units": 14,
+          "value": "missing"
+        },
+        {
+          "ci_lower": 0.3022124226704118,
+          "ci_upper": 0.3635061478489753,
+          "descriptive_small_slice": false,
+          "dimension": "profile_completeness",
+          "estimate": 0.3314689279825793,
+          "n_units": 178,
+          "value": "50+"
+        },
+        {
+          "ci_lower": 0.12066336240249283,
+          "ci_upper": 0.2845848439000612,
+          "descriptive_small_slice": false,
+          "dimension": "profile_completeness",
+          "estimate": 0.19783400476335258,
+          "n_units": 24,
+          "value": "none"
+        },
+        {
+          "ci_lower": 0.27796658289381904,
+          "ci_upper": 0.3826826143977804,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.3302139241384093,
+          "n_units": 46,
+          "value": "2021-2023"
+        },
+        {
+          "ci_lower": 0.32472438205620163,
+          "ci_upper": 0.47867723055131134,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.4017422675310156,
+          "n_units": 32,
+          "value": "2024+"
+        },
+        {
+          "ci_lower": 0.12152543028629985,
+          "ci_upper": 0.280176111127198,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.19783400476335258,
+          "n_units": 24,
+          "value": "missing"
+        },
+        {
+          "ci_lower": 0.272140167489338,
+          "ci_upper": 0.3471235410452046,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.3095587610953979,
+          "n_units": 100,
+          "value": "through-2020"
+        }
+      ]
+    },
+    "transition_benchmark": {
+      "baseline_deltas": [
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.3395370019728612,
+          "ci_upper": 0.40342128623969375,
+          "delta": 0.3707540415643895,
+          "metric": "ndcg_at_10"
+        },
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.2691489361702128,
+          "ci_upper": 0.3436436170212765,
+          "delta": 0.3074468085106383,
+          "metric": "primary_short_recall_at_5"
+        },
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.2680851063829787,
+          "ci_upper": 0.32127659574468087,
+          "delta": 0.29414893617021276,
+          "metric": "primary_recall_at_10"
+        },
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.34407994503318157,
+          "ci_upper": 0.4037463239447669,
+          "delta": 0.373748357861666,
+          "metric": "ndcg_at_20"
+        },
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.3312398682877406,
+          "ci_upper": 0.4367129453731848,
+          "delta": 0.383525413711584,
+          "metric": "mrr_at_10"
+        },
+        {
+          "baseline_candidate_id": "transition_title_word_char",
+          "ci_lower": 0.31230071389532904,
+          "ci_upper": 0.3722335921306318,
+          "delta": 0.3429909609758113,
+          "metric": "binary_primary_ndcg_at_10"
+        }
+      ],
+      "metrics": [
+        {
+          "ci_lower": 0.5961377787473401,
+          "ci_upper": 0.642465164937459,
+          "estimate": 0.6203725952865708,
+          "n_queries": 188,
+          "name": "ndcg_at_10"
+        },
+        {
+          "ci_lower": 0.4542553191489362,
+          "ci_upper": 0.5106382978723404,
+          "estimate": 0.4819148936170212,
+          "n_queries": 188,
+          "name": "primary_short_recall_at_5"
+        },
+        {
+          "ci_lower": 0.474468085106383,
+          "ci_upper": 0.5186170212765957,
+          "estimate": 0.4962765957446809,
+          "n_queries": 188,
+          "name": "primary_recall_at_10"
+        },
+        {
+          "ci_lower": 0.6282879568121525,
+          "ci_upper": 0.669734389964144,
+          "estimate": 0.650139381609207,
+          "n_queries": 188,
+          "name": "ndcg_at_20"
+        },
+        {
+          "ci_lower": 0.9313829787234043,
+          "ci_upper": 0.975177304964539,
+          "estimate": 0.95354609929078,
+          "n_queries": 188,
+          "name": "mrr_at_10"
+        },
+        {
+          "ci_lower": 0.5470957418513065,
+          "ci_upper": 0.591991855433895,
+          "estimate": 0.5704437622423175,
+          "n_queries": 188,
+          "name": "binary_primary_ndcg_at_10"
+        }
+      ],
+      "primary_metric": "ndcg_at_10",
+      "selected_candidate_id": "transition_hybrid_lsa64__lexical025-lsa000-structured075",
+      "slices": [
+        {
+          "ci_lower": 0.3833230173755963,
+          "ci_upper": 0.6287055320337872,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.5160919071754754,
+          "n_units": 11,
+          "value": "11"
+        },
+        {
+          "ci_lower": 0.6845666849596389,
+          "ci_upper": 0.7996108890911257,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.7466359591624113,
+          "n_units": 10,
+          "value": "13"
+        },
+        {
+          "ci_lower": 0.4114125926180477,
+          "ci_upper": 0.672054630513912,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.5458828280366491,
+          "n_units": 9,
+          "value": "15"
+        },
+        {
+          "ci_lower": 0.6288065904654904,
+          "ci_upper": 0.7813174171663433,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.707086681927731,
+          "n_units": 12,
+          "value": "17"
+        },
+        {
+          "ci_lower": 0.6122530457344759,
+          "ci_upper": 0.7066090545448304,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.658727233297293,
+          "n_units": 12,
+          "value": "19"
+        },
+        {
+          "ci_lower": 0.15449638275177024,
+          "ci_upper": 0.9772609363742969,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.5856392033869033,
+          "n_units": 3,
+          "value": "21"
+        },
+        {
+          "ci_lower": 0.8533273831075732,
+          "ci_upper": 0.8533273831075732,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.8533273831075732,
+          "n_units": 1,
+          "value": "23"
+        },
+        {
+          "ci_lower": 0.6490679642186894,
+          "ci_upper": 0.7872095972434385,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.7183792838810154,
+          "n_units": 13,
+          "value": "25"
+        },
+        {
+          "ci_lower": 0.4289191422891847,
+          "ci_upper": 0.7151009607411978,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.5909712727201486,
+          "n_units": 9,
+          "value": "27"
+        },
+        {
+          "ci_lower": 0.5611510668772253,
+          "ci_upper": 0.7012901419653894,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.6341386992140831,
+          "n_units": 19,
+          "value": "29"
+        },
+        {
+          "ci_lower": 0.6027399458177337,
+          "ci_upper": 0.7264232837748037,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.6690185766033481,
+          "n_units": 4,
+          "value": "31"
+        },
+        {
+          "ci_lower": 0.3323847810311171,
+          "ci_upper": 0.67674390994819,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.49051413747281924,
+          "n_units": 4,
+          "value": "33"
+        },
+        {
+          "ci_lower": 0.5055114286219032,
+          "ci_upper": 0.9283210789497348,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.6510044448661243,
+          "n_units": 3,
+          "value": "35"
+        },
+        {
+          "ci_lower": 0.7114834611416109,
+          "ci_upper": 0.7114834611416109,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.7114834611416109,
+          "n_units": 1,
+          "value": "37"
+        },
+        {
+          "ci_lower": 0.4687203703920133,
+          "ci_upper": 0.737732056875682,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.6201798920255485,
+          "n_units": 5,
+          "value": "39"
+        },
+        {
+          "ci_lower": 0.5939593340509539,
+          "ci_upper": 0.753150734597112,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.666447012167741,
+          "n_units": 5,
+          "value": "41"
+        },
+        {
+          "ci_lower": 0.5189839076387404,
+          "ci_upper": 0.7179533402292448,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.61627675560016,
+          "n_units": 10,
+          "value": "43"
+        },
+        {
+          "ci_lower": 0.596837520022443,
+          "ci_upper": 0.9055571850119009,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.7016341011963415,
+          "n_units": 3,
+          "value": "45"
+        },
+        {
+          "ci_lower": 0.5354538302804842,
+          "ci_upper": 0.6954507950629841,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.6161467312600565,
+          "n_units": 13,
+          "value": "47"
+        },
+        {
+          "ci_lower": 0.40125882698466975,
+          "ci_upper": 0.5810343860396951,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.4923680492907459,
+          "n_units": 10,
+          "value": "49"
+        },
+        {
+          "ci_lower": 0.5240581444240319,
+          "ci_upper": 0.6924075000320913,
+          "descriptive_small_slice": false,
+          "dimension": "soc_major_group",
+          "estimate": 0.612280582665056,
+          "n_units": 20,
+          "value": "51"
+        },
+        {
+          "ci_lower": 0.41407035203249226,
+          "ci_upper": 0.6239379522766562,
+          "descriptive_small_slice": true,
+          "dimension": "soc_major_group",
+          "estimate": 0.5167982545299461,
+          "n_units": 11,
+          "value": "53"
+        },
+        {
+          "ci_lower": 0.5609413299811762,
+          "ci_upper": 0.6276352243966478,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.5938912994132802,
+          "n_units": 72,
+          "value": "2"
+        },
+        {
+          "ci_lower": 0.5372724869095519,
+          "ci_upper": 0.6448687453276554,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.5919660252219102,
+          "n_units": 38,
+          "value": "3"
+        },
+        {
+          "ci_lower": 0.6031712853631391,
+          "ci_upper": 0.6869529907945484,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.6439578960596963,
+          "n_units": 47,
+          "value": "4"
+        },
+        {
+          "ci_lower": 0.6313794126955107,
+          "ci_upper": 0.7306587542209686,
+          "descriptive_small_slice": false,
+          "dimension": "job_zone",
+          "estimate": 0.6809401381574461,
+          "n_units": 31,
+          "value": "5"
+        },
+        {
+          "ci_lower": 0.606731348329713,
+          "ci_upper": 0.6532515406736967,
+          "descriptive_small_slice": false,
+          "dimension": "profile_completeness",
+          "estimate": 0.6308270700214161,
+          "n_units": 178,
+          "value": "50+"
+        },
+        {
+          "ci_lower": 0.38554222008419814,
+          "ci_upper": 0.48302366992844814,
+          "descriptive_small_slice": true,
+          "dimension": "profile_completeness",
+          "estimate": 0.43428294500632314,
+          "n_units": 10,
+          "value": "none"
+        },
+        {
+          "ci_lower": 0.6045832817541035,
+          "ci_upper": 0.6662255207914922,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.6368104299355342,
+          "n_units": 46,
+          "value": "2021-2023"
+        },
+        {
+          "ci_lower": 0.5962161977688955,
+          "ci_upper": 0.6773022052879798,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.6383129376790806,
+          "n_units": 32,
+          "value": "2024+"
+        },
+        {
+          "ci_lower": 0.38268997178732417,
+          "ci_upper": 0.48302366992844814,
+          "descriptive_small_slice": true,
+          "dimension": "rating_recency",
+          "estimate": 0.43428294500632314,
+          "n_units": 10,
+          "value": "missing"
+        },
+        {
+          "ci_lower": 0.597356412614207,
+          "ci_upper": 0.6558549939174035,
+          "descriptive_small_slice": false,
+          "dimension": "rating_recency",
+          "estimate": 0.6256792468104694,
+          "n_units": 100,
+          "value": "through-2020"
+        }
+      ]
+    }
+  },
+  "decision_sha256": "250cd34e545fddfa7feca8581b06ea103d0a552a50982f33c6276feebfe50f51",
+  "experiment_version": "v2",
+  "original_repository_commit": "d78a6d662e58489ffdd1d5a99d22c2402df796a1",
+  "rankings_sha256": "ef657d301a4565b25ed6f22b801797a1fb4253602f4ae4c5646ca2f503fd7494",
+  "reporting_repository_commit": "d78a6d662e58489ffdd1d5a99d22c2402df796a1",
+  "schema_version": 1,
+  "split": "locked_test"
+}

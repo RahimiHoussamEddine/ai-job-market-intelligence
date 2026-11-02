@@ -1,0 +1,109 @@
+{
+  "decision_sha256": "250cd34e545fddfa7feca8581b06ea103d0a552a50982f33c6276feebfe50f51",
+  "experiment_version": "v2",
+  "inputs": {
+    "candidate_manifest": {
+      "byte_count": 21945,
+      "path": "reports/experiments/v2/candidate_manifest.json",
+      "sha256": "2ca9adcee16c0ddd537d7e45ef2822c5f36ffe978f501331563da0d90c4a2e47"
+    },
+    "development_decision": {
+      "byte_count": 17232,
+      "path": "reports/experiments/v2/development_decision.json",
+      "sha256": "52f66e427f4fd6c7750e25e713f7f274ab380a09dbfc85995ff4b787855f8586"
+    },
+    "environment_lock": {
+      "byte_count": 1410,
+      "path": "requirements.lock",
+      "sha256": "dcd2b0916162d94d00211b1fbdf6d8ae8a268cc35171df715146d620b9b78d57"
+    },
+    "evaluation_universe": {
+      "byte_count": 1030151,
+      "path": "reports/experiments/v2/evaluation_universe.json",
+      "sha256": "9cf3d8bc1f91f1e4a7ac6fe3202945e3da6b4fdddd94c2dcff4778a1a4b2facd"
+    },
+    "feature_manifest": {
+      "byte_count": 5516,
+      "path": "reports/experiments/v2/feature_manifest.json",
+      "sha256": "4103779a227418bedf15406ace6bf043bac2d709ce7766533113a80942d3e663"
+    },
+    "fold_digest": {
+      "byte_count": 135,
+      "path": "reports/experiments/v2/fold_manifest.sha256.json",
+      "sha256": "becbe507ac628222a30fd3c7427971e1311356a9cf66307674c804a6cfd12d7b"
+    },
+    "fold_manifest": {
+      "byte_count": 66741,
+      "path": "reports/experiments/v2/fold_manifest.csv",
+      "sha256": "0779655aace9750158353b72e08a8d65a089c778ea909c7fb130c2043f653a7d"
+    },
+    "implementation_manifest": {
+      "byte_count": 6481,
+      "path": "reports/experiments/v2/implementation_manifest.json",
+      "sha256": "7f2b6341b4e89fcef562531f6dd7317dc95c6cf8f965897649fb61adb847183c"
+    },
+    "metric_contract": {
+      "byte_count": 1371,
+      "path": "reports/experiments/v2/metric_contract.json",
+      "sha256": "a56124e669621819806f04614dfb0e0e417db43cb399b44c68fe803c419197ed"
+    },
+    "processed_manifest": {
+      "byte_count": 32541,
+      "path": "data/processed/snapshots/v2/manifest.json",
+      "sha256": "6b7c2a070bc42b1eb188dd90da006bf66da5173b9a71a4913a618e2ba0c9bc51"
+    },
+    "project_config": {
+      "byte_count": 2534,
+      "path": "configs/project.toml",
+      "sha256": "d06b7c5bf7e6ce56ef5359b533dec1d5f378f379cd2c0ccb2efa00e94d872e98"
+    },
+    "source_manifest": {
+      "byte_count": 22583,
+      "path": "reports/source_manifest.v2.json",
+      "sha256": "ca69af24d3bf209edf6ba5e32f93e56c1b1886e727cd8d1dc6c6c42071933884"
+    },
+    "table.aliases": {
+      "byte_count": 2876278,
+      "path": "data/processed/snapshots/v2/tables/aliases.parquet",
+      "sha256": "5e3e0178ed808036e481fd591a334c52c358903001cf7a7ba92fa5c69cd33b53"
+    },
+    "table.occupation_profiles": {
+      "byte_count": 847375,
+      "path": "data/processed/snapshots/v2/tables/occupation_profiles.parquet",
+      "sha256": "4806fbd5b05a2b8dff81b7ec2468390dd35fe29557f82234e1d27bc8456c3d07"
+    },
+    "table.related_qrels": {
+      "byte_count": 35711,
+      "path": "data/processed/snapshots/v2/tables/related_qrels.parquet",
+      "sha256": "9e1904a48a3acb74075988e8f3ce51d8f978ed0f655a75468d4ab310c77eaedb"
+    },
+    "table.skill_ratings": {
+      "byte_count": 879643,
+      "path": "data/processed/snapshots/v2/tables/skill_ratings.parquet",
+      "sha256": "92686404df55633e0a426cb9f4eec596afdfd49bad3537963f49e26dcafe4c79"
+    }
+  },
+  "intent_sha256": "cb1cf01c6e4b2f4be3e44da6fb9c8517e27cf809a4ad2af3a8762a79e3a2313e",
+  "metrics": {
+    "byte_count": 23486,
+    "original_repository_commit": "d78a6d662e58489ffdd1d5a99d22c2402df796a1",
+    "path": "locked_metrics.json",
+    "reporting_repository_commit": "d78a6d662e58489ffdd1d5a99d22c2402df796a1",
+    "sha256": "98f104a19924ad0988f3b53f3c2a39df8a723940633c68d8cf04c1c793b96947"
+  },
+  "rankings": {
+    "byte_count": 455103,
+    "path": "locked_rankings.parquet",
+    "row_count": 16294,
+    "schema_sha256": "e0c4d9caaf042ecab3ee4622c96f790f1bb97eeda1007c98b3f86f7335d6423f",
+    "sha256": "ef657d301a4565b25ed6f22b801797a1fb4253602f4ae4c5646ca2f503fd7494"
+  },
+  "release_candidates": {
+    "title": "title_hybrid_lsa64__lexical075-lsa025",
+    "transition": "transition_hybrid_lsa64__lexical025-lsa000-structured075"
+  },
+  "repository_commit": "d78a6d662e58489ffdd1d5a99d22c2402df796a1",
+  "schema_version": 1,
+  "split": "locked_test",
+  "status": "complete"
+}
