@@ -355,6 +355,11 @@ def test_verified_snapshot_evaluation_universe_ids_are_frozen_without_metrics() 
     root = Path(__file__).parents[1]
     config = load_config(root / "configs" / "project.toml")
     tables = root / "data" / "processed" / "snapshots" / config.project.artifact_version / "tables"
+    if not tables.is_dir():
+        pytest.skip(
+            "requires the verified local O*NET/BLS snapshot; run "
+            "`make data-download` and `make data-build`"
+        )
     profiles = pd.read_parquet(tables / "occupation_profiles.parquet")
     aliases = pd.read_parquet(tables / "aliases.parquet")
     qrels = pd.read_parquet(tables / "related_qrels.parquet")
