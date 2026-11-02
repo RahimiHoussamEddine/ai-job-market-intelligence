@@ -1,0 +1,552 @@
+{
+  "config_file_sha256": "d06b7c5bf7e6ce56ef5359b533dec1d5f378f379cd2c0ccb2efa00e94d872e98",
+  "config_semantic_sha256": "30a79c4c4a1fe551018f482c05d92135a7249ea8eed0a68aba624ccd4ca36303",
+  "created_at_utc": "2026-08-21T18:37:44Z",
+  "manifest_version": 1,
+  "project_artifact_version": "v2",
+  "project_name": "ai-job-market-intelligence",
+  "project_snapshot_date": "2026-08-21",
+  "repository_commit": "b98818a7fd7e3169b2b65a9f775e6df5683375fd",
+  "snapshot_id": "v2",
+  "sources": [
+    {
+      "archive_members": [],
+      "byte_count": 268030,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-416fe\"",
+      "family": "onet",
+      "filename": "occupation_data.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/occupation_data.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/occupation_data.csv",
+      "response_date": "Fri, 21 Aug 2026 18:37:44 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 1016,
+      "schema_fingerprint": "168906f34cd2f89203ea3ee7ed16987b49f981194163a01796742c8c2e50aa8b",
+      "sha256": "a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02",
+      "source_id": "onet.occupation_data",
+      "status_code": 200,
+      "table": "occupation_data",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 4769310,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-48c61e\"",
+      "family": "onet",
+      "filename": "job_titles.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/db3ac1f2519d8e59df9c727e4eb9cc8096bd196f111284f908be1758b267dbc2",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/job_titles.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/job_titles.csv",
+      "response_date": "Fri, 21 Aug 2026 18:37:44 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 57543,
+      "schema_fingerprint": "e7cd0d976e744258c25e01cded68aeaf418653cc4e8ce81cf33d37dd08430bf9",
+      "sha256": "db3ac1f2519d8e59df9c727e4eb9cc8096bd196f111284f908be1758b267dbc2",
+      "source_id": "onet.job_titles",
+      "status_code": 200,
+      "table": "job_titles",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 3446784,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-349800\"",
+      "family": "onet",
+      "filename": "task_statements.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/6462c5fef4e2b21ae2f1b85e5c3d6711ba5bef79e8c6091da48c1a26e9983a75",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/task_statements.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/task_statements.csv",
+      "response_date": "Fri, 21 Aug 2026 18:37:48 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 18796,
+      "schema_fingerprint": "ae5aa50ce7e67adb92710d52aa0412f8f28af09945c6d157b183306d9d3b1fb5",
+      "sha256": "6462c5fef4e2b21ae2f1b85e5c3d6711ba5bef79e8c6091da48c1a26e9983a75",
+      "source_id": "onet.task_statements",
+      "status_code": 200,
+      "table": "task_statements",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 5973523,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-5b2613\"",
+      "family": "onet",
+      "filename": "transferable_skills.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/23985fa24e0197067c02b3f062f0520839ef15a8980b93518bae68eeb041a841",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/transferable_skills.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/transferable_skills.csv",
+      "response_date": "Fri, 21 Aug 2026 18:37:50 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 44700,
+      "schema_fingerprint": "b01e422271a73422baaa2c607a8b202e0c6be04c4fd5186cbe250e2302cfc281",
+      "sha256": "23985fa24e0197067c02b3f062f0520839ef15a8980b93518bae68eeb041a841",
+      "source_id": "onet.transferable_skills",
+      "status_code": 200,
+      "table": "transferable_skills",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 7887757,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-785b8d\"",
+      "family": "onet",
+      "filename": "knowledge.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/ec5cafa88466ae350fdd51eefc3c63ff1cb7765af4c38381a613882a59238db1",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/knowledge.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/knowledge.csv",
+      "response_date": "Fri, 21 Aug 2026 18:37:54 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 59004,
+      "schema_fingerprint": "b01e422271a73422baaa2c607a8b202e0c6be04c4fd5186cbe250e2302cfc281",
+      "sha256": "ec5cafa88466ae350fdd51eefc3c63ff1cb7765af4c38381a613882a59238db1",
+      "source_id": "onet.knowledge",
+      "status_code": 200,
+      "table": "knowledge",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 60062,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-ea9e\"",
+      "family": "onet",
+      "filename": "job_zones.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/075782b37d63dfa37d8afa6dea975388350baf2f4d1906e39b66766a05d72ba8",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/job_zones.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/job_zones.csv",
+      "response_date": "Fri, 21 Aug 2026 18:38:00 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 923,
+      "schema_fingerprint": "6b37109804a82268342de3708821d22492a98169040315d181b8bd1149cc5630",
+      "sha256": "075782b37d63dfa37d8afa6dea975388350baf2f4d1906e39b66766a05d72ba8",
+      "source_id": "onet.job_zones",
+      "status_code": 200,
+      "table": "job_zones",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [],
+      "byte_count": 2051148,
+      "content_disposition": null,
+      "content_type": "application/octet-stream",
+      "etag": "\"6a6280a7-1f4c4c\"",
+      "family": "onet",
+      "filename": "related_occupations.csv",
+      "last_modified": "Thu, 23 Jul 2026 20:59:19 GMT",
+      "media_type": "csv",
+      "object_path": "objects/sha256/fc2a719a21dbd3805ddfb6d510c013c9e0c366b46273701b88c683a50ef3fe6b",
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "publisher": "O*NET Resource Center, USDOL/ETA",
+      "redirect_chain": [],
+      "requested_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/related_occupations.csv",
+      "resolved_url": "https://www.onetcenter.org/dl_files/database/db_30_3_csv/related_occupations.csv",
+      "response_date": "Fri, 21 Aug 2026 18:38:00 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 18460,
+      "schema_fingerprint": "3f393af479d36d590c859401c648f484f789701b75e0e72b2e03c45fd8ebf33e",
+      "sha256": "fc2a719a21dbd3805ddfb6d510c013c9e0c366b46273701b88c683a50ef3fe6b",
+      "source_id": "onet.related_occupations",
+      "status_code": 200,
+      "table": "related_occupations",
+      "vintage": "30.3"
+    },
+    {
+      "archive_members": [
+        {
+          "byte_count": 2783,
+          "compressed_byte_count": 413,
+          "crc32": "e9641ccf",
+          "path": "[Content_Types].xml",
+          "sha256": "3df98b51ba52023c3889568a47d4bff8a65b0be29a829beee31830dfc4072562"
+        },
+        {
+          "byte_count": 588,
+          "compressed_byte_count": 244,
+          "crc32": "233055b5",
+          "path": "_rels/.rels",
+          "sha256": "73e5a29f48d5ab979eeda062493bc7e679265c1344ef936978b8becec5549497"
+        },
+        {
+          "byte_count": 2769,
+          "compressed_byte_count": 1013,
+          "crc32": "bb055e80",
+          "path": "xl/workbook.xml",
+          "sha256": "b2f7a8c1c746c120b20f5f24094d40b104ca3c342ae9181d7311854bddb2b9ff"
+        },
+        {
+          "byte_count": 2258,
+          "compressed_byte_count": 320,
+          "crc32": "60cea81e",
+          "path": "xl/_rels/workbook.xml.rels",
+          "sha256": "e8b8cf9274e0ba5811d1fe07f73f8c74bf763a80af8accdc745c605abf8f8a2a"
+        },
+        {
+          "byte_count": 4115,
+          "compressed_byte_count": 1475,
+          "crc32": "c8a6fda6",
+          "path": "xl/worksheets/sheet1.xml",
+          "sha256": "72ae8179f965087e81542df9ea17b028873cf28cbec72bd8ea058bd6d870eccd"
+        },
+        {
+          "byte_count": 8926,
+          "compressed_byte_count": 1986,
+          "crc32": "1d06a341",
+          "path": "xl/worksheets/sheet2.xml",
+          "sha256": "6b5d2ead84e94402ea577b229181468d44fee4cd2ed6d512390047e1024e234f"
+        },
+        {
+          "byte_count": 749710,
+          "compressed_byte_count": 105784,
+          "crc32": "d3eb2bff",
+          "path": "xl/worksheets/sheet3.xml",
+          "sha256": "b6a1cdb239dab729afbb7726e7b5cd6ff1eab11471f434e772e8eb954166d7ad"
+        },
+        {
+          "byte_count": 11250,
+          "compressed_byte_count": 2340,
+          "crc32": "9ddb49c0",
+          "path": "xl/worksheets/sheet4.xml",
+          "sha256": "4f975055ce4056e4f0c934f0ba64b767f8282d47954b66811ad234427ecff7c9"
+        },
+        {
+          "byte_count": 11288,
+          "compressed_byte_count": 2386,
+          "crc32": "8eab1f25",
+          "path": "xl/worksheets/sheet5.xml",
+          "sha256": "ceffc8f41c3392e572fea8981442addacde1098fcb32e3b2fb9f6a4088c37604"
+        },
+        {
+          "byte_count": 11395,
+          "compressed_byte_count": 2330,
+          "crc32": "094d63cc",
+          "path": "xl/worksheets/sheet6.xml",
+          "sha256": "590c1bbee81db8253ed4b183d65109ac2d7351eba7c8f8e5fab26ed4428f0960"
+        },
+        {
+          "byte_count": 11360,
+          "compressed_byte_count": 2368,
+          "crc32": "7d98ced1",
+          "path": "xl/worksheets/sheet7.xml",
+          "sha256": "2e9e41b7f687e836e04a113e4942ea38e1694594e25f6693ff1a14054f4c74ba"
+        },
+        {
+          "byte_count": 327955,
+          "compressed_byte_count": 38545,
+          "crc32": "40432d89",
+          "path": "xl/worksheets/sheet8.xml",
+          "sha256": "ee8fbb2e38187ca765d840cdf0d8d1e6c043aad93aba1c93eeb5a6750f9e4cdd"
+        },
+        {
+          "byte_count": 141782,
+          "compressed_byte_count": 17238,
+          "crc32": "a3d4a9fa",
+          "path": "xl/worksheets/sheet9.xml",
+          "sha256": "4872953132f05bdb004e61fcc1b9198bbfd7fa7764305468723bb5f74cfb30cb"
+        },
+        {
+          "byte_count": 610080,
+          "compressed_byte_count": 91238,
+          "crc32": "594ef184",
+          "path": "xl/worksheets/sheet10.xml",
+          "sha256": "cf17b8430b633772790b7d7367479d133e308a8f9dd690f7330f164aca64440f"
+        },
+        {
+          "byte_count": 2955,
+          "compressed_byte_count": 949,
+          "crc32": "1d5466f0",
+          "path": "xl/worksheets/sheet11.xml",
+          "sha256": "892b2f79133e92969d908cdae4a3ced8baf8d02d5a416c2aecb38cbdb2f83249"
+        },
+        {
+          "byte_count": 258978,
+          "compressed_byte_count": 32838,
+          "crc32": "fd353f76",
+          "path": "xl/worksheets/sheet12.xml",
+          "sha256": "b50691b82d29a7c58944f3e73959f20e72ad8ec25ef0a3fc931cb66fbd244906"
+        },
+        {
+          "byte_count": 6995,
+          "compressed_byte_count": 1638,
+          "crc32": "b825a6e9",
+          "path": "xl/theme/theme1.xml",
+          "sha256": "156137ac2d7fae74e0286df47c4d1c75e65d5ef1455ff74c4d46176aef06fe56"
+        },
+        {
+          "byte_count": 5532,
+          "compressed_byte_count": 1242,
+          "crc32": "ef5a2e2d",
+          "path": "xl/styles.xml",
+          "sha256": "9114a99bd8731dac32ed0ef8af599ad87af00aeebd718cd271a38709286fb77f"
+        },
+        {
+          "byte_count": 377397,
+          "compressed_byte_count": 69554,
+          "crc32": "d0fc8e56",
+          "path": "xl/sharedStrings.xml",
+          "sha256": "531ffb89823435edc50c202e5e0e0d9167b130ff0cb49e2ffa94374ed40ccd34"
+        },
+        {
+          "byte_count": 322,
+          "compressed_byte_count": 193,
+          "crc32": "4b326d3b",
+          "path": "xl/worksheets/_rels/sheet1.xml.rels",
+          "sha256": "65cefb6727e21f882eb83bb6c10370afa59aafda7f007f531df0c30026dc4684"
+        },
+        {
+          "byte_count": 322,
+          "compressed_byte_count": 194,
+          "crc32": "132cc413",
+          "path": "xl/worksheets/_rels/sheet2.xml.rels",
+          "sha256": "fe0fffb5ec78558e2b46557177888c220c2b7d2389c24965089ed5618d66be54"
+        },
+        {
+          "byte_count": 134828,
+          "compressed_byte_count": 10586,
+          "crc32": "35b60a47",
+          "path": "xl/worksheets/_rels/sheet3.xml.rels",
+          "sha256": "942568babf7c10416285a9e4dbdea97addcca9f91d95bc0bbd472687b9f05c30"
+        },
+        {
+          "byte_count": 249643,
+          "compressed_byte_count": 9685,
+          "crc32": "0a3af068",
+          "path": "xl/worksheets/_rels/sheet8.xml.rels",
+          "sha256": "5d7f094b5ab81f3bb3eb3fd4d3f029a1ea7e1e2b7ec26ac74620eee040319c3d"
+        },
+        {
+          "byte_count": 94378,
+          "compressed_byte_count": 3638,
+          "crc32": "27218b00",
+          "path": "xl/worksheets/_rels/sheet9.xml.rels",
+          "sha256": "0cf6a3ece3faedc327d3ef13145caa7b296eaa0cf0969454cfcd8f5a79566dca"
+        },
+        {
+          "byte_count": 8768,
+          "compressed_byte_count": 1469,
+          "crc32": "25fefd53",
+          "path": "xl/printerSettings/printerSettings1.bin",
+          "sha256": "85f6084cd343dd5a774b51023e6cc570ec0ac62d20d566dd40917f568119e8a3"
+        },
+        {
+          "byte_count": 5420,
+          "compressed_byte_count": 450,
+          "crc32": "b447e0cf",
+          "path": "xl/printerSettings/printerSettings2.bin",
+          "sha256": "f41103bc4b4b4f4b182b1cc2df79b5197395084cfb78d5a90250104c7c5c8897"
+        },
+        {
+          "byte_count": 8648,
+          "compressed_byte_count": 912,
+          "crc32": "ba484694",
+          "path": "xl/printerSettings/printerSettings3.bin",
+          "sha256": "4dcb9e65052df3fe11fa5078f2322d25a35d58dee92dc19aecbc08a958f864e2"
+        },
+        {
+          "byte_count": 585,
+          "compressed_byte_count": 331,
+          "crc32": "6dc9763d",
+          "path": "docProps/core.xml",
+          "sha256": "5c1bd1066c1bbd57e07e4071d236ed0702599101f5f5d2b2483967d7b54371de"
+        },
+        {
+          "byte_count": 1058,
+          "compressed_byte_count": 418,
+          "crc32": "85b54a33",
+          "path": "docProps/app.xml",
+          "sha256": "317ff38592343ef87acfd61adc314c5a194e011981583c3e9c0070c246cccf7b"
+        }
+      ],
+      "byte_count": 407365,
+      "content_disposition": null,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "etag": "\"0b36852f9adc1:0\"",
+      "family": "bls",
+      "filename": "occupation.xlsx",
+      "last_modified": "Mon, 11 Aug 2025 19:51:26 GMT",
+      "media_type": "xlsx",
+      "object_path": "objects/sha256/bebf85e71d3a274eb0531077a9fe1bbcd1167e0a14c59e33071f61cbda9d3a57",
+      "parser_name": "pandas.read_excel[openpyxl]",
+      "parser_version": "pandas==2.3.3;openpyxl==3.1.5",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "redirect_chain": [],
+      "requested_url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
+      "resolved_url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
+      "response_date": "Fri, 21 Aug 2026 18:38:02 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 1113,
+      "schema_fingerprint": "6c13ff8d52de927d47b82fb44a5e7f462ddc00cdeceaaf3b25180752c54a516b",
+      "sha256": "bebf85e71d3a274eb0531077a9fe1bbcd1167e0a14c59e33071f61cbda9d3a57",
+      "source_id": "bls.occupation",
+      "status_code": 200,
+      "table": "occupation",
+      "vintage": "2024-34"
+    },
+    {
+      "archive_members": [
+        {
+          "byte_count": 1304,
+          "compressed_byte_count": 356,
+          "crc32": "ddde1812",
+          "path": "[Content_Types].xml",
+          "sha256": "22af0f790be579e922705f9bed071ec084a2757acc7f2ac75a16b36a3fd77c4c"
+        },
+        {
+          "byte_count": 588,
+          "compressed_byte_count": 244,
+          "crc32": "233055b5",
+          "path": "_rels/.rels",
+          "sha256": "73e5a29f48d5ab979eeda062493bc7e679265c1344ef936978b8becec5549497"
+        },
+        {
+          "byte_count": 1774,
+          "compressed_byte_count": 775,
+          "crc32": "009b193f",
+          "path": "xl/workbook.xml",
+          "sha256": "83f266cd05ab1e8d31d4f20387a3b4d6dbe887503ad18094a3177e6af73b540d"
+        },
+        {
+          "byte_count": 839,
+          "compressed_byte_count": 250,
+          "crc32": "61a6a94a",
+          "path": "xl/_rels/workbook.xml.rels",
+          "sha256": "15e353ac27ab7362603f4a0d0754a97885e8e2ce523615a3cd59b458ddcd60e9"
+        },
+        {
+          "byte_count": 516742,
+          "compressed_byte_count": 60593,
+          "crc32": "d47ca0ea",
+          "path": "xl/worksheets/sheet1.xml",
+          "sha256": "5a42670abf9e9a883622b24d448ae4be5af5e8b138fb4dab2debd7c718fa55ad"
+        },
+        {
+          "byte_count": 2903,
+          "compressed_byte_count": 926,
+          "crc32": "0556dd88",
+          "path": "xl/worksheets/sheet2.xml",
+          "sha256": "3294b41a7422716cd2ac6c1a02bec90d893136b9ce0018378356521b58cfac62"
+        },
+        {
+          "byte_count": 6995,
+          "compressed_byte_count": 1638,
+          "crc32": "b825a6e9",
+          "path": "xl/theme/theme1.xml",
+          "sha256": "156137ac2d7fae74e0286df47c4d1c75e65d5ef1455ff74c4d46176aef06fe56"
+        },
+        {
+          "byte_count": 2821,
+          "compressed_byte_count": 947,
+          "crc32": "1bce05c3",
+          "path": "xl/styles.xml",
+          "sha256": "4e42820101ef071e82669369b30afcd5abcfa6cb8332390cbd8b7af2a56b3a4f"
+        },
+        {
+          "byte_count": 182908,
+          "compressed_byte_count": 34781,
+          "crc32": "579f4ad7",
+          "path": "xl/sharedStrings.xml",
+          "sha256": "3f27422f1ca227951b626a625922588500acd759c7dd02d9fee9c19ed91ec0dc"
+        },
+        {
+          "byte_count": 199848,
+          "compressed_byte_count": 14321,
+          "crc32": "b3777d7a",
+          "path": "xl/worksheets/_rels/sheet1.xml.rels",
+          "sha256": "d6f8d6e93e68c429d9e8a793c69fb100aedfd1c39e4bda9f7f6a0c7798c69e06"
+        },
+        {
+          "byte_count": 921,
+          "compressed_byte_count": 311,
+          "crc32": "d6cb09b6",
+          "path": "xl/worksheets/_rels/sheet2.xml.rels",
+          "sha256": "b9f450eca7b0dccf9530b144b1f25574074d369db40a2c71f95cf6269ef20582"
+        },
+        {
+          "byte_count": 585,
+          "compressed_byte_count": 330,
+          "crc32": "6fbe1bc4",
+          "path": "docProps/core.xml",
+          "sha256": "33f7abbe923ae04dc6dd0c2df5ff6c18fde045515e33e2d8c6418f8e8553ee15"
+        },
+        {
+          "byte_count": 813,
+          "compressed_byte_count": 404,
+          "crc32": "ba503ca5",
+          "path": "docProps/app.xml",
+          "sha256": "a1e2691d9198f7cd936bc8533b25b151369139a913dc9b19f9f6c74e312ea9e3"
+        }
+      ],
+      "byte_count": 119300,
+      "content_disposition": null,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "etag": "\"80ef9e50f9adc1:0\"",
+      "family": "bls",
+      "filename": "nem-onet-to-soc-crosswalk.xlsx",
+      "last_modified": "Mon, 11 Aug 2025 19:51:23 GMT",
+      "media_type": "xlsx",
+      "object_path": "objects/sha256/faeff84413dc4828f1a6b3154012a34d804b2e2067477ab6895eb62fd4b9bc06",
+      "parser_name": "pandas.read_excel[openpyxl]",
+      "parser_version": "pandas==2.3.3;openpyxl==3.1.5",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "redirect_chain": [],
+      "requested_url": "https://www.bls.gov/emp/classifications-crosswalks/nem-onet-to-soc-crosswalk.xlsx",
+      "resolved_url": "https://www.bls.gov/emp/classifications-crosswalks/nem-onet-to-soc-crosswalk.xlsx",
+      "response_date": "Fri, 21 Aug 2026 18:38:02 GMT",
+      "retrieved_at_utc": "2026-08-21T18:37:44Z",
+      "row_count": 997,
+      "schema_fingerprint": "cb8a96d7077c80986b4b1303f92c9a1e4c9a678aa3bec612636aa45cc0fa017b",
+      "sha256": "faeff84413dc4828f1a6b3154012a34d804b2e2067477ab6895eb62fd4b9bc06",
+      "source_id": "bls.crosswalk",
+      "status_code": 200,
+      "table": "crosswalk",
+      "vintage": "2024-34"
+    }
+  ]
+}
