@@ -1,6 +1,6 @@
 [project]
 name = "ai-job-market-intelligence"
-artifact_version = "v3"
+artifact_version = "v4"
 snapshot_date = "2026-08-21"
 random_seed = 20260814
 

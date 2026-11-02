@@ -3,7 +3,7 @@
 The release is intentionally staged so final evidence cannot influence model
 choice.
 
-1. Install the Python 3.12 lock, verify that v3 reuses the byte-identical
+1. Install the Python 3.12 lock, verify that v4 reuses the byte-identical
    official source objects originally acquired for v1, then build and audit the
    deterministic processed tables.
 2. Finalize and **commit the implementation**: configuration, environment lock,
@@ -34,20 +34,23 @@ An acquisition refresh or any change to features, judgments, candidates,
 selection, or metrics creates a new experiment version; it never overwrites an
 earlier version.
 
-The v3 source snapshot is a version and configuration re-pin of the same nine
+The v4 source snapshot is a version and configuration re-pin of the same nine
 official objects originally acquired on 2026-08-21 for v1. Their bytes, hashes,
 publisher metadata, and retrieval timestamps are unchanged; no refreshed data
 is claimed.
 The v1 source manifest and checksum remain unchanged at
-`reports/source_manifest.json` and `reports/source_manifest.sha256`; the v2
-and v3 manifests use `reports/source_manifest.v2.json` and
-`reports/source_manifest.v3.json` with their matching checksums.
+`reports/source_manifest.json` and `reports/source_manifest.sha256`; the v2,
+v3, and v4 manifests use `reports/source_manifest.v2.json`,
+`reports/source_manifest.v3.json`, and `reports/source_manifest.v4.json` with
+their matching checksums.
 
-The v2 selection, confirmation, and locked evidence are retained as historical
-records. Its final bundle validation exposed that the frozen candidate grid
-contains disabled components with weight zero. The artifact validator was
-updated to accept finite non-negative simplex weights, and v3 reruns selection,
-confirmation, and locked evaluation under the corrected committed code.
+The v2 and v3 selection, confirmation, and locked evidence are retained as
+historical records. V2 packaging exposed zero-weight disabled candidate
+components; v3 allowed finite non-negative simplex weights, but its bundle
+loader then rejected non-semantic pandas footer metadata in the locked-ranking
+Parquet schema. V4 compares the canonical Arrow fields while ignoring that
+metadata and still validates the file's exact SHA-256, then reruns all metric
+stages under the corrected committed code.
 
 The serving and quality commands are now fixed:
 
@@ -65,15 +68,15 @@ make locked-rank          # create immutable target-free locked rankings
 make locked-report        # aggregate only the already-written locked rankings
 make package-release  # offline post-lock refit and immutable publication
 make artifact-gate
-make verify-artifact  # mandatory once artifacts/v3/manifest.json exists
+make verify-artifact  # mandatory once artifacts/v4/manifest.json exists
 ```
 
 `make artifact-gate` accepts absence only while the repository explicitly has no
-v3 manifest. Once present, the complete checksum/schema/relationship/model/report
+v4 manifest. Once present, the complete checksum/schema/relationship/model/report
 validation and target-free smoke suite must pass. `make package-release` consumes
-`data/processed/snapshots/v3`, `reports/experiments/v3`,
-`reports/locked/v3`, and the tracked public `reports/source_manifest.v3.json`; it
-writes the no-overwrite `artifacts/v3` bundle. These evidence, source, and output
+`data/processed/snapshots/v4`, `reports/experiments/v4`,
+`reports/locked/v4`, and the tracked public `reports/source_manifest.v4.json`; it
+writes the no-overwrite `artifacts/v4` bundle. These evidence, source, and output
 paths are canonical and enforced by the commands. Acquisition, candidate
 selection, and the one-shot locked evaluation remain separate release commands.
 Run the five experiment/locked targets above in order at the stated commit

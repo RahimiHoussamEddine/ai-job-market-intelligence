@@ -2430,6 +2430,12 @@ def _validate_evaluation_universe(
     return universe
 
 
+def _matches_safe_locked_ranking_schema(schema: pa.Schema) -> bool:
+    """Match canonical fields while ignoring non-semantic Parquet serializer metadata."""
+
+    return schema.equals(SAFE_LOCKED_RANKING_SCHEMA, check_metadata=False)
+
+
 def _validate_locked_rankings(
     path: Path,
     *,
@@ -2440,7 +2446,7 @@ def _validate_locked_rankings(
 ) -> pd.DataFrame:
     try:
         parquet = pq.ParquetFile(path)
-        if not parquet.schema_arrow.equals(SAFE_LOCKED_RANKING_SCHEMA, check_metadata=True):
+        if not _matches_safe_locked_ranking_schema(parquet.schema_arrow):
             raise ArtifactSchemaError("locked_rankings has a noncanonical Arrow schema")
         frame = parquet.read().to_pandas()
     except ArtifactSchemaError:

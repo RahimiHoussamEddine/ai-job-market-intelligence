@@ -265,7 +265,7 @@ def test_new_snapshot_requires_reviewed_config_version(tmp_path: Path) -> None:
         acquire_sources(
             config,
             tmp_path,
-            snapshot_id="v4",
+            snapshot_id="v5",
             new_snapshot=True,
             session=_Session(_source_payloads()),
             clock=snapshot_clock,

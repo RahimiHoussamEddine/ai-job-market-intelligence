@@ -4,10 +4,13 @@ from datetime import date
 from pathlib import Path
 
 import pandas as pd
+import pyarrow as pa
 import pytest
 
 from job_market_intelligence.artifacts import (
+    SAFE_LOCKED_RANKING_SCHEMA,
     ManifestValidationError,
+    _matches_safe_locked_ranking_schema,
     _validate_candidate_spec_payload,
     load_artifact_bundle,
     write_artifact_bundle,
@@ -38,6 +41,33 @@ def test_candidate_spec_accepts_zero_weight_disabled_components() -> None:
     invalid = {**payload, "weights": [["lexical", -0.25], ["structured", 1.25]]}
     with pytest.raises(ManifestValidationError, match="finite and non-negative"):
         _validate_candidate_spec_payload(invalid, "test_candidate")
+
+
+def test_locked_ranking_schema_ignores_pandas_serializer_metadata() -> None:
+    frame = pd.DataFrame(
+        {
+            "benchmark": ["title"],
+            "candidate_id": ["title_word_char"],
+            "query_id": ["query"],
+            "query_code": ["11-1000.00"],
+            "candidate_code": ["11-1001.00"],
+            "rank": [1],
+            "score": [0.75],
+            "split": ["locked_test"],
+        }
+    )
+    table = pa.Table.from_pandas(
+        frame,
+        schema=SAFE_LOCKED_RANKING_SCHEMA,
+        preserve_index=False,
+        safe=True,
+    )
+    assert table.schema.metadata is not None
+    assert _matches_safe_locked_ranking_schema(table.schema)
+
+    invalid_fields = list(SAFE_LOCKED_RANKING_SCHEMA)
+    invalid_fields[6] = pa.field("score", pa.float32(), nullable=False)
+    assert not _matches_safe_locked_ranking_schema(pa.schema(invalid_fields))
 
 
 def _synthetic_release_frames() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:

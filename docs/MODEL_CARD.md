@@ -1,9 +1,9 @@
-# Model card — v3
+# Model card — v4
 
 The release bundle's `reports/title_benchmark.json` and
 `reports/transition_benchmark.json` contain locked estimates, uncertainty
 intervals, paired baseline deltas, and descriptive slices. The committed source
-reports are versioned under `reports/locked/v3/`.
+reports are versioned under `reports/locked/v4/`.
 
 The machine-readable reports are the authoritative numerical evidence. This
 card documents their claim boundaries and methodology; it does not duplicate

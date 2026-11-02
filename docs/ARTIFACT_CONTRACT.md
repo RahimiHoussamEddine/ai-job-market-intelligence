@@ -4,6 +4,10 @@ Schema version 1 is a fail-closed release boundary. `manifest.json` declares
 every file; undeclared files, symlinks, unsafe paths, unknown logical names, and
 duplicate JSON keys are rejected.
 
+The locked-ranking Arrow contract checks exact ordered field names, types, and
+nullability. Non-semantic Parquet serializer metadata is ignored for this schema
+comparison; the complete file bytes remain bound by SHA-256.
+
 ## Required logical files
 
 | Logical name | Format | Purpose |
@@ -95,7 +99,7 @@ version publication lock, runs the complete loader—including report checks and
 smoke inference—against that stage, and only then renames the directory into
 place. An existing version is never overwritten, and a failed validation
 removes the stage without exposing a partial manifest. The release runner must
-therefore select a new artifact version rather than mutate `artifacts/v3`.
+therefore select a new artifact version rather than mutate `artifacts/v4`.
 Before publication, directories are normalized to mode `0755` and files to
 `0644`, so the immediately published local bundle is readable by the
 unprivileged container user when bind-mounted read-only.

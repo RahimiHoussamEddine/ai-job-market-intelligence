@@ -1,7 +1,7 @@
 # Preregistered experiment protocol
 
-Protocol version: 3.0
-Locked on: 2026-11-02, before v3 selection and locked evaluation
+Protocol version: 4.0
+Locked on: 2026-11-02, before v4 selection and locked evaluation
 
 ## Decision and claim boundary
 
@@ -200,3 +200,11 @@ weights for disabled components in the predeclared candidate grid. Protocol v3
 accepts finite non-negative component weights that sum to one and reruns all
 metric stages under the corrected artifact contract. The v2 results remain
 historical evidence and do not substitute for v3 results.
+
+V3's selection, confirmation, and locked-test outputs are also retained. Its
+bundle loader rejected the pandas footer metadata written by the locked-ranking
+Parquet producer even though the ordered fields, types, and nullability matched.
+Protocol v4 ignores non-semantic serializer metadata for schema comparison while
+retaining exact byte-hash validation, then reruns all metric stages under the
+corrected committed code. V2 and v3 metrics remain historical evidence and do
+not substitute for v4 results.
