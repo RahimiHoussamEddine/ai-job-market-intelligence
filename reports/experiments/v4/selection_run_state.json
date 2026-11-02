@@ -1,0 +1,27 @@
+{
+  "experiment_version": "v4",
+  "implementation_manifest_sha256": "420127e1bd15520f342391b346feb2881abcacfefec9299583dcf288b354493c",
+  "input_bindings_sha256": "bf7003e10ea3599f9091764c864c6dfed06d596589526edb12909333980b1042",
+  "intent_sha256": "03e21c7cf3b0d07cfd0751b40c06ec038d7af0b72a5fe131389ba8c523d951ea",
+  "preparation_sha256": "ad3e6918036391581c2261d3ee1ff7b9488302ec408d54b3ef7d5941f380ca74",
+  "query_binding": {
+    "role": "selection",
+    "title_query_count": 4506,
+    "title_query_ids_sha256": "d93b7b16c18e17c161d1a997b9641c2e267c2c880a371deb5125ffdb8fc453a4",
+    "transition_query_codes_sha256": "5affa9ef88e5986961ba02ce21a05a7261c817b5f04b56728e7b4f3249e83786",
+    "transition_query_count": 183
+  },
+  "repository_commit": "999bbbce0b4fd2c793cdc46bce31a73befba16c7",
+  "result": {
+    "selection_alias_queries.parquet": "91a2e877d48496ad11d1e5027e28748a7406c1604022dbc0539df94775a9e5be",
+    "selection_decision.json": "cf874480d3cd931f601fd30c05e951082cce1f40c49a1042ff7b70e0465f74db",
+    "selection_title_results.parquet": "f5cb6db1e04ee4e5979fee50d02eb876a7db21a64a3f84117b6bfb765e40151c",
+    "selection_title_target_ranks.parquet": "e80231276d3da562d36f577fb2fe7ae36e6daef0754896cd7d4901a5937b4dde",
+    "selection_transition_rankings.parquet": "f33bf388100cd293284d59bafd8b01cc30a6fa9069f4890538f9c0a93a13ae57",
+    "selection_transition_results.parquet": "08e2b074dcb7bae66959749a46f437fd2404ef867f2274d964419dd28305418f"
+  },
+  "schema_version": 1,
+  "stage": "selection",
+  "status": "complete",
+  "upstream": {}
+}
