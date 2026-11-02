@@ -9,6 +9,7 @@ data/raw
 data/processed
 reports/.staging
 artifacts/.staging
+artifacts/*
+!artifacts/.gitkeep
 __pycache__
 *.pyc
-

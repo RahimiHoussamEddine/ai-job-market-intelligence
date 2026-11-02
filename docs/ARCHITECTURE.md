@@ -48,13 +48,22 @@ cause a second model evaluation.
 The public serving bundle contains only occupation profiles, unsummed market
 context, observed skill ratings, a fitted free-text search index, precomputed
 transition neighbors with component explanations, stable clusters, and
-target-free smoke queries. It contains no relevance judgments, expected search
-targets, personal data, or query logs.
+target-free smoke queries. Job Zones retain the official O*NET 30.3 encoding
+without recoding: stored value 2 represents the redesigned combined Job Zone
+1–2 category (very little to some preparation), followed by 3, 4, and 5. The
+bundle contains no relevance judgments, expected search targets, personal data,
+or query logs.
 
 The manifest binds every file's digest, bytes, ordered schema/dtype, row count,
-sort/key contract, selected-candidate identifiers, source/config/split hashes,
-build commit, and evidence reports. The loader verifies paths and checksums
-before deserialization, then enforces relational and numerical invariants.
+sort/key contract, exact selected-candidate specs and fit-code digest,
+source/config/environment/split hashes, build commit, and evidence reports. A
+locked bundle includes exact safe copies of the target-free rankings, metrics,
+decision, fold/contracts, public source/processed manifests, evaluation
+universe, and implementation manifest. The loader rehashes and cross-links them
+before deserialization, then recomputes transition scores/ranks and enforces
+relational, numerical, and fitted-transformer semantic invariants.
+The complete schema and validation order are in
+[`ARTIFACT_CONTRACT.md`](ARTIFACT_CONTRACT.md).
 
 ## 4. Product boundary
 
@@ -66,4 +75,3 @@ scores remain technical ranking evidence—not percentages or outcomes.
 Deployment runs as an unprivileged user with a read-only offline artifact. A
 missing or invalid bundle yields a clear degraded health/setup state rather than
 falling back to sample data.
-

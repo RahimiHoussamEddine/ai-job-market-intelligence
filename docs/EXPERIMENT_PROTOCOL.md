@@ -53,8 +53,13 @@ base `XX-XXXX` SOC code and stratified by two-digit SOC major group with
 - fold 0: locked final test.
 
 The code-to-fold manifest is written and hashed before any metric is computed.
-All aliases for an occupation stay in its fold. Vocabulary, IDF, SVD, scalers,
-and normalization rules fit only on discovery occupations during selection.
+Alternate-title ambiguity is role-scoped for development so fold-zero aliases
+cannot remove selection or confirmation queries. For locked test, ambiguity is
+resolved across the full catalog first, then queries are restricted to fold 0;
+this matches the global search catalog without feeding test aliases into the
+indexed documents. All aliases for an occupation stay within its assigned
+role. Vocabulary, IDF, SVD, scalers, and normalization rules fit only on
+discovery occupations during selection.
 Locked-test occupations are excluded from the selection/confirmation candidate
 pool, so reciprocal relatedness edges cannot expose their judgments. After the
 champion and gate are frozen, the selected representation may be refit on
@@ -114,12 +119,20 @@ eligible.
 ## Model selection and uncertainty
 
 Candidates rank by the selection fold's primary metric. Candidates within one
-stratified query-bootstrap standard error of the leader use a fixed operational
-tie-break: fewer fitted components, smaller serialized size, lower latency, then
-lexicographic candidate ID. No test result can change that rule.
+stratified query-bootstrap standard error of the deployment-eligible leader use
+the fixed tie-break: fewer latent dimensions, smaller serialized artifact,
+lower deterministic operational cost, then lexicographic candidate ID. The cost
+is `score_cells * max(1, positive_weight_component_count) + lsa_dimensions *
+query_count`; measured latency is diagnostic only. The pure structured ablation
+is evaluated but ineligible for release because it cannot guarantee complete
+catalog coverage without imputing missing values. No test result can change
+these rules.
 
-The frozen champion is compared with the title lexical baseline on confirmation.
-If it underperforms, the baseline becomes the release model; no retuning occurs.
+The frozen title champion is compared with `title_word_char` on confirmation;
+the transition champion is compared with `transition_title_word_char`. If a
+champion underperforms its own baseline on the task's primary metric, that
+baseline becomes the release model; equality retains the champion. No retuning
+occurs.
 Final metrics use 2,000 paired query bootstrap replicates stratified by SOC major
 group. Report paired deltas against preregistered baselines and slices by SOC
 family, job zone, profile completeness, and source-rating recency where coverage
@@ -133,7 +146,9 @@ seeds. Selection uses pairwise adjusted-Rand stability after 80% occupation
 bootstrap refits, then original-space silhouette, then smaller `k`. PCA is only
 a two-dimensional display. Cluster labels are deterministic top-term summaries,
 not generated claims. Adjusted mutual information against SOC major groups is
-descriptive context only.
+descriptive context only. If the selected transition candidate has no LSA
+component, a 128-dimensional work-profile LSA is fit on non-test occupations
+for clustering; its vocabulary and SVD never use locked-test documents to fit.
 
 ## BLS overlay and Pareto decisions
 
@@ -156,16 +171,19 @@ Before the test command, commit and hash source/config contracts, acquisition
 manifests, the fold manifest, feature schemas, candidate grid, metrics,
 selection rule, environment lock, and report schemas. The locked command must:
 
-1. require a clean, tracked Git commit;
+1. require a clean, tracked Git commit and bind code, config, data, query
+   universes, and the development decision to it;
 2. verify every input checksum and the frozen development decision;
 3. write row-level rankings atomically before aggregate metrics;
 4. hash rankings and persist the hash in all downstream provenance;
-5. prohibit a second test run unless an explicit reporting-only resume validates
-   identical ranking bytes;
+5. prohibit a second test run. A reporting-only resume is allowed only from the
+   same exact clean Git commit and after it validates identical immutable
+   ranking bytes;
 6. build a target-free serving smoke fixture and checksum-addressed artifact;
 7. label every result by split and prevent development metrics appearing as
    locked evidence.
 
 Any change to data, features, candidates, judgments, thresholds, or metric code
-requires a new experiment version. Reporting-only repairs may resume from the
-immutable ranking hash and must record both the original and repair commits.
+requires a new experiment version. Reporting does not run from a descendant
+commit: a reporting defect requires a new experiment version and a fresh locked
+evaluation under its own committed protocol.

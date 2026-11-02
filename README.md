@@ -56,3 +56,39 @@ download models at request time.
 Source data attribution and modification disclosures are in
 [`NOTICE.md`](NOTICE.md). Software is MIT licensed.
 
+## Serving the frozen release
+
+All three interfaces use one checksum-validated, immutable artifact. Nothing is
+downloaded or fitted at request time, and a missing artifact produces an
+explicit unavailable state rather than sample data.
+
+```bash
+make install
+make data-plan      # inspect the acquisition plan without network or writes
+make data-download  # the only network-capable Make target
+make data-build
+make data-audit
+make quality
+make experiment-prepare
+make experiment-select
+make experiment-confirm
+make locked-rank
+make locked-report
+make package-release  # only after the one-shot locked report is complete
+make verify-artifact
+make api      # FastAPI on 127.0.0.1:8000
+make app      # Streamlit on 127.0.0.1:8501
+```
+
+These stateful release stages use the tracked, public
+`reports/source_manifest.json` as their canonical source-provenance input and
+must be run in the displayed order. CI validates code and committed release
+artifacts but never starts an experiment or locked run.
+
+The CLI includes `verify-artifact`, search, occupation, neighbors, skill
+comparison, frontier, cluster, and evidence views. The search API accepts strict
+JSON via `POST /v1/search`; the health endpoint is `GET /health?deep=true`.
+Container hardening and artifact-mount instructions are documented in
+[`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md). The exact file, schema, atomic
+publication, evidence, and deserialization boundary is documented in
+[`docs/ARTIFACT_CONTRACT.md`](docs/ARTIFACT_CONTRACT.md).

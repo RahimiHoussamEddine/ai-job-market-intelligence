@@ -1,0 +1,75 @@
+services:
+  api:
+    build:
+      context: .
+      target: runtime
+    image: ai-job-market-intelligence:local
+    environment:
+      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v1
+    volumes:
+      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v1}:/opt/artifacts/v1:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    init: true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).read()"
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  dashboard:
+    build:
+      context: .
+      target: runtime
+    image: ai-job-market-intelligence:local
+    depends_on:
+      api:
+        condition: service_healthy
+    command:
+      - streamlit
+      - run
+      - app/main.py
+      - --server.address=0.0.0.0
+      - --server.port=8501
+      - --server.headless=true
+      - --browser.gatherUsageStats=false
+    environment:
+      JOB_INTELLIGENCE_ARTIFACT_DIR: /opt/artifacts/v1
+    volumes:
+      - ${JOB_INTELLIGENCE_ARTIFACT_DIR:-./artifacts/v1}:/opt/artifacts/v1:ro
+    ports:
+      - "127.0.0.1:8501:8501"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    init: true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=3).read()"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+networks:
+  default:
+    internal: true

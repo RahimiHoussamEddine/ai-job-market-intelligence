@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install the exact environment lock
+        run: |
+          python -m pip install --requirement requirements.lock
+          python -m pip install --no-deps --no-build-isolation --editable .
+          python -m pip check
+      - name: Lint and formatting gate
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Unit and boundary tests
+        run: PYTHONWARNINGS=error pytest -W error --cov=job_market_intelligence --cov=api --cov=app --cov-report=term-missing --cov-fail-under=70
+      - name: Validate release artifact or its explicit pre-release absence
+        run: make artifact-gate RUN=python RUFF=ruff
+
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Compose declaration
+        run: docker compose config --quiet
+      - name: Build the non-root serving image
+        run: docker build --target runtime --tag ai-job-market-intelligence:local .
+      - name: Assert the image never defaults to root
+        run: test "$(docker image inspect ai-job-market-intelligence:local --format '{{.Config.User}}')" = app
+      - name: Exercise the mounted release artifact and both health checks
+        run: |
+          if test ! -f artifacts/v1/manifest.json; then
+            if test "${GITHUB_REF_TYPE}" = tag; then
+              echo "Release tags require a committed artifacts/v1 bundle."
+              exit 1
+            fi
+            set +e
+            docker run --rm --read-only --network none --cap-drop ALL \
+              --security-opt no-new-privileges \
+              --volume "${PWD}/artifacts:/opt/artifacts:ro" \
+              --entrypoint job-intelligence ai-job-market-intelligence:local \
+              --artifact-dir /opt/artifacts/v1 verify-artifact
+            status=$?
+            set -e
+            test "$status" -eq 3
+            exit 0
+          fi
+
+          docker run --rm --read-only --network none --cap-drop ALL \
+            --security-opt no-new-privileges \
+            --volume "${PWD}/artifacts/v1:/opt/artifacts/v1:ro" \
+            --entrypoint job-intelligence ai-job-market-intelligence:local \
+            --artifact-dir /opt/artifacts/v1 verify-artifact
+
+          trap 'docker compose down --volumes' EXIT
+          docker compose up --detach --no-build --wait --wait-timeout 180
+          curl --fail --silent --show-error "http://127.0.0.1:8000/health?deep=true"
+          curl --fail --silent --show-error "http://127.0.0.1:8501/_stcore/health"
+
+          api_id="$(docker compose ps --quiet api)"
+          dashboard_id="$(docker compose ps --quiet dashboard)"
+          test "$(docker inspect "$api_id" --format '{{.Config.User}}')" = app
+          test "$(docker inspect "$dashboard_id" --format '{{.Config.User}}')" = app
+          test "$(docker inspect "$api_id" --format '{{.HostConfig.ReadonlyRootfs}}')" = true
+          test "$(docker inspect "$dashboard_id" --format '{{.HostConfig.ReadonlyRootfs}}')" = true
+          test "$(docker inspect "$api_id" --format '{{range .Mounts}}{{if eq .Destination "/opt/artifacts/v1"}}{{.RW}}{{end}}{{end}}')" = false
+          test "$(docker inspect "$dashboard_id" --format '{{range .Mounts}}{{if eq .Destination "/opt/artifacts/v1"}}{{.RW}}{{end}}{{end}}')" = false
