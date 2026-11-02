@@ -1,0 +1,20 @@
+{
+  "artifact_version": "v4",
+  "evidence_status": "locked",
+  "payload": {
+    "seeds": [
+      20260814,
+      20260815,
+      20260816,
+      20260817,
+      20260818
+    ],
+    "selected_k": 18,
+    "silhouette": 0.1723796108974589,
+    "stability_estimate": 0.5120751372831751,
+    "stability_metric": "pairwise_adjusted_rand_stability"
+  },
+  "report_type": "cluster_stability",
+  "schema_version": 1,
+  "split": "release_context"
+}

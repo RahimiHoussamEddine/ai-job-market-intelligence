@@ -1,0 +1,1286 @@
+{
+  "artifact_version": "v4",
+  "audit": {
+    "issues": [],
+    "ok": true,
+    "table_rows": {
+      "aliases": 57543,
+      "bls_market": 832,
+      "occupation_market": 997,
+      "occupation_profiles": 1016,
+      "occupations": 1016,
+      "onet_bls_crosswalk": 997,
+      "related_qrels": 18460,
+      "skill_ratings": 103704,
+      "tasks": 18796
+    }
+  },
+  "build_environment": {
+    "duckdb": "1.5.5",
+    "numpy": "2.5.2",
+    "pandas": "2.3.3",
+    "pyarrow": "24.0.0",
+    "python": "3.12.3"
+  },
+  "config_file_sha256": "52e17ae2469eb95a48e8f3257b9af6d80dd30eb381de1bbc83d7078c98032017",
+  "config_semantic_sha256": "63cf196dee629aa0ac27bdd959020aaa07fc2c8ff4d98e0fc421a74e69f1fdea",
+  "manifest_version": 1,
+  "project_name": "ai-job-market-intelligence",
+  "snapshot_date": "2026-08-21",
+  "snapshot_id": "v4",
+  "source_manifest_sha256": "fde3026517dc89ec427a01aaa16eaf6c31805cee6a63427671972c6d34a4a7ec",
+  "source_pins": [
+    {
+      "byte_count": 268030,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 1016,
+      "schema_fingerprint": "168906f34cd2f89203ea3ee7ed16987b49f981194163a01796742c8c2e50aa8b",
+      "sha256": "a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02",
+      "source_id": "onet.occupation_data"
+    },
+    {
+      "byte_count": 4769310,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 57543,
+      "schema_fingerprint": "e7cd0d976e744258c25e01cded68aeaf418653cc4e8ce81cf33d37dd08430bf9",
+      "sha256": "db3ac1f2519d8e59df9c727e4eb9cc8096bd196f111284f908be1758b267dbc2",
+      "source_id": "onet.job_titles"
+    },
+    {
+      "byte_count": 3446784,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 18796,
+      "schema_fingerprint": "ae5aa50ce7e67adb92710d52aa0412f8f28af09945c6d157b183306d9d3b1fb5",
+      "sha256": "6462c5fef4e2b21ae2f1b85e5c3d6711ba5bef79e8c6091da48c1a26e9983a75",
+      "source_id": "onet.task_statements"
+    },
+    {
+      "byte_count": 5973523,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 44700,
+      "schema_fingerprint": "b01e422271a73422baaa2c607a8b202e0c6be04c4fd5186cbe250e2302cfc281",
+      "sha256": "23985fa24e0197067c02b3f062f0520839ef15a8980b93518bae68eeb041a841",
+      "source_id": "onet.transferable_skills"
+    },
+    {
+      "byte_count": 7887757,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 59004,
+      "schema_fingerprint": "b01e422271a73422baaa2c607a8b202e0c6be04c4fd5186cbe250e2302cfc281",
+      "sha256": "ec5cafa88466ae350fdd51eefc3c63ff1cb7765af4c38381a613882a59238db1",
+      "source_id": "onet.knowledge"
+    },
+    {
+      "byte_count": 60062,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 923,
+      "schema_fingerprint": "6b37109804a82268342de3708821d22492a98169040315d181b8bd1149cc5630",
+      "sha256": "075782b37d63dfa37d8afa6dea975388350baf2f4d1906e39b66766a05d72ba8",
+      "source_id": "onet.job_zones"
+    },
+    {
+      "byte_count": 2051148,
+      "parser_name": "pandas.read_csv",
+      "parser_version": "pandas==2.3.3",
+      "row_count": 18460,
+      "schema_fingerprint": "3f393af479d36d590c859401c648f484f789701b75e0e72b2e03c45fd8ebf33e",
+      "sha256": "fc2a719a21dbd3805ddfb6d510c013c9e0c366b46273701b88c683a50ef3fe6b",
+      "source_id": "onet.related_occupations"
+    },
+    {
+      "byte_count": 407365,
+      "parser_name": "pandas.read_excel[openpyxl]",
+      "parser_version": "pandas==2.3.3;openpyxl==3.1.5",
+      "row_count": 1113,
+      "schema_fingerprint": "6c13ff8d52de927d47b82fb44a5e7f462ddc00cdeceaaf3b25180752c54a516b",
+      "sha256": "bebf85e71d3a274eb0531077a9fe1bbcd1167e0a14c59e33071f61cbda9d3a57",
+      "source_id": "bls.occupation"
+    },
+    {
+      "byte_count": 119300,
+      "parser_name": "pandas.read_excel[openpyxl]",
+      "parser_version": "pandas==2.3.3;openpyxl==3.1.5",
+      "row_count": 997,
+      "schema_fingerprint": "cb8a96d7077c80986b4b1303f92c9a1e4c9a678aa3bec612636aa45cc0fa017b",
+      "sha256": "faeff84413dc4828f1a6b3154012a34d804b2e2067477ab6895eb62fd4b9bc06",
+      "source_id": "bls.crosswalk"
+    }
+  ],
+  "tables": [
+    {
+      "columns": [
+        "onet_soc_code",
+        "base_soc_code",
+        "soc_major_group",
+        "canonical_title",
+        "description",
+        "job_zone",
+        "job_zone_date",
+        "job_zone_domain_source"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "base_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "soc_major_group",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "canonical_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "job_zone",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "job_zone_date",
+          "nullable": true,
+          "type": "DATE"
+        },
+        {
+          "name": "job_zone_domain_source",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "occupations",
+      "pandas_schema_sha256": "5040fd4874cda8abd63ca900f3b84ef443cace72245534fed5a9b722d899747b",
+      "parquet_byte_count": 89858,
+      "parquet_path": "tables/occupations.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "base_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "soc_major_group",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "canonical_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "job_zone",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "job_zone_date",
+          "nullable": true,
+          "type": "date32[day]"
+        },
+        {
+          "name": "job_zone_domain_source",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "2779159f5b1d3a032adb0aca6c0937b756c257554f542b84461f068908be76fb",
+      "primary_key": [
+        "onet_soc_code"
+      ],
+      "row_count": 1016,
+      "semantic_sha256": "9758379e5369cdb87a1df49ea90a14ae6860d2f8ccd00ac2eb984103c2ccf44b",
+      "sort_order": [
+        "onet_soc_code"
+      ]
+    },
+    {
+      "columns": [
+        "alias_id",
+        "onet_soc_code",
+        "job_title",
+        "normalized_job_title",
+        "short_title",
+        "sources"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "alias_id",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "job_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "normalized_job_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "aliases",
+      "pandas_schema_sha256": "c18b0633db8c1ce03ca8d0117ac8cf9e80c4b51cf1e5ade109291789fef12f5d",
+      "parquet_byte_count": 2876278,
+      "parquet_path": "tables/aliases.parquet",
+      "parquet_schema": [
+        {
+          "name": "alias_id",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "job_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "normalized_job_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "short_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "sources",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "5e3e0178ed808036e481fd591a334c52c358903001cf7a7ba92fa5c69cd33b53",
+      "primary_key": [
+        "alias_id"
+      ],
+      "row_count": 57543,
+      "semantic_sha256": "dacdc921dd70ddda1e646b69d20c48bd17e824a962380078c7bf68231869fcfe",
+      "sort_order": [
+        "onet_soc_code",
+        "normalized_job_title",
+        "job_title",
+        "alias_id"
+      ]
+    },
+    {
+      "columns": [
+        "onet_soc_code",
+        "task_id",
+        "task",
+        "normalized_task",
+        "task_type",
+        "incumbents_responding",
+        "task_date",
+        "domain_source"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "task_id",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "task",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "normalized_task",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "task_type",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "incumbents_responding",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "task_date",
+          "nullable": true,
+          "type": "DATE"
+        },
+        {
+          "name": "domain_source",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "tasks",
+      "pandas_schema_sha256": "f96fa358ed83f68c6182a82b193fbf58d5f4169a501e2459d85174cf1c549966",
+      "parquet_byte_count": 1131857,
+      "parquet_path": "tables/tasks.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "task_id",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "task",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "normalized_task",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "task_type",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "incumbents_responding",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "task_date",
+          "nullable": true,
+          "type": "date32[day]"
+        },
+        {
+          "name": "domain_source",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "484472c5c6ca9ef3644126fa42850400fa3c9257fd434341d01241dbd20f65be",
+      "primary_key": [
+        "onet_soc_code",
+        "task_id"
+      ],
+      "row_count": 18796,
+      "semantic_sha256": "a2ef649c29842acf82f39a266134ab114a645e4007e7922ebf1afa8089064d38",
+      "sort_order": [
+        "onet_soc_code",
+        "task_id"
+      ]
+    },
+    {
+      "columns": [
+        "onet_soc_code",
+        "feature_family",
+        "element_id",
+        "element_name",
+        "scale_id",
+        "scale_name",
+        "raw_value",
+        "sample_size",
+        "standard_error",
+        "lower_ci_bound",
+        "upper_ci_bound",
+        "normalized_value",
+        "observed",
+        "recommend_suppress",
+        "not_relevant",
+        "rating_date",
+        "domain_source"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "feature_family",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "element_id",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "element_name",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scale_id",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scale_name",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "raw_value",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sample_size",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "standard_error",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lower_ci_bound",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "upper_ci_bound",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "normalized_value",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "observed",
+          "nullable": true,
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "recommend_suppress",
+          "nullable": true,
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "not_relevant",
+          "nullable": true,
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "rating_date",
+          "nullable": true,
+          "type": "DATE"
+        },
+        {
+          "name": "domain_source",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "skill_ratings",
+      "pandas_schema_sha256": "07687eca840d9e937d67cb5084c5c8f93a65a24fcd79f0b427d7678b6a34cd7f",
+      "parquet_byte_count": 879643,
+      "parquet_path": "tables/skill_ratings.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "feature_family",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "element_id",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "element_name",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "scale_id",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "scale_name",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "raw_value",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "sample_size",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "standard_error",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "lower_ci_bound",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "upper_ci_bound",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "normalized_value",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "observed",
+          "nullable": true,
+          "type": "bool"
+        },
+        {
+          "name": "recommend_suppress",
+          "nullable": true,
+          "type": "bool"
+        },
+        {
+          "name": "not_relevant",
+          "nullable": true,
+          "type": "bool"
+        },
+        {
+          "name": "rating_date",
+          "nullable": true,
+          "type": "date32[day]"
+        },
+        {
+          "name": "domain_source",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "92686404df55633e0a426cb9f4eec596afdfd49bad3537963f49e26dcafe4c79",
+      "primary_key": [
+        "onet_soc_code",
+        "feature_family",
+        "element_id",
+        "scale_id"
+      ],
+      "row_count": 103704,
+      "semantic_sha256": "8e149eddad951c9cf05d8a2fa80acdea1eb80748018e76538f7e0884f2739475",
+      "sort_order": [
+        "onet_soc_code",
+        "feature_family",
+        "element_id",
+        "scale_id"
+      ]
+    },
+    {
+      "columns": [
+        "query_onet_soc_code",
+        "candidate_onet_soc_code",
+        "relatedness_tier",
+        "relatedness_index",
+        "relevance_grade"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "query_onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "candidate_onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "relatedness_tier",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "relatedness_index",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "relevance_grade",
+          "nullable": true,
+          "type": "BIGINT"
+        }
+      ],
+      "name": "related_qrels",
+      "pandas_schema_sha256": "51a2a6286a4e7393c175e33ff1a4343ac4b4fc3796f385f84d43b8edb3aafb46",
+      "parquet_byte_count": 35711,
+      "parquet_path": "tables/related_qrels.parquet",
+      "parquet_schema": [
+        {
+          "name": "query_onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "candidate_onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "relatedness_tier",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "relatedness_index",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "relevance_grade",
+          "nullable": true,
+          "type": "int64"
+        }
+      ],
+      "parquet_sha256": "9e1904a48a3acb74075988e8f3ce51d8f978ed0f655a75468d4ab310c77eaedb",
+      "primary_key": [
+        "query_onet_soc_code",
+        "candidate_onet_soc_code"
+      ],
+      "row_count": 18460,
+      "semantic_sha256": "ea04e0f01bca04abd623e93b500688d84cf31cc8873df0c788ca59de94b5c833",
+      "sort_order": [
+        "query_onet_soc_code",
+        "relatedness_index",
+        "candidate_onet_soc_code"
+      ]
+    },
+    {
+      "columns": [
+        "nem_code",
+        "nem_title",
+        "occupation_type",
+        "employment_2024",
+        "employment_2034",
+        "employment_change_2024_34",
+        "employment_change_pct",
+        "annual_openings_2024_34",
+        "median_annual_wage_2024",
+        "typical_education",
+        "work_experience",
+        "on_the_job_training"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occupation_type",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "employment_2024",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_2034",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_change_2024_34",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_change_pct",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "annual_openings_2024_34",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "median_annual_wage_2024",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "typical_education",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "work_experience",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "on_the_job_training",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "bls_market",
+      "pandas_schema_sha256": "510db5fe14749c69e589525a33542e2d6002a082f3d9516695ed6e92bd0553a3",
+      "parquet_byte_count": 28231,
+      "parquet_path": "tables/bls_market.parquet",
+      "parquet_schema": [
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "occupation_type",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "employment_2024",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_2034",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_change_2024_34",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_change_pct",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "annual_openings_2024_34",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "median_annual_wage_2024",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "typical_education",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "work_experience",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "on_the_job_training",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "3f745149871b175d6e551eeaf1bc837529868621d98723cb6cbb0a52be5a0335",
+      "primary_key": [
+        "nem_code"
+      ],
+      "row_count": 832,
+      "semantic_sha256": "62ed2f54586db9c704e360aedd0c338b107f04343dbd1f460428187c0fa2c629",
+      "sort_order": [
+        "nem_code"
+      ]
+    },
+    {
+      "columns": [
+        "onet_soc_code",
+        "onet_soc_title",
+        "nem_code",
+        "nem_title"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "onet_soc_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "onet_bls_crosswalk",
+      "pandas_schema_sha256": "cb8a96d7077c80986b4b1303f92c9a1e4c9a678aa3bec612636aa45cc0fa017b",
+      "parquet_byte_count": 27320,
+      "parquet_path": "tables/onet_bls_crosswalk.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "onet_soc_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "c9fad3c91245ec8f779143299085fc0ad148313b704176d106fff84bf151b3f8",
+      "primary_key": [
+        "onet_soc_code",
+        "nem_code"
+      ],
+      "row_count": 997,
+      "semantic_sha256": "5a76970bba09ac7852804382067b1df3b3f5703b59998d03abe9e66e12488f16",
+      "sort_order": [
+        "onet_soc_code",
+        "nem_code"
+      ]
+    },
+    {
+      "columns": [
+        "onet_soc_code",
+        "onet_soc_title",
+        "nem_code",
+        "nem_title",
+        "occupation_type",
+        "employment_2024",
+        "employment_2034",
+        "employment_change_2024_34",
+        "employment_change_pct",
+        "annual_openings_2024_34",
+        "median_annual_wage_2024",
+        "typical_education",
+        "work_experience",
+        "on_the_job_training"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "onet_soc_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occupation_type",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "employment_2024",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_2034",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_change_2024_34",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "employment_change_pct",
+          "nullable": true,
+          "type": "DOUBLE"
+        },
+        {
+          "name": "annual_openings_2024_34",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "median_annual_wage_2024",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "typical_education",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "work_experience",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "on_the_job_training",
+          "nullable": true,
+          "type": "VARCHAR"
+        }
+      ],
+      "name": "occupation_market",
+      "pandas_schema_sha256": "38b14d3f8b0f82b2c72cad6bf346aa1b1cf1b40238d7e38032931129c20ab605",
+      "parquet_byte_count": 44028,
+      "parquet_path": "tables/occupation_market.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "onet_soc_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "nem_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "nem_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "occupation_type",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "employment_2024",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_2034",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_change_2024_34",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "employment_change_pct",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "annual_openings_2024_34",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "median_annual_wage_2024",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "typical_education",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "work_experience",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "on_the_job_training",
+          "nullable": true,
+          "type": "string"
+        }
+      ],
+      "parquet_sha256": "1822d327a380f324312dba649b9b56eeee7fd609393c0ef44f99f2f00a7b3942",
+      "primary_key": [
+        "onet_soc_code",
+        "nem_code"
+      ],
+      "row_count": 997,
+      "semantic_sha256": "3c8cab73b20c97503fd35495c3bfec4dbb1b5cc8d5b83777dd63f76ed872590c",
+      "sort_order": [
+        "onet_soc_code",
+        "nem_code"
+      ]
+    },
+    {
+      "columns": [
+        "onet_soc_code",
+        "base_soc_code",
+        "soc_major_group",
+        "canonical_title",
+        "description",
+        "job_zone",
+        "job_zone_date",
+        "job_zone_domain_source",
+        "title_text",
+        "work_text",
+        "core_task_count",
+        "alias_count",
+        "structured_observed_count"
+      ],
+      "duckdb_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "base_soc_code",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "soc_major_group",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "canonical_title",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "job_zone",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "job_zone_date",
+          "nullable": true,
+          "type": "DATE"
+        },
+        {
+          "name": "job_zone_domain_source",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "title_text",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "work_text",
+          "nullable": true,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "core_task_count",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "alias_count",
+          "nullable": true,
+          "type": "BIGINT"
+        },
+        {
+          "name": "structured_observed_count",
+          "nullable": true,
+          "type": "BIGINT"
+        }
+      ],
+      "name": "occupation_profiles",
+      "pandas_schema_sha256": "f9624fd7b3fee28037e410048382689eb14544a12925b5c5b4a7d62d90ce9ecb",
+      "parquet_byte_count": 847375,
+      "parquet_path": "tables/occupation_profiles.parquet",
+      "parquet_schema": [
+        {
+          "name": "onet_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "base_soc_code",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "soc_major_group",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "canonical_title",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "job_zone",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "job_zone_date",
+          "nullable": true,
+          "type": "date32[day]"
+        },
+        {
+          "name": "job_zone_domain_source",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "title_text",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "work_text",
+          "nullable": true,
+          "type": "string"
+        },
+        {
+          "name": "core_task_count",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "alias_count",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "structured_observed_count",
+          "nullable": true,
+          "type": "int64"
+        }
+      ],
+      "parquet_sha256": "4806fbd5b05a2b8dff81b7ec2468390dd35fe29557f82234e1d27bc8456c3d07",
+      "primary_key": [
+        "onet_soc_code"
+      ],
+      "row_count": 1016,
+      "semantic_sha256": "b30e5cb87eb89ebf6a0a8a128a9a45100dfba287eafa9f7741e79a5c50cabedc",
+      "sort_order": [
+        "onet_soc_code"
+      ]
+    }
+  ],
+  "warehouse": {
+    "byte_count": 14430208,
+    "path": "warehouse.duckdb",
+    "sha256": "b87b5bb212849c93ed0ae0edc57fca32b33808f5c3759bc5d911fbb4ef09cd15"
+  }
+}

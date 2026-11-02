@@ -1,0 +1,16 @@
+{
+  "artifact_version": "v4",
+  "evidence_status": "locked",
+  "payload": {
+    "items": [
+      "O*NET Related Occupations are evaluation judgments, not independent semantic truth.",
+      "BLS national projections are contextual scenarios, not live vacancies or forecasts for individuals.",
+      "Structured similarity is unavailable where occupations lack the minimum jointly observed ratings.",
+      "Clusters are exploratory summaries and do not define occupational quality or career suitability.",
+      "Pareto frontiers preserve shared NEM rows without summing duplicated national estimates."
+    ]
+  },
+  "report_type": "limitations",
+  "schema_version": 1,
+  "split": "release_context"
+}

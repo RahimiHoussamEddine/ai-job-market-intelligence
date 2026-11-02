@@ -1,0 +1,25 @@
+{
+  "artifact_version": "v4",
+  "evidence_status": "locked",
+  "payload": {
+    "counts": {
+      "crosswalk_rows": 997,
+      "nem_occupation_count": 832,
+      "occupation_count": 1016,
+      "occupations_with_bls": 997
+    },
+    "notes": [
+      "Coverage is measured at serving-table grain.",
+      "Official O*NET 30.3 Job Zone labels are preserved as 2, 3, 4, and 5.",
+      "Pair-level structured scores additionally require a defined transferable-skill development distance."
+    ],
+    "rates": {
+      "bls_coverage": 0.9812992125984252,
+      "job_zone_coverage": 0.9084645669291339,
+      "rated_occupation_coverage": 0.8799212598425197
+    }
+  },
+  "report_type": "data_coverage",
+  "schema_version": 1,
+  "split": "release_context"
+}

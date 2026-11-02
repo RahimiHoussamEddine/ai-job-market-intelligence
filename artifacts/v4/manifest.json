@@ -1,0 +1,605 @@
+{
+  "artifact_version": "v4",
+  "evidence": {
+    "report_files": {
+      "cluster_stability": "report_cluster_stability",
+      "data_coverage": "report_data_coverage",
+      "limitations": "report_limitations",
+      "title_benchmark": "report_title_benchmark",
+      "transition_benchmark": "report_transition_benchmark"
+    },
+    "status": "locked"
+  },
+  "files": {
+    "candidate_manifest": {
+      "bytes": 21945,
+      "format": "json",
+      "path": "lineage/candidate_manifest.json",
+      "sha256": "2ca9adcee16c0ddd537d7e45ef2822c5f36ffe978f501331563da0d90c4a2e47"
+    },
+    "clusters": {
+      "bytes": 21187,
+      "columns": [
+        {
+          "dtype": "string",
+          "name": "onet_soc_code",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "cluster_id",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "cluster_label",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "pca_x",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "pca_y",
+          "nullable": false
+        }
+      ],
+      "format": "parquet",
+      "path": "clusters.parquet",
+      "primary_key": [
+        "onet_soc_code"
+      ],
+      "rows": 1016,
+      "sha256": "f9ef3c445d1e6132421f9da832181f600363ac74e5ee93f6f85b1ed7eb4bfdc4",
+      "sort_by": [
+        "onet_soc_code"
+      ]
+    },
+    "development_decision": {
+      "bytes": 17232,
+      "format": "json",
+      "path": "lineage/development_decision.json",
+      "sha256": "4d960b3bf4d5434147344f842f72b2d664e9f2f1bb4b138bdeed60002ab251aa"
+    },
+    "evaluation_universe": {
+      "bytes": 1030151,
+      "format": "json",
+      "path": "lineage/evaluation_universe.json",
+      "sha256": "62dff404e1dc8d6b8b9854bb368f973dbf22359e1e0eff2c5f6cb4774dfabe27"
+    },
+    "feature_manifest": {
+      "bytes": 5516,
+      "format": "json",
+      "path": "lineage/feature_manifest.json",
+      "sha256": "4103779a227418bedf15406ace6bf043bac2d709ce7766533113a80942d3e663"
+    },
+    "fold_digest": {
+      "bytes": 135,
+      "format": "json",
+      "path": "lineage/fold_digest.json",
+      "sha256": "becbe507ac628222a30fd3c7427971e1311356a9cf66307674c804a6cfd12d7b"
+    },
+    "fold_manifest": {
+      "bytes": 66741,
+      "format": "csv",
+      "path": "lineage/fold_manifest.csv",
+      "sha256": "0779655aace9750158353b72e08a8d65a089c778ea909c7fb130c2043f653a7d"
+    },
+    "implementation_manifest": {
+      "bytes": 6482,
+      "format": "json",
+      "path": "lineage/implementation_manifest.json",
+      "sha256": "420127e1bd15520f342391b346feb2881abcacfefec9299583dcf288b354493c"
+    },
+    "locked_metrics": {
+      "bytes": 23486,
+      "format": "json",
+      "path": "lineage/locked_metrics.json",
+      "sha256": "ade5086fa62af56e1451051d4a72314bf91b1b75af2c510f2eb19fcf39d46eae"
+    },
+    "locked_rankings": {
+      "bytes": 455103,
+      "format": "parquet",
+      "path": "lineage/locked_rankings.parquet",
+      "sha256": "ef657d301a4565b25ed6f22b801797a1fb4253602f4ae4c5646ca2f503fd7494"
+    },
+    "metric_contract": {
+      "bytes": 1371,
+      "format": "json",
+      "path": "lineage/metric_contract.json",
+      "sha256": "a56124e669621819806f04614dfb0e0e417db43cb399b44c68fe803c419197ed"
+    },
+    "neighbors": {
+      "bytes": 9755558,
+      "columns": [
+        {
+          "dtype": "string",
+          "name": "query_code",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "destination_code",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "rank",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "total_score",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "lexical_score",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "lsa_score",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "structured_score",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "development_distance",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "explanation",
+          "nullable": false
+        }
+      ],
+      "format": "parquet",
+      "path": "neighbors.parquet",
+      "primary_key": [
+        "query_code",
+        "rank"
+      ],
+      "rows": 254000,
+      "sha256": "3692dc1e93f4b4665496d17cff072a4f21e92cef47fadb693648c771b322370c",
+      "sort_by": [
+        "query_code",
+        "rank"
+      ]
+    },
+    "occupation_market": {
+      "bytes": 22239,
+      "columns": [
+        {
+          "dtype": "string",
+          "name": "onet_soc_code",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "nem_code",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "employment_2024",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "employment_2034",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "employment_change_2024_34",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "employment_change_pct",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "annual_openings_2024_34",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "median_annual_wage_2024",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "typical_education",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "work_experience",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "on_the_job_training",
+          "nullable": true
+        }
+      ],
+      "format": "parquet",
+      "path": "occupation_market.parquet",
+      "primary_key": [
+        "onet_soc_code",
+        "nem_code"
+      ],
+      "rows": 997,
+      "sha256": "45696c846dcdcd8468dc13fed3b15af2c3fe86a19ac13dede232db4011ddd1c5",
+      "sort_by": [
+        "onet_soc_code",
+        "nem_code"
+      ]
+    },
+    "occupations": {
+      "bytes": 915527,
+      "columns": [
+        {
+          "dtype": "string",
+          "name": "onet_soc_code",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "base_soc_code",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "soc_major_group",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "canonical_title",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "description",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "job_zone",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "title_text",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "work_text",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "core_task_count",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "alias_count",
+          "nullable": false
+        },
+        {
+          "dtype": "int64",
+          "name": "structured_observed_count",
+          "nullable": false
+        }
+      ],
+      "format": "parquet",
+      "path": "occupations.parquet",
+      "primary_key": [
+        "onet_soc_code"
+      ],
+      "rows": 1016,
+      "sha256": "abb9aead400069720e74f53aea95f728d762a87175e728a4c23b0daa3648b6e2",
+      "sort_by": [
+        "onet_soc_code"
+      ]
+    },
+    "processed_manifest": {
+      "bytes": 32541,
+      "format": "json",
+      "path": "lineage/processed_manifest.json",
+      "sha256": "fce571c18a1669430142d930875e8fcd8c90960a7894daebf7eb0d1f2972d641"
+    },
+    "report_cluster_stability": {
+      "bytes": 439,
+      "format": "json",
+      "path": "reports/cluster_stability.json",
+      "schema_version": 1,
+      "sha256": "6b8937e95969b76c4e2c9746c821d8d4d7a5c573fd9d04089804750dc4ee98c8"
+    },
+    "report_data_coverage": {
+      "bytes": 749,
+      "format": "json",
+      "path": "reports/data_coverage.json",
+      "schema_version": 1,
+      "sha256": "a4db5bf56b8d3c44509dd0220bf88822f0e579284a1d159ea68a55630f34018b"
+    },
+    "report_limitations": {
+      "bytes": 700,
+      "format": "json",
+      "path": "reports/limitations.json",
+      "schema_version": 1,
+      "sha256": "b78be32a066afbf50c3ffb77ff59d26110b196cec2bd5d21da0462e3b3261f2e"
+    },
+    "report_title_benchmark": {
+      "bytes": 10470,
+      "format": "json",
+      "path": "reports/title_benchmark.json",
+      "schema_version": 1,
+      "sha256": "b30b3eed51b57f10295a57bdaca910f85bcbdec546d0437289d2c1858d4dba5d"
+    },
+    "report_transition_benchmark": {
+      "bytes": 11379,
+      "format": "json",
+      "path": "reports/transition_benchmark.json",
+      "schema_version": 1,
+      "sha256": "d8e443049fdf3f0d34cdc000abf5699623e7fc6891fc4b28639751def606a4ac"
+    },
+    "search_catalog": {
+      "bytes": 3861,
+      "columns": [
+        {
+          "dtype": "int64",
+          "name": "row_index",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "onet_soc_code",
+          "nullable": false
+        }
+      ],
+      "format": "parquet",
+      "path": "search_catalog.parquet",
+      "primary_key": [
+        "row_index"
+      ],
+      "rows": 1016,
+      "sha256": "60894d9400777028fda3914dc747c3d38404e07a9471a817f04262945aa2112e",
+      "sort_by": [
+        "row_index"
+      ]
+    },
+    "skill_ratings": {
+      "bytes": 1310271,
+      "columns": [
+        {
+          "dtype": "string",
+          "name": "onet_soc_code",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "feature_family",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "element_id",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "scale_id",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "element_name",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "scale_name",
+          "nullable": false
+        },
+        {
+          "dtype": "double",
+          "name": "raw_value",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "normalized_value",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "sample_size",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "standard_error",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "lower_ci_bound",
+          "nullable": true
+        },
+        {
+          "dtype": "double",
+          "name": "upper_ci_bound",
+          "nullable": true
+        },
+        {
+          "dtype": "bool",
+          "name": "observed",
+          "nullable": false
+        },
+        {
+          "dtype": "bool",
+          "name": "recommend_suppress",
+          "nullable": false
+        },
+        {
+          "dtype": "bool",
+          "name": "not_relevant",
+          "nullable": false
+        },
+        {
+          "dtype": "date32[day]",
+          "name": "rating_date",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "domain_source",
+          "nullable": true
+        }
+      ],
+      "format": "parquet",
+      "path": "skill_ratings.parquet",
+      "primary_key": [
+        "onet_soc_code",
+        "feature_family",
+        "element_id",
+        "scale_id"
+      ],
+      "rows": 103704,
+      "sha256": "3b7b7c32f17cbfc76c56f23d48d58f8f3a73bb9c19e3c8e9a483fa40a19a8acc",
+      "sort_by": [
+        "onet_soc_code",
+        "feature_family",
+        "element_id",
+        "scale_id"
+      ]
+    },
+    "smoke_queries": {
+      "bytes": 352,
+      "format": "json",
+      "path": "smoke_queries.json",
+      "sha256": "258fbe76af95cd9b045580f3687389571d990629938620c57a110b4fe5ed6000"
+    },
+    "source_manifest": {
+      "bytes": 22583,
+      "format": "json",
+      "path": "lineage/source_manifest.json",
+      "sha256": "fde3026517dc89ec427a01aaa16eaf6c31805cee6a63427671972c6d34a4a7ec"
+    },
+    "title_matrix": {
+      "bytes": 5217016,
+      "dtype": "float64",
+      "format": "scipy_npz",
+      "path": "title_matrix.npz",
+      "sha256": "2e3bd2e233824c0bf4118336d49755ba71a74621a7c5885ee39273a0558bc601",
+      "shape": [
+        1016,
+        52451
+      ]
+    },
+    "title_vectorizer": {
+      "bytes": 21886388,
+      "format": "joblib",
+      "path": "title_vectorizer.joblib",
+      "sha256": "58778fd91b8fe6d447e3a7b10f64c13a3ad51010a0f41b80e70a70affb45ff25"
+    }
+  },
+  "models": {
+    "fit_code_count": 813,
+    "fit_codes_sha256": "e4d882146183a356af4a854dd4b7ca86769ab74c6aa5ae1dd011771d2f0b2a9f",
+    "fit_fold_manifest_sha256": "85f2c14f49dbc1fb9d108e13e42d218d30b1bd4992ec132ed353179c619d04ff",
+    "fit_phase": "locked_test",
+    "neighbor_display_max": 25,
+    "stored_transition_limit": 250,
+    "title_candidate_id": "title_hybrid_lsa64__lexical075-lsa025",
+    "title_candidate_spec": {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa64__lexical075-lsa025",
+      "lsa_dimensions": 64,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ]
+      ]
+    },
+    "title_feature_count": 52451,
+    "title_matrix_normalized": true,
+    "transition_candidate_id": "transition_hybrid_lsa64__lexical025-lsa000-structured075",
+    "transition_candidate_spec": {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical025-lsa000-structured075",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    "transition_components": [
+      "lexical",
+      "lsa",
+      "structured"
+    ]
+  },
+  "provenance": {
+    "candidate_manifest_sha256": "2ca9adcee16c0ddd537d7e45ef2822c5f36ffe978f501331563da0d90c4a2e47",
+    "environment_lock_sha256": "dcd2b0916162d94d00211b1fbdf6d8ae8a268cc35171df715146d620b9b78d57",
+    "evaluation_universe_sha256": "62dff404e1dc8d6b8b9854bb368f973dbf22359e1e0eff2c5f6cb4774dfabe27",
+    "feature_manifest_sha256": "4103779a227418bedf15406ace6bf043bac2d709ce7766533113a80942d3e663",
+    "implementation_manifest_sha256": "420127e1bd15520f342391b346feb2881abcacfefec9299583dcf288b354493c",
+    "locked_metrics_sha256": "ade5086fa62af56e1451051d4a72314bf91b1b75af2c510f2eb19fcf39d46eae",
+    "locked_rankings_sha256": "ef657d301a4565b25ed6f22b801797a1fb4253602f4ae4c5646ca2f503fd7494",
+    "metric_contract_sha256": "a56124e669621819806f04614dfb0e0e417db43cb399b44c68fe803c419197ed",
+    "processed_manifest_sha256": "fce571c18a1669430142d930875e8fcd8c90960a7894daebf7eb0d1f2972d641",
+    "project_config_sha256": "52e17ae2469eb95a48e8f3257b9af6d80dd30eb381de1bbc83d7078c98032017",
+    "repository_commit": "cd6dc6e8056959df452755eddcf96bfeb1e31bd7",
+    "source_hashes": {
+      "bls.crosswalk": "faeff84413dc4828f1a6b3154012a34d804b2e2067477ab6895eb62fd4b9bc06",
+      "bls.occupation": "bebf85e71d3a274eb0531077a9fe1bbcd1167e0a14c59e33071f61cbda9d3a57",
+      "onet.job_titles": "db3ac1f2519d8e59df9c727e4eb9cc8096bd196f111284f908be1758b267dbc2",
+      "onet.job_zones": "075782b37d63dfa37d8afa6dea975388350baf2f4d1906e39b66766a05d72ba8",
+      "onet.knowledge": "ec5cafa88466ae350fdd51eefc3c63ff1cb7765af4c38381a613882a59238db1",
+      "onet.occupation_data": "a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02",
+      "onet.related_occupations": "fc2a719a21dbd3805ddfb6d510c013c9e0c366b46273701b88c683a50ef3fe6b",
+      "onet.task_statements": "6462c5fef4e2b21ae2f1b85e5c3d6711ba5bef79e8c6091da48c1a26e9983a75",
+      "onet.transferable_skills": "23985fa24e0197067c02b3f062f0520839ef15a8980b93518bae68eeb041a841"
+    },
+    "source_manifest_sha256": "fde3026517dc89ec427a01aaa16eaf6c31805cee6a63427671972c6d34a4a7ec",
+    "split_manifest_sha256": "85f2c14f49dbc1fb9d108e13e42d218d30b1bd4992ec132ed353179c619d04ff",
+    "title_candidate_grid_sha256": "bf8fd2c59ade8deca168cc3cd4c0f96535f3b8168689ecb921dc31a4712fff32",
+    "transition_candidate_grid_sha256": "1443e0bb1713398680e271eaa6fed749a458acd943652cc919d94683587d37c4"
+  },
+  "schema_version": 1,
+  "snapshot_date": "2026-08-21"
+}

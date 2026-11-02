@@ -1,0 +1,17 @@
+{
+  "queries": [
+    {
+      "id": "catalog-title-01",
+      "query": "Chief Executives"
+    },
+    {
+      "id": "catalog-title-02",
+      "query": "Orderlies"
+    },
+    {
+      "id": "catalog-title-03",
+      "query": "Military Enlisted Tactical Operations and Air/Weapons Specialists and Crew Members, All Other"
+    }
+  ],
+  "schema_version": 1
+}
