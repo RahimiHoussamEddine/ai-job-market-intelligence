@@ -1,0 +1,43 @@
+{
+  "bootstrap_replicates": 2000,
+  "bootstrap_stratum": "soc_major_group",
+  "confirmation_gate": "champion_must_not_underperform_title_lexical_baseline",
+  "deployment_feasibility": {
+    "pure_structured": "evaluated_ablation_but_champion_ineligible",
+    "release_requires_positive_always_finite_text_weight": true
+  },
+  "operational_cost": {
+    "definitions": {
+      "query_count": "fixed evaluation query batch row count",
+      "score_cells": "query_count * candidate_count"
+    },
+    "formula": "score_cells * max(1, positive_weight_component_count) + lsa_dimensions * query_count",
+    "measured_latency_role": "diagnostic_only_not_a_selection_key",
+    "policy": "v1_deterministic_score_cells_x_active_components_plus_lsa_dimensions"
+  },
+  "schema_version": 1,
+  "selection_rule": "highest_selection_primary_metric_then_simpler_within_one_query_bootstrap_standard_error",
+  "tie_break": [
+    "latent_dimensions",
+    "serialized_artifact_bytes",
+    "operational_cost_units",
+    "candidate_id"
+  ],
+  "title": {
+    "primary": "macro_occupation_top1_accuracy",
+    "supporting": [
+      "recall_at_5",
+      "mrr"
+    ]
+  },
+  "transition": {
+    "primary": "macro_query_ndcg_at_10",
+    "supporting": [
+      "primary_short_recall_at_5",
+      "primary_recall_at_10",
+      "ndcg_at_20",
+      "mrr_at_10",
+      "binary_primary_ndcg_at_10"
+    ]
+  }
+}

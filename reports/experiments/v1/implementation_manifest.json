@@ -1,0 +1,197 @@
+{
+  "files": [
+    {
+      "byte_count": 2982,
+      "path": "Makefile",
+      "sha256": "23e163097ba0897c0f818a63533684b15b631a6c8400fa9a3a5cea27555e5f20"
+    },
+    {
+      "byte_count": 2534,
+      "path": "configs/project.toml",
+      "sha256": "383986bad9eb33c74c3c8fac05ca64531bea60cf38f439d5b49737413ac1a2ca"
+    },
+    {
+      "byte_count": 3636,
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "b8da12d91dd730d5997b1fbb2cb57261c3cbe4c43a55303502cdad47ef2a6a0c"
+    },
+    {
+      "byte_count": 8622,
+      "path": "docs/ARTIFACT_CONTRACT.md",
+      "sha256": "4ed444fe027c2791175f711c89e3d7456a8571217b84392e7c49816d2da711be"
+    },
+    {
+      "byte_count": 2081,
+      "path": "docs/DEPLOYMENT.md",
+      "sha256": "a4689edab3d8a244c35587f194e085bb5a42a2f9d800476c6c2d362d5e4d2aa8"
+    },
+    {
+      "byte_count": 9635,
+      "path": "docs/EXPERIMENT_PROTOCOL.md",
+      "sha256": "b52469bc586aecc5284353e38ee6d7cd7b043ad86d17fa2d13211374bf81042b"
+    },
+    {
+      "byte_count": 2793,
+      "path": "docs/MODEL_CARD.md",
+      "sha256": "254345f52ec4963f4baca80d77a8718af95d8bf40fb727703612a321199e664e"
+    },
+    {
+      "byte_count": 3803,
+      "path": "docs/REPRODUCIBILITY.md",
+      "sha256": "dfcbc11cb86a3ce93b92f325debc794695703f8e913f22a70373bd5715ce5774"
+    },
+    {
+      "byte_count": 1294,
+      "path": "pyproject.toml",
+      "sha256": "5971ddcc549bbb6c45da87cb710b38f0b1e3f9ce85585d4dbea9a878c8405c0d"
+    },
+    {
+      "byte_count": 1410,
+      "path": "requirements.lock",
+      "sha256": "dcd2b0916162d94d00211b1fbdf6d8ae8a268cc35171df715146d620b9b78d57"
+    },
+    {
+      "byte_count": 34125,
+      "path": "scripts/benchmark.py",
+      "sha256": "fbe76df38d3dedc1cac8a539cdb23b954974d0a1f6d510f9255aaa6d45f752f2"
+    },
+    {
+      "byte_count": 16794,
+      "path": "scripts/evaluate.py",
+      "sha256": "86c616f2332fc6915381ff5e56420b9f6eeba4ff9943eab6abbb0dc4a7d83b52"
+    },
+    {
+      "byte_count": 26919,
+      "path": "scripts/train.py",
+      "sha256": "e011b2c051305c87aa3a81e799f85e00dd7605af93736683d4f59f9f971f2f21"
+    },
+    {
+      "byte_count": 90,
+      "path": "src/job_market_intelligence/__init__.py",
+      "sha256": "d657a9be05e48a066478ca47a562e64e07e5d9528dcd39ccb43558190d908075"
+    },
+    {
+      "byte_count": 164362,
+      "path": "src/job_market_intelligence/artifacts.py",
+      "sha256": "3839810bd1ddba84ab33b8a93313fe06dd6c41cef8d536eaff9b65af7a32c4aa"
+    },
+    {
+      "byte_count": 7486,
+      "path": "src/job_market_intelligence/cli.py",
+      "sha256": "3167c0ce2bbdc32bba14e449f4131c708704048b69a7a1b0a4c8bb41cfbcb472"
+    },
+    {
+      "byte_count": 10759,
+      "path": "src/job_market_intelligence/clustering.py",
+      "sha256": "9bebbe790fcd5a1f7f9f3c1a15c01fe8ad60f61bf985f8bba7d50224d9aa9792"
+    },
+    {
+      "byte_count": 12093,
+      "path": "src/job_market_intelligence/config.py",
+      "sha256": "d6218bc5657e20e196b1a91a6613bbd08b092db0d5973d3e8636f4717ccd20a2"
+    },
+    {
+      "byte_count": 12994,
+      "path": "src/job_market_intelligence/crosswalk.py",
+      "sha256": "c57ecff7c52d9eab10ea6a69c91bb449eb53ba4dac75284b0816bc2f889fdbc9"
+    },
+    {
+      "byte_count": 7566,
+      "path": "src/job_market_intelligence/embeddings.py",
+      "sha256": "a953eecd012896090227ac86576b60e108aa52765d503682e29b8aa8f09aa40a"
+    },
+    {
+      "byte_count": 121118,
+      "path": "src/job_market_intelligence/evaluation.py",
+      "sha256": "1c2236e5bbc46336f40edeba02a4f2958d7c84b4b80dfb63791000478e5f0d41"
+    },
+    {
+      "byte_count": 9250,
+      "path": "src/job_market_intelligence/frontier.py",
+      "sha256": "0bdd96211fb147f426821e5760ffa87d164231377fb71447af58eebc0c5e62bf"
+    },
+    {
+      "byte_count": 9124,
+      "path": "src/job_market_intelligence/lexical.py",
+      "sha256": "9b2ff310a1e5c1815e9d40bc2eb125228ffb39dbf698f97317b62138331f13de"
+    },
+    {
+      "byte_count": 33411,
+      "path": "src/job_market_intelligence/modeling.py",
+      "sha256": "1c1cad71f5bdbcd8df61e0be83e2077268322428cd8695cd31483144c4833446"
+    },
+    {
+      "byte_count": 27196,
+      "path": "src/job_market_intelligence/profiles.py",
+      "sha256": "c883635d38b85838c2c6da56032cd2545708d9ae48987098f753b445a03c7179"
+    },
+    {
+      "byte_count": 17186,
+      "path": "src/job_market_intelligence/ranking_metrics.py",
+      "sha256": "d26db940ab8c5bc356dbe491688f4af5933c07013250975dbd2d970f84864ffa"
+    },
+    {
+      "byte_count": 19788,
+      "path": "src/job_market_intelligence/retrieval.py",
+      "sha256": "4ddea72f7517e54709b059e1af1359f867ade82e2b892bcba614edaeeb35ec4e"
+    },
+    {
+      "byte_count": 16905,
+      "path": "src/job_market_intelligence/schemas.py",
+      "sha256": "8eddbcda1bb57b1d47ecb368cf19f6c6ac4a3c8921295b8a82bf73639f6f8e1f"
+    },
+    {
+      "byte_count": 28445,
+      "path": "src/job_market_intelligence/service.py",
+      "sha256": "d8cfb386b1d661a296377732053a5af53a579dd2c9cfb2d2b01b7ce8011d88f6"
+    },
+    {
+      "byte_count": 10483,
+      "path": "src/job_market_intelligence/skills.py",
+      "sha256": "e55e9c3f928a78eaeb5b3f9b96bfe6dcf8c620d7be2d61ccf5b9f88ba08d53d2"
+    },
+    {
+      "byte_count": 42330,
+      "path": "src/job_market_intelligence/sources.py",
+      "sha256": "de39562add529e0494ed21dc5547687c57ae077a9ed10e31afe2706269124ff2"
+    },
+    {
+      "byte_count": 14564,
+      "path": "src/job_market_intelligence/splits.py",
+      "sha256": "3de99efcec68ae5d5baf07e6d561335ba654e7be05a0ad690bedd63f024f106c"
+    },
+    {
+      "byte_count": 3949,
+      "path": "src/job_market_intelligence/text.py",
+      "sha256": "3913a7615f9440dd95e1fa8b4de6723f57edcb077a2838e0751a8cd002407542"
+    },
+    {
+      "byte_count": 8078,
+      "path": "src/job_market_intelligence/transitions.py",
+      "sha256": "269a6b76866378099437fae96400b8d0c580f7f059c5650969d5858b88d11399"
+    },
+    {
+      "byte_count": 60819,
+      "path": "src/job_market_intelligence/warehouse.py",
+      "sha256": "9a4d3d8483b7d0f5546fd646d2be770f5f087dddf699c920c44c3cb1bc8273d3"
+    }
+  ],
+  "implementation_sha256": "8fc44340b8e4e32b904772fd6b17c62f05d161b25ba7a6a5a686c8584dd36980",
+  "schema_version": 1,
+  "scope": {
+    "exact_paths": [
+      "Makefile",
+      "pyproject.toml",
+      "requirements.lock",
+      "scripts/analyze.py",
+      "scripts/benchmark.py",
+      "scripts/evaluate.py",
+      "scripts/train.py"
+    ],
+    "prefixes": [
+      "configs/",
+      "docs/",
+      "src/job_market_intelligence/"
+    ]
+  }
+}
