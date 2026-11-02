@@ -1,0 +1,1113 @@
+{
+  "schema_version": 1,
+  "title": [
+    {
+      "analyzer": "word",
+      "candidate_id": "title_word",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "char",
+      "candidate_id": "title_char",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_word_char",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "profile_word",
+      "lsa_dimensions": 0,
+      "representation": "title_profile",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_lsa_64",
+      "lsa_dimensions": 64,
+      "representation": "title_lsa",
+      "task": "title",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa64__lexical025-lsa075",
+      "lsa_dimensions": 64,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa64__lexical050-lsa050",
+      "lsa_dimensions": 64,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa64__lexical075-lsa025",
+      "lsa_dimensions": 64,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_lsa_128",
+      "lsa_dimensions": 128,
+      "representation": "title_lsa",
+      "task": "title",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa128__lexical025-lsa075",
+      "lsa_dimensions": 128,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa128__lexical050-lsa050",
+      "lsa_dimensions": 128,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa128__lexical075-lsa025",
+      "lsa_dimensions": 128,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_lsa_256",
+      "lsa_dimensions": 256,
+      "representation": "title_lsa",
+      "task": "title",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa256__lexical025-lsa075",
+      "lsa_dimensions": 256,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa256__lexical050-lsa050",
+      "lsa_dimensions": 256,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "title_hybrid_lsa256__lexical075-lsa025",
+      "lsa_dimensions": 256,
+      "representation": "title_hybrid",
+      "task": "title",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ]
+      ]
+    }
+  ],
+  "title_sha256": "bf8fd2c59ade8deca168cc3cd4c0f96535f3b8168689ecb921dc31a4712fff32",
+  "transition": [
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_title_word",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "char",
+      "candidate_id": "transition_title_char",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word_char",
+      "candidate_id": "transition_title_word_char",
+      "lsa_dimensions": 0,
+      "representation": "canonical_title",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_work_word",
+      "lsa_dimensions": 0,
+      "representation": "work_profile",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": null,
+      "candidate_id": "transition_structured",
+      "lsa_dimensions": 0,
+      "representation": "structured",
+      "task": "transition",
+      "weights": [
+        [
+          "structured",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_work_lsa_64",
+      "lsa_dimensions": 64,
+      "representation": "work_lsa",
+      "task": "transition",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical000-lsa025-structured075",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical000-lsa050-structured050",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical000-lsa075-structured025",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical025-lsa000-structured075",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical025-lsa025-structured050",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical025-lsa050-structured025",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical025-lsa075-structured000",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical050-lsa000-structured050",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical050-lsa025-structured025",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical050-lsa050-structured000",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical075-lsa000-structured025",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa64__lexical075-lsa025-structured000",
+      "lsa_dimensions": 64,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_work_lsa_128",
+      "lsa_dimensions": 128,
+      "representation": "work_lsa",
+      "task": "transition",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical000-lsa025-structured075",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical000-lsa050-structured050",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical000-lsa075-structured025",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical025-lsa000-structured075",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical025-lsa025-structured050",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical025-lsa050-structured025",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical025-lsa075-structured000",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical050-lsa000-structured050",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical050-lsa025-structured025",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical050-lsa050-structured000",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical075-lsa000-structured025",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa128__lexical075-lsa025-structured000",
+      "lsa_dimensions": 128,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_work_lsa_256",
+      "lsa_dimensions": 256,
+      "representation": "work_lsa",
+      "task": "transition",
+      "weights": [
+        [
+          "lsa",
+          1.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical000-lsa025-structured075",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical000-lsa050-structured050",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical000-lsa075-structured025",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.0
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical025-lsa000-structured075",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.75
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical025-lsa025-structured050",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical025-lsa050-structured025",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical025-lsa075-structured000",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.25
+        ],
+        [
+          "lsa",
+          0.75
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical050-lsa000-structured050",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.5
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical050-lsa025-structured025",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical050-lsa050-structured000",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.5
+        ],
+        [
+          "lsa",
+          0.5
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical075-lsa000-structured025",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.0
+        ],
+        [
+          "structured",
+          0.25
+        ]
+      ]
+    },
+    {
+      "analyzer": "word",
+      "candidate_id": "transition_hybrid_lsa256__lexical075-lsa025-structured000",
+      "lsa_dimensions": 256,
+      "representation": "work_hybrid",
+      "task": "transition",
+      "weights": [
+        [
+          "lexical",
+          0.75
+        ],
+        [
+          "lsa",
+          0.25
+        ],
+        [
+          "structured",
+          0.0
+        ]
+      ]
+    }
+  ],
+  "transition_sha256": "1443e0bb1713398680e271eaa6fed749a458acd943652cc919d94683587d37c4"
+}
