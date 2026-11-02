@@ -315,7 +315,10 @@ def _render_skills(
     figure.update_layout(
         xaxis_title="Normalized occupation-level O*NET rating",
         yaxis_title=None,
-        yaxis={"categoryorder": "array", "categoryarray": list(reversed(selected["label"]))},
+        yaxis={
+            "categoryorder": "array",
+            "categoryarray": list(reversed(selected["label"].tolist())),
+        },
         legend={"orientation": "h", "y": 1.08},
         height=max(440, 42 * len(selected) + 160),
         margin={"l": 20, "r": 20, "t": 70, "b": 40},
@@ -463,10 +466,12 @@ def _render_evidence(service: OccupationIntelligenceService) -> None:
                 "Production fit fold SHA-256": metadata["fit_fold_manifest_sha256"],
             }
         )
+    lineage_frame = pd.DataFrame(
+        {"Lineage object": lineage_fields.keys(), "Digest / commit": lineage_fields.values()}
+    )
+    lineage_frame["Digest / commit"] = lineage_frame["Digest / commit"].astype(str)
     st.dataframe(
-        pd.DataFrame(
-            {"Lineage object": lineage_fields.keys(), "Digest / commit": lineage_fields.values()}
-        ),
+        lineage_frame,
         hide_index=True,
         width="stretch",
     )
