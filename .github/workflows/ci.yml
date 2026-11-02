@@ -77,11 +77,13 @@ jobs:
 
           trap 'docker compose down --volumes' EXIT
           docker compose up --detach --no-build --wait --wait-timeout 180
-          curl --fail --silent --show-error "http://127.0.0.1:8000/health?deep=true"
-          curl --fail --silent --show-error "http://127.0.0.1:8501/_stcore/health"
+          docker compose exec --no-TTY api python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health?deep=true').read()"
+          docker compose exec --no-TTY dashboard python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health').read()"
 
           api_id="$(docker compose ps --quiet api)"
           dashboard_id="$(docker compose ps --quiet dashboard)"
+          test "$(docker inspect "$api_id" --format '{{(index (index .HostConfig.PortBindings "8000/tcp") 0).HostIp}}')" = 127.0.0.1
+          test "$(docker inspect "$dashboard_id" --format '{{(index (index .HostConfig.PortBindings "8501/tcp") 0).HostIp}}')" = 127.0.0.1
           test "$(docker inspect "$api_id" --format '{{.Config.User}}')" = app
           test "$(docker inspect "$dashboard_id" --format '{{.Config.User}}')" = app
           test "$(docker inspect "$api_id" --format '{{.HostConfig.ReadonlyRootfs}}')" = true
