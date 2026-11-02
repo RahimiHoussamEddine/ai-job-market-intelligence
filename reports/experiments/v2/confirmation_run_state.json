@@ -1,0 +1,31 @@
+{
+  "experiment_version": "v2",
+  "implementation_manifest_sha256": "7f2b6341b4e89fcef562531f6dd7317dc95c6cf8f965897649fb61adb847183c",
+  "input_bindings_sha256": "b6435ea14c0a3122c9c0cd7fda8378e6c5af2677d7509496a7a5cf0712709b99",
+  "intent_sha256": "95ec417e5a3130f56b857806f660b46185203ad6bebf36036cf33f7fb08f944b",
+  "preparation_sha256": "1b9e87651a955a12a52a35e57c92f3c2889ba7776bd149520df742bc7cde8d5a",
+  "query_binding": {
+    "role": "confirmation",
+    "title_query_count": 4418,
+    "title_query_ids_sha256": "bf661fa43d16eeb911dd51eb7e0068533658ea045313afa1441a919ac24e675f",
+    "transition_query_codes_sha256": "ab72f85e191c2c4d7dba88f626555b833563f636ddb332ac1cae8455258bbf5d",
+    "transition_query_count": 179
+  },
+  "repository_commit": "7b51541fca63e3261bcdcb6b84888426fb18afdd",
+  "result": {
+    "confirmation_alias_queries.parquet": "c98d82d6bc80b7ff165740bd5df30cea685b354205c70082c2ac558383d48c44",
+    "confirmation_title_results.parquet": "391f3db229bdc68c91fa39134d38e4a6ee03208d3636ea4fe3c257c24a09eecc",
+    "confirmation_title_target_ranks.parquet": "a3fd568eb181a8b628e911aa2fa19b075c91dc5102f156a71abd9d70b517e867",
+    "confirmation_transition_rankings.parquet": "0a3aad424b0f45313e4352486d3077e3ad4f9a351fa41c282f7a74d9e744f7e6",
+    "confirmation_transition_results.parquet": "974e75c910868be2ff0c776978c2121c82859653f752e4ed95fa0d5503f97e03",
+    "development_decision.json": "52f66e427f4fd6c7750e25e713f7f274ab380a09dbfc85995ff4b787855f8586",
+    "development_summary.json": "5b01d52875b2f8bd870f9a0c5786359188258645acb9e0d9652a0cd2b50998bc"
+  },
+  "schema_version": 1,
+  "stage": "confirmation",
+  "status": "complete",
+  "upstream": {
+    "selection_decision_sha256": "49d6b9e7d8ec1669eefc7b5f363fc96ad45f17f78abb130e1cd2446fdedb98bf",
+    "selection_state_sha256": "0d61b4a8fbda3f28245b69a30cd3597ed13e338e679486ca50a330c2558f92f7"
+  }
+}

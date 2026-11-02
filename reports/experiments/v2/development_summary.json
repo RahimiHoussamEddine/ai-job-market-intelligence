@@ -1,0 +1,37 @@
+{
+  "confirmation_outputs": {
+    "confirmation_alias_queries": {
+      "path": "confirmation_alias_queries.parquet",
+      "row_count": 4418,
+      "sha256": "c98d82d6bc80b7ff165740bd5df30cea685b354205c70082c2ac558383d48c44"
+    },
+    "confirmation_title_results": {
+      "path": "confirmation_title_results.parquet",
+      "row_count": 408,
+      "sha256": "391f3db229bdc68c91fa39134d38e4a6ee03208d3636ea4fe3c257c24a09eecc"
+    },
+    "confirmation_title_target_ranks": {
+      "path": "confirmation_title_target_ranks.parquet",
+      "row_count": 8836,
+      "sha256": "a3fd568eb181a8b628e911aa2fa19b075c91dc5102f156a71abd9d70b517e867"
+    },
+    "confirmation_transition_rankings": {
+      "path": "confirmation_transition_rankings.parquet",
+      "row_count": 8160,
+      "sha256": "0a3aad424b0f45313e4352486d3077e3ad4f9a351fa41c282f7a74d9e744f7e6"
+    },
+    "confirmation_transition_results": {
+      "path": "confirmation_transition_results.parquet",
+      "row_count": 358,
+      "sha256": "974e75c910868be2ff0c776978c2121c82859653f752e4ed95fa0d5503f97e03"
+    }
+  },
+  "decision_sha256": "250cd34e545fddfa7feca8581b06ea103d0a552a50982f33c6276feebfe50f51",
+  "experiment_version": "v2",
+  "release_candidates": {
+    "title": "title_hybrid_lsa64__lexical075-lsa025",
+    "transition": "transition_hybrid_lsa64__lexical025-lsa000-structured075"
+  },
+  "schema_version": 1,
+  "selection_sha256": "eea41745c20a2c37f9bbc667b74e1279b066f98bb53caa39f931cdd1ca32af52"
+}
